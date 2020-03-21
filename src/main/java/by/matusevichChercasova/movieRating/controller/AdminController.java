@@ -17,7 +17,7 @@ public class AdminController {
     @Autowired
     private UserService userService;
     @Autowired
-    private UserRepository userrep;
+    private UserRepository userRepository;
 
     @GetMapping("/admin")
     public String userList(Model model) {

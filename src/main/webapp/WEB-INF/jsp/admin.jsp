@@ -11,6 +11,7 @@
 
 <body>
 <div>
+  <h4><a href="/admin/newProducer">Добавить продюсера</a></h4>
   <table>
     <thead>
     <th>ID</th>
