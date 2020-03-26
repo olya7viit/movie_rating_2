@@ -11,7 +11,7 @@
 
 <body>
 <div>
-  <h4><a href="/admin/newProducer">Добавить продюсера</a></h4>
+  <h4><a href="/admin/producerPage">Продюсеры</a></h4>
   <h4><a href="/admin/filmsPage">Фильмы</a></h4>
   <table>
     <thead>

@@ -1,6 +1,7 @@
 package by.matusevichChercasova.movieRating.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "producer")
@@ -17,22 +18,20 @@ public class Producer {
     @Column(name = "photo_path")
     private String photoPath;
 
-    /*@OneToMany
-    @JoinColumn(name = "producer_id")
-    private Set<Film> films;*/
-   /* @OneToMany(mappedBy = "producer", fetch = FetchType.EAGER)
-    private Collection<Film> films;*/
+    @OneToMany(mappedBy = "producer", fetch = FetchType.EAGER)//cascade = CascadeType.ALL ???????
+    private Set<Film> films;
 
     public Producer() {
     }
 
-    public Producer(String name, String surname, String country, String biography, String photoPath) {
+    public Producer(String name, String surname, String country, String biography, String photoPath, Set<Film> films) {
         this.name = name;
         this.surname = surname;
         this.country = country;
         this.biography = biography;
         this.photoPath = photoPath;
     }
+
 
     public Long getId() {
         return id;
@@ -80,6 +79,26 @@ public class Producer {
 
     public void setPhotoPath(String photoPath) {
         this.photoPath = photoPath;
+    }
+
+    public Set<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(Set<Film> films) {
+        this.films = films;
+    }
+
+    @Override
+    public String toString() {
+        return "Producer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", country='" + country + '\'' +
+                ", biography='" + biography + '\'' +
+                ", photoPath='" + photoPath + '\'' +
+                '}';
     }
 }
 

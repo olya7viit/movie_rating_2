@@ -18,21 +18,25 @@ public class ProducerController {
     @Autowired
     private ProducerService producerService;
 
-    @GetMapping("/admin/newProducer")
+    @GetMapping("/admin/producerPage")
     public String newProducer(Model model){
+
         model.addAttribute("producerForm", new Producer());
-        return "newProducer";
+
+        model.addAttribute("allProducers", producerService.allProducers());
+
+        return "producerPage";
     }
 
-    @PostMapping("/admin/newProducer")
+    @PostMapping("/admin/producerPage")
     public String addProducer(@ModelAttribute("producerForm") @Valid Producer producerForm, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-            return "newProducer";
+            return "producerPage";
         }
         if (!producerService.saveProducer(producerForm)){
-            model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
-            return "registration";
+            model.addAttribute("newProducerError", "Продюсер с таким именем уже существует");
+            return "producerPage";
         }
 
         return "redirect:/admin";

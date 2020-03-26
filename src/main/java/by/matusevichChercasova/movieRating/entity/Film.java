@@ -13,7 +13,7 @@ public class Film {
     private String name;
 
     @Column(name = "release_year")
-    @Size(min=4, max=4)
+    //@Size(min=4, max=4)
     private String releaseYear;
 
     private String genre;
@@ -23,11 +23,7 @@ public class Film {
 
     private String annotation;
 
-    /*@ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="producer_id",insertable = false, updatable = false)
-    private Producer producer;*/
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "producer_id")
     private Producer producer;
 
     public Film(){}
@@ -95,5 +91,18 @@ public class Film {
 
     public void setProducer(Producer producer) {
         this.producer = producer;
+    }
+
+    @Override
+    public String toString() {
+        return "Film{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", releaseYear='" + releaseYear + '\'' +
+                ", genre='" + genre + '\'' +
+                ", photoPath='" + photoPath + '\'' +
+                ", annotation='" + annotation + '\'' +
+                ", producer=" + producer +
+                '}';
     }
 }

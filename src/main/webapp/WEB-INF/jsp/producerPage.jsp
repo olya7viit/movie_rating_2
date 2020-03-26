@@ -6,11 +6,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Добавление продюсера</title>
+    <title>Producers</title>
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
 </head>
 
 <body>
 <div>
+    <%--@elvariable id="producerForm" type=""--%>
     <form:form method="POST" modelAttribute="producerForm">
         <h2>Добавление продюсера</h2>
         <div>
@@ -43,7 +45,45 @@
 
         <button type="submit">Добавить</button>
     </form:form>
-    <a href="/">Главная</a>
+
+
+        </br></br>
+
+        <table>
+            <thead>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Country</th>
+            <th>Biography</th>
+            <th>Films</th>
+            </thead>
+            <c:forEach items="${allProducers}" var="producer">
+                <tr>
+                    <td>${producer.name}</td>
+                    <td>${producer.surname}</td>
+                    <td>${producer.country}</td>
+                    <td>${producer.biography}</td>
+                    <td>
+                        <c:forEach items="${producer.films}" var="film">${film.name}; </c:forEach>
+                    </td>
+
+                    <td>
+                        <form action="${pageContext.request.contextPath}/admin/producerPage" method="post">
+                            <input type="hidden" name="filmId" value="${producer.id}"/>
+                            <input type="hidden" name="action" value="delete"/>
+                            <button type="submit">Delete</button>
+                        </form>
+
+                    </td>
+
+                </tr>
+            </c:forEach>
+        </table>
+
+
+
+
+        <a href="/">Главная</a>
 </div>
 </body>
 </html>

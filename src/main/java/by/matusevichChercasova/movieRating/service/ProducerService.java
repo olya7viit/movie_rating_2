@@ -3,6 +3,7 @@ package by.matusevichChercasova.movieRating.service;
 import by.matusevichChercasova.movieRating.entity.Producer;
 import by.matusevichChercasova.movieRating.repository.ProducerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,5 +36,16 @@ public class ProducerService {
 
     public List<Producer> allProducers() {
         return producerRepository.findAll();
+    }
+
+    public Producer loadProducerByProducerSurname(String producerSurname) throws UsernameNotFoundException {
+
+        Producer producer = producerRepository.findBySurname(producerSurname);
+
+        if (producer == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+
+        return producer;
     }
 }
