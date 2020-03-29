@@ -1,40 +1,14 @@
 package by.matusevichChercasova.movieRating.service;
 
+import by.matusevichChercasova.movieRating.dto.FilmDto;
 import by.matusevichChercasova.movieRating.entity.Film;
-import by.matusevichChercasova.movieRating.repository.FilmRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
-@Service
-public class FilmService {
-    @Autowired
-    FilmRepository filmRepository;
+public interface FilmService {
 
-    public List<Film> allFilms() {
-        return filmRepository.findAll();
-    }
+    List<Film> allFilms();
 
-    public boolean saveFilm(Film film) {
-        Film filmFromDB = filmRepository.findByName(film.getName());
+    boolean saveFilm(FilmDto filmDto);
 
-        if (filmFromDB != null) {
-            return false;
-        }
-        film.setPhotoPath("нету");/////////////////////////////////////////////////
-
-        filmRepository.save(film);
-
-        return true;
-    }
-
-    public boolean deleteFilm(Long filmId) {
-        if (filmRepository.findById(filmId).isPresent()) {
-            filmRepository.deleteById(filmId);
-            return true;
-        }
-        return false;
-    }
-
+    boolean deleteFilm(Long filmId);
 }

@@ -1,51 +1,18 @@
 package by.matusevichChercasova.movieRating.service;
 
-import by.matusevichChercasova.movieRating.entity.Producer;
-import by.matusevichChercasova.movieRating.repository.ProducerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import by.matusevichChercasova.movieRating.dto.ProducerDto;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class ProducerService {
-    @Autowired
-    ProducerRepository producerRepository;
+public interface ProducerService {
 
-    public boolean saveProducer(Producer producer) {
-        Producer producerFromDB = producerRepository.findBySurname(producer.getSurname());
+    boolean saveProducer(ProducerDto producerDto);
 
-        if (producerFromDB != null) { //если уже существует с такой фамилией
-            return false;
-        }
+    boolean deleteProducer(Long producerId);
 
-        producer.setPhotoPath("ничего");
+    List<ProducerDto> allProducers();
 
-        producerRepository.save(producer);
-        return true;
-    }
+    ProducerDto loadProducerByProducerSurname(String producerSurname) throws UsernameNotFoundException;
 
-    public boolean deleteProducer(Long producerId) {
-        if (producerRepository.findById(producerId).isPresent()) {
-            producerRepository.deleteById(producerId);
-            return true;
-        }
-        return false;
-    }
-
-    public List<Producer> allProducers() {
-        return producerRepository.findAll();
-    }
-
-    public Producer loadProducerByProducerSurname(String producerSurname) throws UsernameNotFoundException {
-
-        Producer producer = producerRepository.findBySurname(producerSurname);
-
-        if (producer == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-
-        return producer;
-    }
 }

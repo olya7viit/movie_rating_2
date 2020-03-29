@@ -18,34 +18,32 @@
       <h2>Добавить фильм</h2>
       <div>
         <form:input type="text" path="name" placeholder="Name"
-                    autofocus="true"></form:input>
-        <form:errors path="name"></form:errors>
+                    autofocus="true"/>
+        <form:errors path="name"/>
           ${nameError}
       </div>
       <div>
         <form:input type="text" path="releaseYear" placeholder="Year of release"
-                    autofocus="true"></form:input>
-        <form:errors path="releaseYear"></form:errors>
+                    autofocus="true"/>
+        <form:errors path="releaseYear"/>
           ${releaseYearError}
       </div>
       <div>
         <form:input type="text" path="genre" placeholder="Genre"
-                    autofocus="true"></form:input>
-        <form:errors path="genre"></form:errors>
+                    autofocus="true"/>
+        <form:errors path="genre"/>
           ${genreError}
       </div>
       <div>
         <form:input type="text" path="annotation" placeholder="Annotation"
-                    autofocus="true"></form:input>
-        <form:errors path="annotation"></form:errors>
+                    autofocus="true"/>
+        <form:errors path="annotation"/>
           ${annotationError}
       </div>
         <div>
             <form:select path="producer" >
-                <form:option value="NONE" label="--- Producer ---" />
                 <form:options items="${producerList}" />
             </form:select>
-
         </div>
       <button type="submit">Добавить</button>
     </form:form>

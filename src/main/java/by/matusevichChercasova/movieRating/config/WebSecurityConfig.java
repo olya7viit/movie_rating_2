@@ -1,6 +1,6 @@
 package by.matusevichChercasova.movieRating.config;
 
-import by.matusevichChercasova.movieRating.service.UserService;
+import by.matusevichChercasova.movieRating.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    UserService userService;
+    UserServiceImpl userService;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
