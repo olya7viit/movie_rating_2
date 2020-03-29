@@ -31,13 +31,60 @@ public class FilmControllerImpl implements FilmController {
     @GetMapping("/admin/filmsPage")
     public String findAllFilms(Model model) {
 
-        model.addAttribute("filmForm", new FilmDto());
+       // model.addAttribute("filmForm", new FilmDto());
 
         model.addAttribute("allFilms", filmService.allFilms());
 
         initModelList(model);
 
         return "filmsPage";
+    }
+    @Override
+    @GetMapping("/admin/addFilm")
+    public String addOneFilm(Model model) {
+
+        model.addAttribute("filmForm", new FilmDto());
+        initModelList(model);
+
+        return "addFilm";
+    }
+    @Override
+    @GetMapping("/admin/updateFilm")
+    public String updateFilms(@RequestParam(required = true, defaultValue = "" ) Long filmId,Model model) {
+
+        model.addAttribute("filmForm", new FilmDto());
+
+        initModelList(model);
+
+        model.addAttribute("oneFilm",filmService.oneFilm(filmId));
+
+        return "updateFilm";
+    }
+    @Override
+    @PostMapping("/admin/updateFilm")
+    public String updateFilm(@RequestParam("producer") String producerSurname,
+                             @ModelAttribute("filmForm") @Validated FilmDto filmForm,
+                             BindingResult bindingResult, @RequestParam(required = true, defaultValue = "" ) Long filmId,
+                             Model model) {
+
+        ProducerDto producerDto;
+        producerDto = producerService.loadProducerByProducerSurname(producerSurname);
+        ProducerMapper producerMapper = new ProducerMapper();
+        Producer producer = producerMapper.toEntity(producerDto);
+        filmForm.setProducer(producer);
+        filmForm.setId(filmId);
+        filmForm.setPhotoPath("photo");
+//        if (bindingResult.hasErrors()) {
+//
+//            System.out.println("error");
+//            return "filmsPage";
+//
+//        }
+
+        filmService.updateFilm(filmForm);
+
+        return "redirect:/admin/filmsPage";
+
     }
 
     @Override
@@ -63,28 +110,31 @@ public class FilmControllerImpl implements FilmController {
     }
 
     @Override
-    @PostMapping("/admin/filmsPage/add-film")
+    @PostMapping("/admin/addOneFilm/add-film")
     public String addFilm(@RequestParam("producer") String producerSurname,
                           @ModelAttribute("filmForm") @Validated FilmDto filmForm,
                           BindingResult bindingResult, Model model) {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
         ProducerDto producerDto;
 
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         producerDto = producerService.loadProducerByProducerSurname(producerSurname);
-        ProducerMapper producerMapper = new ProducerMapper(); System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+        ProducerMapper producerMapper = new ProducerMapper();
+
         Producer producer = producerMapper.toEntity(producerDto);
-        filmForm.setProducer(producer); System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-        if (bindingResult.hasErrors()) {
+        filmForm.setProducer(producer);
 
-            System.out.println("error");
-            return "filmsPage";
 
-        }
+//        if (bindingResult.hasErrors()) {
+//
+//            System.out.println("error"+bindingResult.getAllErrors());
+//            return "filmsPage";
+//
+//        }
         if (!filmService.saveFilm(filmForm)) {
             model.addAttribute("filmError", "Такой фильм уже существует");
-            return "filmPage";
+            return "filmsPage";
         }
 
         return "redirect:/admin/filmsPage";

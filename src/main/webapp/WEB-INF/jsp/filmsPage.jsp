@@ -13,59 +13,28 @@
 <body>
 <div>
  <div>
-    <%--@elvariable id="filmForm" type=""--%>
-    <form:form method="POST" modelAttribute="filmForm" action="/admin/filmsPage/add-film">
-      <h2>Добавить фильм</h2>
-      <div>
-        <form:input type="text" path="name" placeholder="Name"
-                    autofocus="true"/>
-        <form:errors path="name"/>
-          ${nameError}
-      </div>
-      <div>
-        <form:input type="text" path="releaseYear" placeholder="Year of release"
-                    autofocus="true"/>
-        <form:errors path="releaseYear"/>
-          ${releaseYearError}
-      </div>
-      <div>
-        <form:input type="text" path="genre" placeholder="Genre"
-                    autofocus="true"/>
-        <form:errors path="genre"/>
-          ${genreError}
-      </div>
-      <div>
-        <form:input type="text" path="annotation" placeholder="Annotation"
-                    autofocus="true"/>
-        <form:errors path="annotation"/>
-          ${annotationError}
-      </div>
-        <div>
-            <form:select path="producer" >
-                <form:options items="${producerList}" />
-            </form:select>
-        </div>
-      <button type="submit">Добавить</button>
-    </form:form>
+     <h4><a href="${pageContext.request.contextPath}/admin/addFilm">Добавить</a></h4>
+
   </div>
-
-
-  </br></br>
 
     <table>
     <thead>
     <th>Name</th>
+    <th>Photo_Path</th>
     <th>Year of release</th>
     <th>Genre</th>
     <th>Producer</th>
+    <th>Duration</th>
     <th>Annotation</th>
     </thead>
     <c:forEach items="${allFilms}" var="film">
         <tr>
         <td>${film.name}</td>
+        <td>${film. photoPath}</td>
         <td>${film.releaseYear}</td>
         <td>${film.genre}</td>
         <td>${film.producer.surname} ${film.producer.name}</td>
+        <td>${film.duration}</td>
         <td>${film.annotation}</td>
 
         <td>
@@ -76,7 +45,13 @@
           </form>
 
         </td>
+            <td>
+                <form action="${pageContext.request.contextPath}/admin/updateFilm" method="get">
+                    <input type="hidden" name="filmId" value="${film.id}"/>
+                    <button type="submit">Update</button>
+                </form>
 
+            </td>
       </tr>
     </c:forEach>
   </table>

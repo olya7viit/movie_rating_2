@@ -61,6 +61,20 @@ public class FilmServiceImpl implements FilmService {
         return false;
     }
 
+    @Override
+    public Film oneFilm(Long id) {
+
+        return filmRepository.getOne(id);
+
+    }
+    @Override
+    public void updateFilm(FilmDto filmDto) {
+
+        Film film = filmMapper.toEntity(filmDto);
+
+        filmRepository.save(film);
+
+    }
    /* public List<Film> allFilms() {
         return filmRepository.findAll();
     }

@@ -14,11 +14,13 @@ public class FilmMapper implements Mapper<FilmDto, Film> {
     public Film toEntity(FilmDto filmDto) {
         Film film= new Film();
         film.setId(filmDto.getId());
+        film.setName(filmDto.getName());
         film.setProducer(filmDto.getProducer());
         film.setPhotoPath(filmDto.getPhotoPath());
         film.setAnnotation(filmDto.getAnnotation());
         film.setGenre(filmDto.getGenre());
         film.setReleaseYear(filmDto.getReleaseYear());
+        film.setDuration(filmDto.getDuration());
         return film;
     }
 
@@ -26,11 +28,13 @@ public class FilmMapper implements Mapper<FilmDto, Film> {
     public FilmDto toDto(Film film) {
         FilmDto filmDto = new FilmDto();
         filmDto.setId(film.getId());
+        filmDto.setName(film.getName());
         filmDto.setProducer(film.getProducer());
         filmDto.setPhotoPath(film.getPhotoPath());
         filmDto.setAnnotation(film.getAnnotation());
         filmDto.setGenre(film.getGenre());
         filmDto.setReleaseYear(film.getReleaseYear());
+        filmDto.setDuration(film.getDuration());
 
         return filmDto;
     }
