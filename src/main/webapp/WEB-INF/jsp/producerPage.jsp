@@ -11,43 +11,8 @@
 </head>
 
 <body>
-<div>
-    <%--@elvariable id="producerForm" type=""--%>
-    <form:form method="POST" modelAttribute="producerForm">
-        <h2>Добавление продюсера</h2>
-        <div>
-            <form:input type="text" path="name" placeholder="Name"
-                        autofocus="true"></form:input>
-            <form:errors path="name"></form:errors>
-                ${nameError}
-        </div>
 
-        <div>
-            <form:input type="text" path="surname" placeholder="Surname"
-                        autofocus="true"></form:input>
-            <form:errors path="surname"></form:errors>
-                ${surnameError}
-        </div>
-
-        <div>
-            <form:input type="text" path="country" placeholder="Country"
-                        autofocus="true"></form:input>
-            <form:errors path="country"></form:errors>
-                ${countryError}
-        </div>
-
-        <div>
-            <form:input type="text" path="biography" placeholder="Biography"
-                        autofocus="true"></form:input>
-            <form:errors path="biography"></form:errors>
-                ${biographyError}
-        </div>
-
-        <button type="submit">Добавить</button>
-    </form:form>
-
-
-        </br></br>
+<h4><a href="${pageContext.request.contextPath}/admin/addProducer">Добавить</a></h4>
 
         <table>
             <thead>
@@ -69,13 +34,19 @@
 
                     <td>
                         <form action="${pageContext.request.contextPath}/admin/producerPage" method="post">
-                            <input type="hidden" name="filmId" value="${producer.id}"/>
+                            <input type="hidden" name="producerId" value="${producer.id}"/>
                             <input type="hidden" name="action" value="delete"/>
                             <button type="submit">Delete</button>
                         </form>
 
                     </td>
+                    <td>
+                        <form action="${pageContext.request.contextPath}/admin/updateProducer" method="get">
+                            <input type="hidden" name="producerId" value="${producer.id}"/>
+                            <button type="submit">Update</button>
+                        </form>
 
+                    </td>
                 </tr>
             </c:forEach>
         </table>

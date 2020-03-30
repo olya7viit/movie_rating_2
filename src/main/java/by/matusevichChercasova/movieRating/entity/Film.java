@@ -20,7 +20,7 @@ public class Film {
 
     @Column(name = "photo_path")
     private String photoPath;
-
+    private String duration;
     private String annotation;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -28,11 +28,12 @@ public class Film {
 
     public Film(){}
 
-    public Film(String name, @Size(min = 4, max = 4) String releaseYear, String genre, String photoPath, String annotation, Producer producer) {
+    public Film(String name, @Size(min = 4, max = 4) String releaseYear, String genre, String photoPath, String duration, String annotation, Producer producer) {
         this.name = name;
         this.releaseYear = releaseYear;
         this.genre = genre;
         this.photoPath = photoPath;
+        this.duration = duration;
         this.annotation = annotation;
         this.producer = producer;
     }
@@ -93,6 +94,14 @@ public class Film {
         this.producer = producer;
     }
 
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
     @Override
     public String toString() {
         return "Film{" +
@@ -101,8 +110,11 @@ public class Film {
                 ", releaseYear='" + releaseYear + '\'' +
                 ", genre='" + genre + '\'' +
                 ", photoPath='" + photoPath + '\'' +
-                ", annotation='" + annotation + '\'' +
+                ", annotation='" + annotation + '\''+
+                ", duration='" + duration + '\'' +
                 ", producer=" + producer +
                 '}';
     }
+
+
 }

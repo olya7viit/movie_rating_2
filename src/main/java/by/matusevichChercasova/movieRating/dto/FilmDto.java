@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 public class FilmDto extends AbstractDto {
 
-    @NotBlank(message = "need to be null")
+    @NotNull(message = "need to be null")
     private String name;
 
     @NotNull(message = "release year year need to be set")
@@ -16,6 +16,8 @@ public class FilmDto extends AbstractDto {
     private String genre;
 
     private String photoPath;
+
+    private String duration;
 
     private String annotation;
 
@@ -72,4 +74,7 @@ public class FilmDto extends AbstractDto {
     }
 
 
+    public String getDuration() { return duration; }
+
+    public void setDuration(String duration) { this.duration = duration; }
 }

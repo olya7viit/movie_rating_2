@@ -69,5 +69,18 @@ public class ProducerServiceImpl implements ProducerService {
 
         return producerDto;
     }
+    @Override
+    public void updateFilm(ProducerDto producerDto) {
 
+        Producer producer = producerMapper.toEntity(producerDto);
+
+        producerRepository.save(producer);
+
+    }
+    @Override
+    public Producer oneProducer(Long id) {
+
+        return producerRepository.getOne(id);
+
+    }
 }
