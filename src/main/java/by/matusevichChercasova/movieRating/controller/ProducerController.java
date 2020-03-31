@@ -11,16 +11,21 @@ import javax.validation.Valid;
 
 public interface ProducerController {
 
+    String allProducer(Model model);
+
     String newProducer(Model model);
-    String addOneProducer(Model model);
+
     String workWithProducer(@RequestParam(defaultValue = "") Long producerId,
                         @RequestParam(defaultValue = "") String action,
                         Model model);
+
     String addProducer(@ModelAttribute("producerForm")
                        @Valid ProducerDto producerForm,
                        BindingResult bindingResult, Model model);
+
     String updateProducers(@RequestParam(required = true, defaultValue = "" ) Long producerId,
                            Model model);
+
     String updateFilm(@ModelAttribute("filmForm") @Validated ProducerDto producerForm,
                       BindingResult bindingResult, @RequestParam(required = true, defaultValue = "" ) Long producerId,
                       Model model);

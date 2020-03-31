@@ -20,7 +20,9 @@ public class Film {
 
     @Column(name = "photo_path")
     private String photoPath;
+
     private String duration;
+
     private String annotation;
 
     @ManyToOne(fetch = FetchType.EAGER)

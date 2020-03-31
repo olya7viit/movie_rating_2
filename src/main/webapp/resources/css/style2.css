@@ -24,7 +24,7 @@ h2 {
     font-size: 28px;
 }
 h3 {
-    font-size: 26px;
+    font-size: 16px;<!--  название фильмов -->
 }
 h2, h3 {
     color: #282828;
@@ -50,8 +50,9 @@ h2, h3 {
 .menu li a {
     text-decoration: none;
 }
-
-
+ nav{
+     margin-right: -120px;
+ }
 
 /* Header */
 header {
@@ -81,46 +82,16 @@ header .menu li a {
     background-repeat: no-repeat;
     padding-top: 80px;
     padding-bottom: 80px;
-    min-height: 250px;
+    min-height: 150px;
     text-align: center;
     clear: both;
 }
-.jumbotron .button {
-    display: inline-block;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-    margin-top: 40px;
-    background-color: #fa5ba5;
-    padding: 20px 30px;
-    border-radius: 30px;
-}
-
-
-
-/* Services */
-.services .service {
-    width: 33.333333%;
-    float: left;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 30px;
-    margin-bottom: 50px;
-}
-.services {
-    padding-top: 50px;
-    text-align: center;
-}
-.services .fa {
-    color: #979797;
-    margin-bottom: 15px; /* и добавим небольшой отступ */
-}
-
-
 
 /* Blog */
 .blog {
+    box-shadow: 0 0 20px 1px gray;
+    margin-right: 250px;
+    margin-left: 250px;
     clear: both;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -134,6 +105,7 @@ header .menu li a {
     display: inline-block;
 }
 .blog .post img {
+    max-height: 150px;
     float: left;
     margin-right: 30px;
 }
@@ -169,6 +141,94 @@ footer .copyright {
 }
 
 
+
+.dakisvan {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 30px;
+    color: white;
+   /* font-weight: bold;*/
+   /* font-size: 18px;*/
+    background-color: #fa5ba5;
+    padding: 15px 25px;
+    border-radius: 30px;
+}
+.dakisvan:hover {
+    background: #fa5ba5;
+}
+.dakisvan.valokan-big {
+    font-size: 18px;
+    padding: 15px 20px;
+    min-width: 100px;
+}
+.valokan-close {
+    color: #fa5ba5;
+    font-size: 30px;
+    text-decoration: none;
+    padding:10px;
+    position: absolute;
+    right: 7px;
+    top: 0;
+}
+.valokan-close:hover {
+    color: #333;
+}
+.kadobagud:before {
+    content: "";
+    display: none;
+    background: rgba(171, 171, 171, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+.midsalod:before {
+    display: block;
+}
+.midsalod .angebes-koverla {
+    transform: translate(0, 0);
+    top: 20%;
+}
+.angebes-koverla {
+    background: #fefefe;
+    border: #232222 solid 0;
+    border-radius: 5px;
+    margin-left: -200px;
+    text-align:center;
+    position: fixed;
+    left: 50%;
+    top: -100%;
+    z-index: 11;
+    width: 450px;
+    box-shadow:0 5px 10px rgba(25, 24, 24, 0.3);
+    transform: translate(0, -500%);
+    transition: transform 0.3s ease-out;
+}
+.davasgu-kevanud {
+    padding: 20px;
+}
+.davasgu-kevanud input{
+    width:200px;
+    padding:8px;
+    border:1px solid #ddd;
+    color:#888;
+    outline:0;
+    font-size:14px;
+    font-weight:bold;
+    margin-top: 10px;
+}
+.doveacko-gangeroun,
+.kusane-avasgun {
+    padding: 10px 20px;
+}
+.doveacko-gangeroun {
+    border-bottom: #eeeeee solid 1px;
+}
+.doveacko-gangeroun h2 {
+    font-size: 20px;
+}
 
 
 

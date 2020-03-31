@@ -24,22 +24,22 @@ public class ProducerControllerImpl implements ProducerController {
 
     @Override
     @GetMapping("/admin/producerPage")
-    public String newProducer(Model model){
-
-       // model.addAttribute("producerForm", new Producer());
+    public String allProducer(Model model){
 
         model.addAttribute("allProducers", producerService.allProducers());
 
         return "producerPage";
     }
+
     @Override
     @GetMapping("/admin/addProducer")
-    public String addOneProducer(Model model){
+    public String newProducer(Model model){
 
         model.addAttribute("producerForm", new ProducerDto());
 
         return "addProducer";
     }
+
     @Override
     @GetMapping("/admin/updateProducer")
     public String updateProducers(@RequestParam(required = true, defaultValue = "" ) Long producerId,Model model) {
@@ -50,6 +50,7 @@ public class ProducerControllerImpl implements ProducerController {
 
         return "updateProducer";
     }
+
     @Override
     @PostMapping("/admin/updateProducer")
     public String updateFilm(@ModelAttribute("filmForm") @Validated ProducerDto producerForm,
@@ -68,6 +69,7 @@ public class ProducerControllerImpl implements ProducerController {
         return "redirect:/admin/producerPage";
 
     }
+
     @Override
     @PostMapping("/admin/producerPage")
     public String workWithProducer(@RequestParam(defaultValue = "") Long producerId,
@@ -80,6 +82,7 @@ public class ProducerControllerImpl implements ProducerController {
 
         return "redirect:/admin/producerPage";
     }
+
     @Override
     @PostMapping("/admin/addOneProducer/add-Producer")
     public String addProducer(@ModelAttribute("producerForm")

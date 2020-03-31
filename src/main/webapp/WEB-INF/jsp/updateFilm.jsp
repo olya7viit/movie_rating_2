@@ -14,13 +14,9 @@
 <div>
     <div>
 
-        <%--@elvariable id="filmForm" type=""--%>
+       <%--@elvariable id="filmForm" type=""--%>
        <form:form method="POST" modelAttribute="filmForm" action="/admin/updateFilm">
             <h2>Добавить фильм</h2>
-
-
-
-
             <div>
                 <form:input type="text" path="name" value="${oneFilm.name}"
 

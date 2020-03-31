@@ -31,23 +31,24 @@ public class FilmControllerImpl implements FilmController {
     @GetMapping("/admin/filmsPage")
     public String findAllFilms(Model model) {
 
-       // model.addAttribute("filmForm", new FilmDto());
-
         model.addAttribute("allFilms", filmService.allFilms());
 
         initModelList(model);
 
         return "filmsPage";
     }
+
     @Override
     @GetMapping("/admin/addFilm")
-    public String addOneFilm(Model model) {
+    public String addNewFilm(Model model) {
 
         model.addAttribute("filmForm", new FilmDto());
+
         initModelList(model);
 
         return "addFilm";
     }
+
     @Override
     @GetMapping("/admin/updateFilm")
     public String updateFilms(@RequestParam(required = true, defaultValue = "" ) Long filmId,Model model) {
@@ -56,10 +57,11 @@ public class FilmControllerImpl implements FilmController {
 
         initModelList(model);
 
-        model.addAttribute("oneFilm",filmService.oneFilm(filmId));
+        model.addAttribute("oneFilm",filmService.getFilm(filmId));
 
         return "updateFilm";
     }
+
     @Override
     @PostMapping("/admin/updateFilm")
     public String updateFilm(@RequestParam("producer") String producerSurname,
@@ -68,12 +70,15 @@ public class FilmControllerImpl implements FilmController {
                              Model model) {
 
         ProducerDto producerDto;
+
         producerDto = producerService.loadProducerByProducerSurname(producerSurname);
+
         ProducerMapper producerMapper = new ProducerMapper();
         Producer producer = producerMapper.toEntity(producerDto);
+
         filmForm.setProducer(producer);
         filmForm.setId(filmId);
-        filmForm.setPhotoPath("photo");
+
 //        if (bindingResult.hasErrors()) {
 //
 //            System.out.println("error");

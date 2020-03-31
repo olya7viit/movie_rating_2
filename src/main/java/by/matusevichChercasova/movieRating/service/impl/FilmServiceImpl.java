@@ -38,17 +38,6 @@ public class FilmServiceImpl implements FilmService {
                 });
         filmRepository.save(film);
 
-        /*Film filmFromDB = filmRepository.findByName(film.getName());
-
-        if (filmFromDB != null) {
-            return false;
-        }
-        film.setPhotoPath("нету");/////////////////////////////////////////////////
-
-        filmRepository.save(film);
-
-        return true;*/
-
         return true;
     }
 
@@ -62,7 +51,7 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public Film oneFilm(Long id) {
+    public Film getFilm(Long id) {
 
         return filmRepository.getOne(id);
 
@@ -75,52 +64,5 @@ public class FilmServiceImpl implements FilmService {
         filmRepository.save(film);
 
     }
-   /* public List<Film> allFilms() {
-        return filmRepository.findAll();
-    }
-
-//   /* public boolean saveFilm(Film film) {
-//        /*Film filmFromDB = filmRepository.findByName(film.getName());
-//
-//        if (filmFromDB != null) {
-//            return false;
-//        }
-//        film.setPhotoPath("нету");/////////////////////////////////////////////////
-//
-//        filmRepository.save(film);
-//
-//        return true;
-//    }
-
-    public boolean saveFilm(FilmDto filmDto) {
-        Film film = filmMapper.toEntity(filmDto);
-
-        filmRepository.findByName(film.getName())
-                .ifPresent(value -> {
-                    throw new RuntimeException("SOrry film is already present");
-                });
-        filmRepository.save(film);
-
-//        /*Film filmFromDB = filmRepository.findByName(film.getName());
-//
-//        if (filmFromDB != null) {
-//            return false;
-//        }
-//        film.setPhotoPath("нету");/////////////////////////////////////////////////
-//
-//        filmRepository.save(film);
-//
-//        return true;
-
-        return true;
-    }
-
-    public boolean deleteFilm(Long filmId) {
-        if (filmRepository.findById(filmId).isPresent()) {
-            filmRepository.deleteById(filmId);
-            return true;
-        }
-        return false;
-    }*/
 
 }
