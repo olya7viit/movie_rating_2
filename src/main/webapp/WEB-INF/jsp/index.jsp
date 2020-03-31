@@ -15,7 +15,6 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <script src="https://use.fontawesome.com/0ca06f29a6.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
     <script src="${contextPath}/resources/js/jquery-3.4.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/script.js"></script>
@@ -28,8 +27,9 @@
         <div class="brand">Project Name</div>
         <nav>
             <ul class="menu">
+                <li><a href="/">Главная</a></li>
                 <li><a href="#">Актеры</a></li>
-                <li><a href="#">Продюсеры</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/allProducers">Продюсеры</a></li>
                 <li><a href="#">Закладки</a></li>
                 <sec:authorize access="!isAuthenticated()">
                     <li><a href="/login" class=" svalokan-big openmodal">   Войти</a></li>
@@ -80,7 +80,7 @@
                 <p class="date">${film.releaseYear}</p>
                 <p>Продолжительность: ${film.duration}</p>
                 <p>Жанр: ${film.genre}</p>
-                <p>Продюсер: ${film.producer.surname} ${film.producer.name}</p>
+                <p>Режиссёр:: ${film.producer.surname} ${film.producer.name}</p>
                 <p>${film.annotation}</p>
             </c:forEach>
         </div>

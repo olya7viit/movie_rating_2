@@ -24,7 +24,7 @@ public class ProducerControllerImpl implements ProducerController {
 
     @Override
     @GetMapping("/admin/producerPage")
-    public String allProducer(Model model){
+    public String allProducers(Model model){
 
         model.addAttribute("allProducers", producerService.allProducers());
 
@@ -103,6 +103,16 @@ public class ProducerControllerImpl implements ProducerController {
         }
 
         return "redirect:/admin";
+    }
+
+
+    @Override
+    @GetMapping("/user/allProducers")
+    public String allProducersForUser(Model model){
+
+        model.addAttribute("allProducers", producerService.allProducers());
+
+        return "allProducer";
     }
 
 }

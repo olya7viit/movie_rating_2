@@ -11,7 +11,7 @@ import javax.validation.Valid;
 
 public interface ProducerController {
 
-    String allProducer(Model model);
+    String allProducers(Model model);
 
     String newProducer(Model model);
 
@@ -29,5 +29,8 @@ public interface ProducerController {
     String updateFilm(@ModelAttribute("filmForm") @Validated ProducerDto producerForm,
                       BindingResult bindingResult, @RequestParam(required = true, defaultValue = "" ) Long producerId,
                       Model model);
+
+
+    String allProducersForUser(Model model);
 
 }
