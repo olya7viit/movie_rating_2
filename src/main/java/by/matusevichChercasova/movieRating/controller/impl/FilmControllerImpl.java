@@ -1,6 +1,7 @@
 package by.matusevichChercasova.movieRating.controller.impl;
 
 import by.matusevichChercasova.movieRating.controller.FilmController;
+import by.matusevichChercasova.movieRating.dto.FilmAddDto;
 import by.matusevichChercasova.movieRating.dto.FilmDto;
 import by.matusevichChercasova.movieRating.dto.ProducerDto;
 import by.matusevichChercasova.movieRating.dto.mapper.ProducerMapper;
@@ -53,38 +54,39 @@ public class FilmControllerImpl implements FilmController {
     @GetMapping("/admin/updateFilm")
     public String updateFilms(@RequestParam(required = true, defaultValue = "" ) Long filmId,Model model) {
 
-        model.addAttribute("filmForm", new FilmDto());
+        model.addAttribute("filmForm", new FilmAddDto());
 
         initModelList(model);
 
         model.addAttribute("oneFilm",filmService.getFilm(filmId));
+        model.addAttribute("allProducers",producerService.allProducers());
 
         return "updateFilm";
     }
 
     @Override
     @PostMapping("/admin/updateFilm")
-    public String updateFilm(@RequestParam("producer") String producerSurname,
-                             @ModelAttribute("filmForm") @Validated FilmDto filmForm,
+    public String updateFilm(@RequestParam("producerId") Long producerId,
+                             @ModelAttribute("filmForm") @Validated FilmAddDto filmForm,
                              BindingResult bindingResult, @RequestParam(required = true, defaultValue = "" ) Long filmId,
                              Model model) {
 
-        ProducerDto producerDto;
-
-        producerDto = producerService.loadProducerByProducerSurname(producerSurname);
-
-        ProducerMapper producerMapper = new ProducerMapper();
-        Producer producer = producerMapper.toEntity(producerDto);
-
-        filmForm.setProducer(producer);
+//        ProducerDto producerDto;
+//
+//        producerDto = producerService.loadProducerByProducerSurname(producerSurname);
+//
+//        ProducerMapper producerMapper = new ProducerMapper();
+//        Producer producer = producerMapper.toEntity(producerDto);
+//
+//        filmForm.setProducer(producer);
         filmForm.setId(filmId);
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"+filmForm.getProducerId());
+        if (bindingResult.hasErrors()) {
 
-//        if (bindingResult.hasErrors()) {
-//
-//            System.out.println("error");
-//            return "filmsPage";
-//
-//        }
+            System.out.println("error"+bindingResult.getAllErrors());
+            return "filmsPage";
+
+        }
 
         filmService.updateFilm(filmForm);
 
@@ -137,10 +139,10 @@ public class FilmControllerImpl implements FilmController {
 //            return "filmsPage";
 //
 //        }
-        if (!filmService.saveFilm(filmForm)) {
-            model.addAttribute("filmError", "Такой фильм уже существует");
-            return "filmsPage";
-        }
+//        if (!filmService.saveFilm(filmForm)) {
+//            model.addAttribute("filmError", "Такой фильм уже существует");
+//            return "filmsPage";
+//        }
 
         return "redirect:/admin/filmsPage";
     }

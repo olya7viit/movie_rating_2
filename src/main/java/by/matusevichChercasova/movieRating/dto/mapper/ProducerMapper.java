@@ -44,9 +44,12 @@ public class ProducerMapper implements Mapper<ProducerDto, Producer> {
 
     @Override
     public List<ProducerDto> toDtoList(List<Producer> list) {
+
+
         return
                 list.stream()
                         .map(this::toDto)
                         .collect(Collectors.toList());
     }
+
 }

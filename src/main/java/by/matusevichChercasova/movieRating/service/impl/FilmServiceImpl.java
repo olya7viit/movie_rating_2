@@ -1,6 +1,8 @@
 package by.matusevichChercasova.movieRating.service.impl;
 
+import by.matusevichChercasova.movieRating.dto.FilmAddDto;
 import by.matusevichChercasova.movieRating.dto.FilmDto;
+import by.matusevichChercasova.movieRating.dto.mapper.FilmAddMapper;
 import by.matusevichChercasova.movieRating.dto.mapper.FilmMapper;
 import by.matusevichChercasova.movieRating.entity.Film;
 import by.matusevichChercasova.movieRating.repository.FilmRepository;
@@ -13,11 +15,11 @@ import java.util.List;
 @Service
 public class FilmServiceImpl implements FilmService {
 
-    private final FilmMapper filmMapper;
+    private final FilmAddMapper filmMapper;
     private final FilmRepository filmRepository;
 
     @Autowired
-    public FilmServiceImpl(FilmMapper filmMapper,
+    public FilmServiceImpl(FilmAddMapper filmMapper,
                            FilmRepository filmRepository) {
         this.filmMapper = filmMapper;
         this.filmRepository = filmRepository;
@@ -29,8 +31,8 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public boolean saveFilm(FilmDto filmDto) {
-        Film film = filmMapper.toEntity(filmDto);
+    public boolean saveFilm(FilmAddDto filmAddDto) {
+        Film film = filmMapper.toEntity(filmAddDto);
 
         filmRepository.findByName(film.getName())
                 .ifPresent(value -> {
@@ -57,9 +59,9 @@ public class FilmServiceImpl implements FilmService {
 
     }
     @Override
-    public void updateFilm(FilmDto filmDto) {
+    public void updateFilm(FilmAddDto filmAddDto) {
 
-        Film film = filmMapper.toEntity(filmDto);
+        Film film = filmMapper.toEntity(filmAddDto);
 
         filmRepository.save(film);
 
