@@ -1,5 +1,6 @@
 package by.matusevichChercasova.movieRating.controller;
 
+import by.matusevichChercasova.movieRating.dto.FilmAddDto;
 import by.matusevichChercasova.movieRating.dto.FilmDto;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,8 +25,8 @@ public interface FilmController {
 
     String addNewFilm(Model model);
 
-    String updateFilm(@RequestParam("producer") String producerSurname,
-                      @ModelAttribute("filmForm") @Validated FilmDto filmForm,
+    String updateFilm(@RequestParam("producerId") Long producerId,
+                      @ModelAttribute("filmForm") @Validated FilmAddDto filmAddForm,
                       BindingResult bindingResult, @RequestParam(required = true, defaultValue = "" ) Long filmId,
                       Model model);
 }

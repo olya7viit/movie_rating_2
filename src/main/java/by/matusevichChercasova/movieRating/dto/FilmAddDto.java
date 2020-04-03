@@ -6,7 +6,7 @@ import by.matusevichChercasova.movieRating.entity.Producer;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
-public class FilmDto extends AbstractDto {
+public class FilmAddDto extends AbstractDto {
 
     @NotNull(message = "Введите название")
     private String name;
@@ -27,12 +27,13 @@ public class FilmDto extends AbstractDto {
     private String annotation;
 
     @NotNull(message = "Введите режисера")
-    private Producer producer;
+    private Long producerId;
 
-    @NotNull(message = "Введите актеров")
+    //@NotNull(message = "Введите актеров")
     private Set<Actor> actors;
 
-    public FilmDto() { }
+    public FilmAddDto() {
+    }
 
     public String getName() {
         return name;
@@ -66,6 +67,14 @@ public class FilmDto extends AbstractDto {
         this.photoPath = photoPath;
     }
 
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
     public String getAnnotation() {
         return annotation;
     }
@@ -74,16 +83,19 @@ public class FilmDto extends AbstractDto {
         this.annotation = annotation;
     }
 
-    public Producer getProducer() {
-        return producer;
+    public Long getProducerId() {
+        return producerId;
     }
 
-    public void setProducer(Producer producer) {
-        this.producer = producer;
+    public void setProducerId(Long producerId) {
+        this.producerId = producerId;
     }
 
+    public Set<Actor> getActors() {
+        return actors;
+    }
 
-    public String getDuration() { return duration; }
-
-    public void setDuration(String duration) { this.duration = duration; }
+    public void setActors(Set<Actor> actors) {
+        this.actors = actors;
+    }
 }

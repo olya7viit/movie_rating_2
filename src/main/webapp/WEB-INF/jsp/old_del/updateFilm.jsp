@@ -14,8 +14,8 @@
 <div>
     <div>
 
-       <%--@elvariable id="filmForm" type=""--%>
-       <form:form method="POST" modelAttribute="filmForm" action="/admin/updateFilm">
+        <%--@elvariable id="filmForm" type=""--%>
+        <form:form method="POST" modelAttribute="filmForm" action="/admin/updateFilm">
             <h2>Добавить фильм</h2>
             <div>
                 <form:input type="text" path="name" value="${oneFilm.name}"
@@ -36,25 +36,35 @@
                 <form:errors path="genre"/>
                     ${genreError}
             </div>
-           <div>
-               <form:input type="text" path="duration" value="${oneFilm.duration}"
-                           autofocus="true"/>
-               <form:errors path="duration"/>
-                   ${durationError}
-           </div>
+            <div>
+                <form:input type="text" path="duration" value="${oneFilm.duration}"
+                            autofocus="true"/>
+                <form:errors path="duration"/>
+                    ${durationError}
+            </div
+            <div>
+                <form:input type="text" path="photoPath" value="${oneFilm.photoPath}"
+                            autofocus="true"/>
+                <form:errors path="photoPath"/>
+                    ${photoPathError}
+            </div>
             <div>
                 <form:input type="text" path="annotation" value="${oneFilm.annotation}"
                             autofocus="true"/>
                 <form:errors path="annotation"/>
                     ${annotationError}
             </div>
-           <div>
-               <form:select path="producer" >
-                   <form:options items="${producerList}" />
-               </form:select>
+            <label for="producerId"/>
+            <form:select id="producerId" path="producerId" >
+                <form:options items="${allProducers}"
+                              itemLabel="surname"
+                              itemValue="id"/>
+            </form:select>
+            <form:errors path="producerId"/>
 
-           </div>
-           <input type="hidden" name="filmId" value="${oneFilm.id}"/>
+
+
+            <input type="hidden" name="filmId" value="${oneFilm.id}"/>
             <button type="submit">Изменить</button>
         </form:form>
     </div>
