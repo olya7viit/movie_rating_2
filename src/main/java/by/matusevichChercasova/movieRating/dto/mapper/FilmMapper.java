@@ -12,7 +12,9 @@ public class FilmMapper implements Mapper<FilmDto, Film> {
 
     @Override
     public Film toEntity(FilmDto filmDto) {
+
         Film film= new Film();
+
         film.setId(filmDto.getId());
         film.setName(filmDto.getName());
         film.setProducer(filmDto.getProducer());
@@ -26,7 +28,9 @@ public class FilmMapper implements Mapper<FilmDto, Film> {
 
     @Override
     public FilmDto toDto(Film film) {
+
         FilmDto filmDto = new FilmDto();
+
         filmDto.setId(film.getId());
         filmDto.setName(film.getName());
         filmDto.setProducer(film.getProducer());

@@ -2,6 +2,7 @@ package by.matusevichChercasova.movieRating.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Table(name = "film")
@@ -27,6 +28,9 @@ public class Film {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Producer producer;
+
+    @ManyToMany(mappedBy = "films")
+    private Set<Actor> actors;
 
     public Film(){}
 
@@ -104,6 +108,14 @@ public class Film {
         this.duration = duration;
     }
 
+    public Set<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(Set<Actor> actors) {
+        this.actors = actors;
+    }
+
     @Override
     public String toString() {
         return "Film{" +
@@ -117,6 +129,4 @@ public class Film {
                 ", producer=" + producer +
                 '}';
     }
-
-
 }

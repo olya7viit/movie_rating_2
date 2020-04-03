@@ -51,9 +51,7 @@
 
 <!------------Всплывающее окно---------------->
 <div class="kadobagud" aria-hidden="true">
-
     <div class="angebes-koverla">
-
         <div class="doveacko-gangeroun">
             <h2>Login Your Account</h2>
             <a href="/" class="valokan-close closemodal" aria-hidden="true">×</a>
@@ -61,12 +59,11 @@
 
         <form method="POST" action="/login">
             <div class="davasgu-kevanud">
-                <input name="username" type="text" placeholder="Username" autofocus="true"/><br>
+                <input name="username" type="text" placeholder="Login" autofocus="true"/><br>
                 <input name="password" type="password" placeholder="Password"/>
-                <!--<h4><a href="/registration">Зарегистрироваться</a></h4>-->
             </div>
-          <!--  <a href="#" class="dakisvan">Login</a>-->
             <button type="submit" class="dakisvan">Log In</button>
+            <h3><a class = "registration" href="/registration">Зарегистрироваться</a></h3>
         </form>
     </div>
 </div>

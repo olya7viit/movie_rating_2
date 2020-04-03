@@ -7,21 +7,22 @@ import java.util.Set;
 
 public class ProducerDto extends AbstractDto {
 
-    @NotBlank(message = "need to be null")
+    @NotBlank(message = "Введите имя")
     private String name;
 
-    @NotBlank(message = "need to be null")
+    @NotBlank(message = "введите фамилию")
     private String surname;
 
-    @NotBlank(message = "need to be null")
+    @NotBlank(message = "Введите страну")
     private String country;
 
-    @NotBlank(message = "need to be null")
+    @NotBlank(message = "Введите биографию")
     private String biography;
 
-    @NotBlank(message = "need to be null")
+    @NotBlank(message = "Введите путь к фото")
     private String photoPath;
 
+    @NotBlank(message = "Фильмы")
     private Set<Film> films;
 
     public ProducerDto(){}
