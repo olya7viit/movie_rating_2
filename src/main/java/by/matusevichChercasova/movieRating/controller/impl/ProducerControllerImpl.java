@@ -23,15 +23,6 @@ public class ProducerControllerImpl implements ProducerController {
     private ProducerService producerService;
 
     @Override
-    @GetMapping("/admin/producerPage")
-    public String allProducers(Model model){
-
-        model.addAttribute("allProducers", producerService.allProducers());
-
-        return "producerPage";
-    }
-
-    @Override
     @GetMapping("/admin/addProducer")
     public String newProducer(Model model){
 

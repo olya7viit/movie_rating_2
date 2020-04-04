@@ -114,20 +114,54 @@
                         </table>
                     </div>
                 </li>
- <!------------------------------------------------------------------------------------------>
+ <!------------------------------------------------------------------------------------------------>
                 <li>
                     <div>
                         <p>A vine (Latin vīnea "grapevine", "vineyard", from vīnum "wine") in the narrowest sense is the grapevine (Vitis), but more generally it can refer to any plant with a growth habit of trailing or scandent (that is, climbing) stems, lianas or runners.
                             The word also can refer to such stems or runners themselves, for instance when used in wicker work.[1][2] In the United Kingdom, the term "vine" applies almost exclusively to the grapevine. The term "climber" is used for all climbing plants.[3]</p>
                     </div>
                 </li>
+<!---------------------------------------Режисеры-------------------------------------------------->
                 <li>
                     <div>
-                        <p>Lemonade is any of various sweetened beverages found around the world, all characterized by lemon flavor. Most lemonade varieties can be separated into two distinct types: cloudy and clear; each is known simply as "lemonade" (or a cognate) in countries
-                            where dominant.[1] Cloudy lemonade, generally found in North America and India, is a traditionally homemade drink made with lemon juice, water, and sweetener such as cane sugar or honey.[2] Found in the United Kingdom, Ireland, South Africa, Australia,
-                            and New Zealand, clear lemonade is a lemon flavoured carbonated soft drink. Not to be confused with Sprite a lemon-lime flavored, soft drink.</p>
+                        <div>
+                            <h4><a class = "linkToAdd" href="${pageContext.request.contextPath}/admin/addProducer">Добавить нового режисера</a></h4>
+                        </div>
+                        <table>
+                            <thead>
+                            <th colspan="2">Режисер</th>
+                            <th>Страна</th>
+                            <th>Фильмы</th>
+                            </thead>
+
+                            <c:forEach items="${allProducers}" var="producer">
+                                <tr>
+                                    <td><img src="${producer.photoPath}"></td>
+                                    <td>${producer.surname} ${producer.name}</td>
+                                    <td>${producer.country}</td>
+                                    <td>
+                                        <c:forEach items="${producer.films}" var="film">${film.name}; </c:forEach>
+                                    </td>
+                                   <!-- <td>${producer.biography}</td>-->
+                                    <td>
+                                        <form action="${pageContext.request.contextPath}/admin/producerPage" method="post">
+                                            <input type="hidden" name="producerId" value="${producer.id}"/>
+                                            <input type="hidden" name="action" value="delete"/>
+                                            <button type="submit" class="dakisvan">Удалить</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="${pageContext.request.contextPath}/admin/updateProducer" method="get">
+                                            <input type="hidden" name="producerId" value="${producer.id}"/>
+                                            <button type="submit" class="dakisvan">Редактировать</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
                     </div>
                 </li>
+<!----------------------------------------------------------------------------------------------->
             </ul>
         </div>
     </div>
@@ -154,8 +188,6 @@
     </div>
 </div>
 <!---------------------------------------->
-
-
 
 <footer>
     <div class="container">

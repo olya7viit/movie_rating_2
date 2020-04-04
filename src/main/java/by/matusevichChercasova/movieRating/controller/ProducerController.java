@@ -11,8 +11,6 @@ import javax.validation.Valid;
 
 public interface ProducerController {
 
-    String allProducers(Model model);
-
     String newProducer(Model model);
 
     String workWithProducer(@RequestParam(defaultValue = "") Long producerId,

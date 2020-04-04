@@ -29,17 +29,6 @@ public class FilmControllerImpl implements FilmController {
     ProducerService producerService;
 
     @Override
-    @GetMapping("/management")
-    public String findAllFilms(Model model) {
-
-        model.addAttribute("allFilms", filmService.allFilms());
-
-        initModelList(model);
-
-        return "management";
-    }
-
-    @Override
     @GetMapping("/admin/addFilm")
     public String addNewFilm(Model model) {
 

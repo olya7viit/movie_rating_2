@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public interface FilmController {
 
-    String findAllFilms(Model model);
-
     String workWithFilm(@RequestParam(defaultValue = "") Long filmId,
                         @RequestParam(defaultValue = "") String action,
                         Model model);
