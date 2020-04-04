@@ -76,7 +76,7 @@
                 <li>
                     <div>
                         <div>
-                            <h4><a class = "linkToAdd" href="${pageContext.request.contextPath}/admin/addFilm">Добавить новый фильм</a></h4>
+                            <h4><a class = "linkToAdd" href="${pageContext.request.contextPath}/management/addFilm">Добавить новый фильм</a></h4>
                         </div>
 
                         <table>
@@ -97,7 +97,7 @@
                                     <td>${film.producer.surname} ${film.producer.name}</td>
                                     <td>${film.duration}</td>
                                     <td>
-                                        <form action="${pageContext.request.contextPath}/admin/filmsPage" method="post">
+                                        <form action="${pageContext.request.contextPath}/management/filmsPage" method="post">
                                             <input type="hidden" name="filmId" value="${film.id}"/>
                                             <input type="hidden" name="action" value="delete"/>
                                             <button type="submit" class="dakisvan">Удалить</button>
@@ -105,7 +105,7 @@
 
                                     </td>
                                     <td>
-                                        <form action="${pageContext.request.contextPath}/admin/updateFilm" method="get">
+                                        <form action="${pageContext.request.contextPath}/management/updateFilm" method="get">
                                             <input type="hidden" name="filmId" value="${film.id}"/>
                                             <button type="submit" class="dakisvan">Редактировать</button>
                                         </form>
@@ -127,7 +127,7 @@
                 <li>
                     <div>
                         <div>
-                            <h4><a class = "linkToAdd" href="${pageContext.request.contextPath}/admin/addProducer">Добавить нового режисера</a></h4>
+                            <h4><a class = "linkToAdd" href="${pageContext.request.contextPath}/management/addProducer">Добавить нового режисера</a></h4>
                         </div>
                         <table>
                             <thead>
@@ -146,7 +146,7 @@
                                     </td>
                                    <!-- <td>${producer.biography}</td>-->
                                     <td>
-                                        <form action="${pageContext.request.contextPath}/admin/producerPage" method="post">
+                                        <form action="${pageContext.request.contextPath}/management/producerPage" method="post">
                                             <input type="hidden" name="producerId" value="${producer.id}"/>
                                             <input type="hidden" name="action" value="delete"/>
                                             <button type="submit" class="dakisvan">Удалить</button>

@@ -14,7 +14,7 @@
     <div>
 
         <%--@elvariable id="filmForm" type=""--%>
-        <form:form method="POST" modelAttribute="filmForm" action="/admin/addOneFilm/add-film">
+        <form:form method="POST" modelAttribute="filmForm" action="/management/addOneFilm">
             <h2>Добавить фильм</h2>
             <div>
                 <form:input type="text" path="name" placeholder="Name"
@@ -54,14 +54,18 @@
                     ${photoPathError}
             </div>
             <div>
-                <form:select path="producer" >
-                    <form:options items="${producerList}" />
+                <label for="producerId"/>
+                <form:select id="producerId" path="producerId" >
+                    <form:options items="${allProducers}"
+                                  itemLabel="surname"
+                                  itemValue="id"/>
                 </form:select>
+                <form:errors path="producerId"/>
             </div>
             <button type="submit">Добавить</button>
         </form:form>
     </div>
-    <h4><a href="/admin/filmsPage">Назад</a></h4>
+    <h4><a  href="/management">Назад</a></h4>
 </div>
 </body>
 </html>

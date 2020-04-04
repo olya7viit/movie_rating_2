@@ -17,8 +17,8 @@ public interface FilmController {
     String updateFilms(@RequestParam(required = true, defaultValue = "" ) Long filmId,
                        Model model);
 
-    String addFilm(@RequestParam("producer") String producerSurname,
-                   @ModelAttribute("filmForm") @Validated FilmDto filmForm,
+    String addFilm(@RequestParam("producerId") String producerSurname,
+                   @ModelAttribute("filmForm") @Validated FilmAddDto filmForm,
                    BindingResult bindingResult, Model model);
 
     String addNewFilm(Model model);

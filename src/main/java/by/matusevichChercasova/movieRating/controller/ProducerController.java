@@ -24,7 +24,7 @@ public interface ProducerController {
     String updateProducers(@RequestParam(required = true, defaultValue = "" ) Long producerId,
                            Model model);
 
-    String updateFilm(@ModelAttribute("filmForm") @Validated ProducerDto producerForm,
+    String updateProducer(@ModelAttribute("filmForm") @Validated ProducerDto producerForm,
                       BindingResult bindingResult, @RequestParam(required = true, defaultValue = "" ) Long producerId,
                       Model model);
 
