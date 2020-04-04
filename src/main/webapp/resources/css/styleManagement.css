@@ -1,0 +1,381 @@
+/*
+* Landing Page - Practice
+* CSS Styles
+* http://www.idg.net.ua/blog/uchebnik-css/ispolzovanie-css/praktika-delaem-landing-page
+*
+*/
+
+
+/* General */
+body {
+    font-family: Raleway, Arial, Helvetica, sans-serif; /* кроме Raleway добавьте
+                                                         * несколько запасных шрифтов */
+}
+p {
+    font-size: 14px;
+    color: #999;
+    line-height: 1.6;
+}
+h1 {
+    font-size: 40px;
+    color: #fff;
+}
+h2 {
+    font-size: 28px;
+}
+h3 {
+    font-size: 16px;<!--  название фильмов -->
+}
+h2, h3 {
+    color: #282828;
+}
+.container {
+    width: 90%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.brand {
+    font-size: 30px;
+}
+.menu li {
+    float: left;
+    font-size: 16px;
+    list-style: none; /* убираем стандартные маркеры списка */
+}
+.menu {
+    padding-left: 0; /* убираем стандартный левый отступ списка */
+    margin: 0; /* убираем стандартные поля списка */
+}
+.menu li a {
+    text-decoration: none;
+}
+nav{
+    margin-right: -120px;
+}
+.registration{
+    font-size: 13px;
+    display: block;
+    margin-top: -30px;
+    color: #999;
+    text-decoration: none;
+}
+.form_registration{
+    margin-left: 240px;
+    text-align:center;
+}
+.linkToAdd{
+    font-size: 16px;
+    display: block;
+    margin-top: -30px;
+    color: #999;
+    text-decoration: none;
+}
+
+/* Header */
+header {
+    background-color: #fff;
+    padding-top: 30px;
+}
+header .brand {
+    float: left;
+    color: #59abe3;
+    margin-bottom: 30px;
+}
+header .menu {
+    float: right;
+    margin-bottom: 30px;
+}
+header .menu li {
+    padding-left: 20px;
+}
+header .menu li a {
+    color: #aaa;
+}
+
+.jumbotron {
+    background-image: url(../img/jumbotron.jpg);
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    min-height: 150px;
+    text-align: center;
+    clear: both;
+}
+.blog {
+    margin-right: 50px;
+    margin-left: 50px;
+    clear: both;
+
+    padding-bottom: 50px;
+    background-color: #fcfcfc;
+}
+
+/* Footer */
+footer {
+    clear: both;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    background-color: #38404b;
+}
+footer .brand {
+    color: #bcc9dd;
+}
+footer .menu li {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+footer .menu li a {
+    color: #bcc9dd;
+}
+footer .menu {
+    display: inline-block;
+    margin-top: 30px; /* также добавим отступы */
+    margin-bottom: 15px;
+}
+footer .copyright {
+    font-size: 12px;
+    color: #eee;
+}
+
+
+
+.dakisvan {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    /* font-weight: bold;*/
+    /* font-size: 18px;*/
+    background-color: #fa5ba5;
+    padding: 5px 15px;
+    border-radius: 30px;
+}
+.dakisvan:hover {
+    background: #fa5ba5;
+}
+.dakisvan.valokan-big {
+    font-size: 18px;
+    padding: 15px 20px;
+    min-width: 100px;
+}
+.valokan-close {
+    color: #fa5ba5;
+    font-size: 30px;
+    text-decoration: none;
+    padding:10px;
+    position: absolute;
+    right: 7px;
+    top: 0;
+}
+.valokan-close:hover {
+    color: #333;
+}
+.kadobagud:before {
+    content: "";
+    display: none;
+    background: rgba(171, 171, 171, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+.midsalod:before {
+    display: block;
+}
+.midsalod .angebes-koverla {
+    transform: translate(0, 0);
+    top: 20%;
+}
+.angebes-koverla {
+    background: #fefefe;
+    border: #232222 solid 0;
+    border-radius: 5px;
+    margin-left: -200px;
+    text-align:center;
+    position: fixed;
+    left: 50%;
+    top: -100%;
+    z-index: 11;
+    width: 450px;
+    box-shadow:0 5px 10px rgba(25, 24, 24, 0.3);
+    transform: translate(0, -500%);
+    transition: transform 0.3s ease-out;
+}
+.davasgu-kevanud {
+    padding: 20px;
+}
+.davasgu-kevanud input{
+    width:200px;
+    padding:8px;
+    border:1px solid #ddd;
+    color:#888;
+    outline:0;
+    font-size:14px;
+    font-weight:bold;
+    margin-top: 10px;
+}
+.doveacko-gangeroun,
+.kusane-avasgun {
+    padding: 10px 20px;
+}
+.doveacko-gangeroun {
+    border-bottom: #eeeeee solid 1px;
+}
+.doveacko-gangeroun h2 {
+    font-size: 20px;
+}
+
+
+
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+
+
+.grid {
+    list-style: none;
+    margin-left: -40px;
+}
+
+.gc {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -.25em;
+    min-height: 1px;
+    padding-left: 40px;
+    vertical-align: top;
+}
+
+.gc--1-of-3 {
+    width: 33.33333%;
+}
+
+.gc--2-of-3 {
+    width: 66.66666%;
+}
+
+.naccs {
+    position: relative;
+    max-width: 900px;
+    margin: 100px auto 0;
+    margin-left: 30px;
+}
+
+.naccs .menu div {
+    padding: 15px 20px 15px 40px;
+    margin-bottom: 10px;
+    color: #aaa;
+    background: #eee;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    cursor: pointer;/* при наведении светятся*/
+    position: relative;
+    vertical-align: middle;
+    font-weight: 700;
+    -webkit-transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.naccs .menu div:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.naccs .menu div span.light {
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 24px;
+    left: 15px;
+    border-radius: 100%;
+    -webkit-transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.naccs .menu div.active span.light {
+    background-color: #fa5ba5;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    top: 0;
+    border-radius: 0;
+}
+
+.naccs .menu div.active {
+    color: #fa5ba5;
+    padding: 15px 20px 15px 20px;
+}
+
+ul.nacc {
+    position: relative;
+    height: 0px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 0.5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: 0.5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+ul.nacc li {
+    opacity: 0;
+    -webkit-transform: translateX(50px);
+    transform: translateX(50px);
+    position: absolute;
+    list-style: none;
+    -webkit-transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+ul.nacc li.active {
+    -webkit-transition-delay: .3s;
+    transition-delay: .3s;
+    z-index: 2;
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+}
+
+ul.nacc li p {
+    margin: 0;
+}
+
+/*******************таблица*************************************/
+table {
+    border-spacing: 0 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+th {
+    padding: 10px 20px;
+    background: #eee;
+    color: #aaa;
+    border-right: 2px solid;
+    font-size: 0.9em;
+}
+th:first-child {
+    text-align: left;
+}
+th:last-child {
+    border-right: none;
+}
+td {
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    border-top: 2px solid #aaa;
+    border-bottom: 2px solid #aaa;
+    border-right: 2px solid #aaa;
+}
+td:first-child {
+    border-left: 2px solid #bcc9dd;
+    border-right: none;
+}
+td:nth-child(2){
+    text-align: left;
+}
+img{
+    max-height: 100px;
+}

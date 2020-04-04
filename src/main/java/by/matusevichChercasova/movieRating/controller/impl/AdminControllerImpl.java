@@ -15,6 +15,11 @@ public class AdminControllerImpl implements AdminController {
     @Autowired
     private UserService userService;
 
+    /*@GetMapping("/management")
+    public String manage(Model model) {
+        return "management";
+    }*/
+
     @Override
     @GetMapping("/admin")
     public String userList(Model model) {

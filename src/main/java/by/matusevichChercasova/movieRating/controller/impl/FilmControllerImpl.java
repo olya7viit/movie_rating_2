@@ -29,14 +29,14 @@ public class FilmControllerImpl implements FilmController {
     ProducerService producerService;
 
     @Override
-    @GetMapping("/admin/filmsPage")
+    @GetMapping("/management")
     public String findAllFilms(Model model) {
 
         model.addAttribute("allFilms", filmService.allFilms());
 
         initModelList(model);
 
-        return "filmsPage";
+        return "management";
     }
 
     @Override
