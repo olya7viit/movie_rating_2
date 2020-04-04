@@ -14,6 +14,7 @@ public class Actor {
     private String name;
     private String surname;
     private String country;
+    private String photoPath;
     private int age;
     private String biography;
 
@@ -22,10 +23,11 @@ public class Actor {
 
     public Actor(){}
 
-    public Actor(String name, String surname, String country, int age, String biography, Set<Film> films) {
+    public Actor(String name, String surname, String country, String photoPath, int age, String biography, Set<Film> films) {
         this.name = name;
         this.surname = surname;
         this.country = country;
+        this.photoPath = photoPath;
         this.age = age;
         this.biography = biography;
         this.films = films;
@@ -86,4 +88,7 @@ public class Actor {
     public void setFilms(Set<Film> films) {
         this.films = films;
     }
+    public String getPhotoPath() { return photoPath; }
+
+    public void setPhotoPath(String photoPath) { this.photoPath = photoPath; }
 }

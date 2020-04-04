@@ -2,6 +2,7 @@ package by.matusevichChercasova.movieRating.controller.impl;
 
 import by.matusevichChercasova.movieRating.controller.AdminController;
 import by.matusevichChercasova.movieRating.dto.ProducerDto;
+import by.matusevichChercasova.movieRating.service.ActorService;
 import by.matusevichChercasova.movieRating.service.FilmService;
 import by.matusevichChercasova.movieRating.service.ProducerService;
 import by.matusevichChercasova.movieRating.service.UserService;
@@ -24,12 +25,15 @@ public class AdminControllerImpl implements AdminController {
     private FilmService filmService;
     @Autowired
     private ProducerService producerService;
+    @Autowired
+    private ActorService actorService;
 
     @Override
     @GetMapping("/management")
     public String manage(Model model) {
 
         model.addAttribute("allFilms", filmService.allFilms());
+        model.addAttribute("allActors", actorService.allActors());
         model.addAttribute("allProducers", producerService.allProducers());
 
         initModelList(model);

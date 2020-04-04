@@ -116,11 +116,48 @@
                         </table>
                     </div>
                 </li>
- <!------------------------------------------------------------------------------------------------>
+ <!--------------------------------------------------Actors---------------------------------------------->
                 <li>
                     <div>
-                        <p>A vine (Latin vīnea "grapevine", "vineyard", from vīnum "wine") in the narrowest sense is the grapevine (Vitis), but more generally it can refer to any plant with a growth habit of trailing or scandent (that is, climbing) stems, lianas or runners.
-                            The word also can refer to such stems or runners themselves, for instance when used in wicker work.[1][2] In the United Kingdom, the term "vine" applies almost exclusively to the grapevine. The term "climber" is used for all climbing plants.[3]</p>
+                        <div>
+                            <h4><a class = "linkToAdd" href="${pageContext.request.contextPath}/management/addActor">Добавить нового актера</a></h4>
+                        </div>
+
+                        <table>
+                            <thead>
+                            <th colspan="2">Актер</th>
+                            <th>Возраст</th>
+                            <th>Страна</th>
+                            <th>Фильмы</th>
+                            </thead>
+
+                            <c:forEach items="${allActors}" var="actor">
+                                <tr>
+                                    <td><img src="${actor.photoPath}"></td>
+                                    <td>${actor.surname} ${actor.name}</td>
+                                    <td>${actor.age}</td>
+                                    <td>${actor.country}</td>
+                                    <td>
+                                        <c:forEach items="${actor.films}" var="film">${film.name}; </c:forEach>
+                                    </td>
+                                    <td>
+                                        <form action="${pageContext.request.contextPath}/management/actorsPage" method="post">
+                                            <input type="hidden" name="actorId" value="${actor.id}"/>
+                                            <input type="hidden" name="action" value="delete"/>
+                                            <button type="submit" class="dakisvan">Удалить</button>
+                                        </form>
+
+                                    </td>
+                                    <td>
+                                        <form action="${pageContext.request.contextPath}/management/updateActor" method="get">
+                                            <input type="hidden" name="actorId" value="${actor.id}"/>
+                                            <button type="submit" class="dakisvan">Редактировать</button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
                     </div>
                 </li>
 <!---------------------------------------Режисеры-------------------------------------------------->

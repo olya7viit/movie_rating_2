@@ -1,25 +1,34 @@
 package by.matusevichChercasova.movieRating.dto;
 
+import by.matusevichChercasova.movieRating.entity.Film;
+
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 public class ActorDto extends AbstractDto {
 
     public ActorDto(){}
 
-    @NotNull(message = "Введите имя")
+    @NotBlank(message = "Введите имя")
     private String name;
 
-    @NotNull(message = "Введите фамилию")
+    @NotBlank(message = "Введите фамилию")
     private String surname;
 
-    @NotNull(message = "Введите страну")
+    @NotBlank(message = "Введите страну")
     private String country;
 
     @NotNull(message = "Введите возраст")
     private int age;
 
-    @NotNull(message = "Введите биографию")
+    @NotBlank(message = "Введите возраст")
+    private String photoPath;
+
+    @NotBlank(message = "Введите биографию")
     private String biography;
+
+    private Set<Film> films;
 
     public String getName() {
         return name;
@@ -53,11 +62,22 @@ public class ActorDto extends AbstractDto {
         this.age = age;
     }
 
+    public String getPhotoPath() { return photoPath; }
+
+    public void setPhotoPath(String photoPath) { this.photoPath = photoPath; }
+
     public String getBiography() {
         return biography;
     }
 
     public void setBiography(String biography) {
         this.biography = biography;
+    }
+    public Set<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(Set<Film> films) {
+        this.films = films;
     }
 }
