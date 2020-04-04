@@ -32,7 +32,7 @@ public class ProducerControllerImpl implements ProducerController {
     }
 
     @Override
-    @GetMapping("/admin/updateProducer")
+    @GetMapping("/management/updateProducer")
     public String updateProducers(@RequestParam(required = true, defaultValue = "" ) Long producerId,Model model) {
 
         model.addAttribute("producerForm", new ProducerDto());
@@ -43,7 +43,7 @@ public class ProducerControllerImpl implements ProducerController {
     }
 
     @Override
-    @PostMapping("/admin/updateProducer")
+    @PostMapping("/management/updateProducer")
     public String updateFilm(@ModelAttribute("filmForm") @Validated ProducerDto producerForm,
                              BindingResult bindingResult, @RequestParam(required = true, defaultValue = "" ) Long producerId,
                              Model model) {
@@ -51,18 +51,18 @@ public class ProducerControllerImpl implements ProducerController {
         if (bindingResult.hasErrors()) {
 
             System.out.println("error"+bindingResult.getAllErrors());
-            return "producerPage";
+            return "management";
 
         }
         producerForm.setId(producerId);
        producerService.updateFilm(producerForm);
 
-        return "redirect:/admin/producerPage";
+        return "redirect:/management/producerPage";
 
     }
 
     @Override
-    @PostMapping("/admin/producerPage")
+    @PostMapping("/management")
     public String workWithProducer(@RequestParam(defaultValue = "") Long producerId,
                                @RequestParam(defaultValue = "") String action,
                                Model model) {
@@ -71,13 +71,13 @@ public class ProducerControllerImpl implements ProducerController {
             producerService.deleteProducer(producerId);
         }
 
-        return "redirect:/admin/producerPage";
+        return "redirect:/management";
     }
 
     @Override
     @PostMapping("/admin/addOneProducer/add-Producer")
     public String addProducer(@ModelAttribute("producerForm")
-                                  @Valid ProducerDto producerForm,
+                                  @Validated ProducerDto producerForm,
                               BindingResult bindingResult, Model model) {
 
 

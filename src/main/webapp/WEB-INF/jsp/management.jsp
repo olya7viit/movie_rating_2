@@ -68,6 +68,8 @@
                 <li class="active">
                     <div>
                         <p>Добавить ссылку НАЗАД</p>
+                        <p>все адреса где /admin перевести на /management, чтоб переходить удобно было</p>
+                        <p>все добавление, зменение и удаление полетело нахер(от меня наверное)</p>
                     </div>
                 </li>
 <!---------------------------------------Фильмы-------------------------------------------------->
@@ -151,7 +153,7 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="${pageContext.request.contextPath}/admin/updateProducer" method="get">
+                                        <form action="${pageContext.request.contextPath}/management/updateProducer" method="get">
                                             <input type="hidden" name="producerId" value="${producer.id}"/>
                                             <button type="submit" class="dakisvan">Редактировать</button>
                                         </form>
