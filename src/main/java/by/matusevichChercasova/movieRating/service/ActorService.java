@@ -13,5 +13,5 @@ public interface ActorService {
     List<ActorDto> allActors();
 
     Actor oneActor(Long id);
-   // void updateActor (ActorDto actorDto);
+    void updateActor (ActorDto actorDto);
 }

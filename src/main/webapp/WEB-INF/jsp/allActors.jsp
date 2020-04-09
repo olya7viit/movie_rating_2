@@ -28,8 +28,8 @@
         <nav>
             <ul class="menu">
                 <li><a href="/">Главная</a></li>
-                <li><a href="${pageContext.request.contextPath}/user/allActors">Актеры</a></li>
-                <li><a href="#">Режиссёры</a></li>
+                <li><a href="#">Актеры</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/allProducers">Продюсеры</a></li>
                 <li><a href="#">Закладки</a></li>
                 <sec:authorize access="!isAuthenticated()">
                     <li><a href="/login" class=" svalokan-big openmodal">   Войти</a></li>
@@ -45,7 +45,7 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h1>Films</h1>
+        <h1>Actors</h1>
     </div>
 </div>
 
@@ -75,12 +75,13 @@
 <div class="blog">
     <div class="container">
         <div class="post">
-            <c:forEach items="${allProducers}" var="producer">
-                <img src="${producer.photoPath}" alt="">
-                <h3>${producer.surname} ${producer.name}</h3>
-                <p>Страна: ${producer.country}</p>
-                <p>Фильмы: <c:forEach items="${producer.films}" var="film">${film.name}, </c:forEach></p>
-                <p>${producer.biography}</p>
+            <c:forEach items="${allActors}" var="actor">
+                <img src="${actor.photoPath}" alt="">
+                <h3>${actor.surname} ${actor.name}</h3>
+                <p>Страна: ${actor.country}</p>
+                <p>Возраст: ${actor.age}</p>
+                <p>Фильмы: <c:forEach items="${actor.films}" var="film">${film.name}, </c:forEach></p>
+                <p>${actor.biography}</p>
             </c:forEach>
         </div>
     </div>

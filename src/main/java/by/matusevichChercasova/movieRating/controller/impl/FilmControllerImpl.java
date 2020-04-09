@@ -110,4 +110,14 @@ public class FilmControllerImpl implements FilmController {
         return "redirect:/management";
     }
 
+    @Override
+    @GetMapping("/filmPage/{id}")
+    public String filmPage(@PathVariable String id, Model model){
+
+        model.addAttribute("oneFilm", filmService.getFilm(Long.valueOf(id)));
+
+        return "filmPage";
+    }
+
+
 }

@@ -44,8 +44,18 @@ public class ActorServiceImpl implements ActorService {
 
         return false;
     }
-@Override
-public List<ActorDto> allActors(){
+
+    @Override
+    public void updateActor(ActorDto actorDto) {
+
+       Actor actor = actorMapper.toEntity(actorDto);
+
+        actorRepository.save(actor);
+
+    }
+
+    @Override
+    public List<ActorDto> allActors(){
 
         List<Actor> actors=actorRepository.findAll();
         return actorMapper.toDtoList(actors);

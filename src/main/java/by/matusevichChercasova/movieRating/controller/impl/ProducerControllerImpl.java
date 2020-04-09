@@ -55,7 +55,7 @@ public class ProducerControllerImpl implements ProducerController {
 
         }
         producerForm.setId(producerId);
-       producerService.updateFilm(producerForm);
+       producerService.updateProducer(producerForm);
 
         return "redirect:/management";
 

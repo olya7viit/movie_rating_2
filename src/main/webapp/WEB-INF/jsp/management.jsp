@@ -30,7 +30,7 @@
             <ul class="menu">
                 <sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="/">Управление</a></li></li></sec:authorize>
                 <li><a href="/">Главная</a></li>
-                <li><a href="#">Актеры</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/allActors">Актеры</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/allProducers">Продюсеры</a></li>
                 <li><a href="#">Закладки</a></li>
                 <sec:authorize access="!isAuthenticated()">

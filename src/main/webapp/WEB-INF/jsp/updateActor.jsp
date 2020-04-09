@@ -16,8 +16,6 @@
     <script src="https://use.fontawesome.com/0ca06f29a6.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="${contextPath}/resources/js/jquery-3.4.1.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-    <script src="${contextPath}/resources/js/script.js"></script>
 </head>
 
 <body>
@@ -27,16 +25,15 @@
         <div class="brand">Project Name</div>
         <nav>
             <ul class="menu">
-                <sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="/management">Управление</a></li></li></sec:authorize>
                 <li><a href="/">Главная</a></li>
-                <li><a href="${pageContext.request.contextPath}/user/allActors">Актеры</a></li>
+                <li><a href="#">Актеры</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/allProducers">Продюсеры</a></li>
                 <li><a href="#">Закладки</a></li>
                 <sec:authorize access="!isAuthenticated()">
-                    <li><a href="/login" class=" svalokan-big openmodal">   Войти</a></li>
+                    <li><a href="/login" class=" svalokan-big openmodal"> Войти</a></li>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
-                    <li><a href="/logout" >   Выйти</a></li>
+                    <li><a href="/logout" > Выйти</a></li>
                     <li><a href="/">Привет, ${pageContext.request.userPrincipal.name}</a></li>
                 </sec:authorize>
             </ul>
@@ -50,37 +47,54 @@
     </div>
 </div>
 
-<!------------Всплывающее окно---------------->
-<div class="kadobagud" aria-hidden="true">
-    <div class="angebes-koverla">
-        <div class="doveacko-gangeroun">
-            <h2>Login Your Account</h2>
-            <a href="/" class="valokan-close closemodal" aria-hidden="true">×</a>
-        </div>
 
-        <form method="POST" action="/login">
-            <div class="davasgu-kevanud">
-                <input name="username" type="text" placeholder="Login" autofocus="true"/><br>
-                <input name="password" type="password" placeholder="Password"/>
-            </div>
-            <button type="submit" class="dakisvan">Log In</button>
-            <h3><a class = "registration" href="/registration">Зарегистрироваться</a></h3>
-        </form>
-    </div>
-</div>
-<!---------------------------------------->
+
 <div class="blog">
     <div class="container">
         <div class="post">
-            <c:forEach items="${allFilms}" var="film">
-                <img src="${film.photoPath}" alt="">
-                <h3><a href="${pageContext.request.contextPath}/filmPage/${film.getId()}">${film.name}</a></h3>
-                <p class="date">${film.releaseYear}</p>
-                <p>Продолжительность: ${film.duration}</p>
-                <p>Жанр: ${film.genre}</p>
-                <p>Режиссёр:: ${film.producer.surname} ${film.producer.name}</p>
-                <p>${film.annotation}</p>
-            </c:forEach>
+
+
+            <div class="form_registration">
+                <%--@elvariable id="actorForm" type=""--%>
+                <form:form method="POST" modelAttribute="actorForm">
+                    <div class="doveacko-gangeroun">
+                        <h2>Добавление Актера</h2>
+                    </div>
+
+                    <div class="davasgu-kevanud">
+                        <form:input type="text" path="name" value="${oneActor.name}" autofocus="true"/>
+                        <form:errors path="name"/>
+                            ${nameError}
+                        </br>
+
+                        <form:input type="text" path="surname" value="${oneActor.surname}" autofocus="true"/>
+                        <form:errors path="surname"/>
+                            ${surnameError}
+                        </br>
+                        <form:input type="text" path="country" value="${oneActor.country}" autofocus="true"/>
+                        <form:errors path="country"/>
+                            ${countryError}
+                        </br>
+                        <form:input type="text" path="age" value="${oneActor.age}" autofocus="true"/>
+                        <form:errors path="age"/>
+                            ${ageError}
+                        </br>
+                        <form:input type="text" path="photoPath"  value="${oneActor.photoPath}" autofocus="true"/>
+                        <form:errors path="photoPath"/>
+                            ${photoPathError}
+
+                        </br>
+                        <form:input type="text" path="biography" value="${oneActor.biography}" autofocus="true"/>
+                        <form:errors path="biography"/>
+                            ${biographyError}
+                    </div>
+                    <button type="submit" class="dakisvan">Изменить</button>
+                    <h4><a href="/management">Назад</a></h4>
+
+                </form:form>
+            </div>
+
+
         </div>
     </div>
 </div>
