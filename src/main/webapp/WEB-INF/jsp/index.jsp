@@ -29,7 +29,7 @@
             <ul class="menu">
                 <sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="/management">Управление</a></li></li></sec:authorize>
                 <li><a href="/">Главная</a></li>
-                <li><a href="#">Актеры</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/allActors">Актеры</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/allProducers">Продюсеры</a></li>
                 <li><a href="#">Закладки</a></li>
                 <sec:authorize access="!isAuthenticated()">
@@ -74,7 +74,7 @@
         <div class="post">
             <c:forEach items="${allFilms}" var="film">
                 <img src="${film.photoPath}" alt="">
-                <h3>${film.name}</h3>
+                <h3><a href="${pageContext.request.contextPath}/filmPage/${film.getId()}">${film.name}</a></h3>
                 <p class="date">${film.releaseYear}</p>
                 <p>Продолжительность: ${film.duration}</p>
                 <p>Жанр: ${film.genre}</p>

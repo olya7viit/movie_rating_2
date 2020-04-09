@@ -20,6 +20,7 @@ public class ActorMapper implements Mapper<ActorDto, Actor>  {
         actor.setSurname(actorDto.getSurname());
         actor.setCountry(actorDto.getCountry());
         actor.setAge(actorDto.getAge());
+        actor.setPhotoPath(actorDto.getPhotoPath());
         actor.setBiography(actorDto.getBiography());
 
         return actor;
@@ -35,6 +36,7 @@ public class ActorMapper implements Mapper<ActorDto, Actor>  {
         actorDto.setSurname(actor.getSurname());
         actorDto.setCountry(actor.getCountry());
         actorDto.setAge(actor.getAge());
+        actorDto.setPhotoPath(actor.getPhotoPath());
         actorDto.setBiography(actor.getBiography());
 
         return actorDto;

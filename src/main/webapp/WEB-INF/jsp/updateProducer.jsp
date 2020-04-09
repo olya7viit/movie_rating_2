@@ -15,7 +15,7 @@
     <div>
         <%--@elvariable id="producerForm" type=""--%>
         <form:form method="POST" modelAttribute="producerForm">
-            <h2>Добавление продюсера</h2>
+            <h2>Изменить  продюсера</h2>
             <div>
                 <form:input type="text" path="name" value="${oneProducer.name}"
                             autofocus="true" />
@@ -53,7 +53,7 @@
             <button type="submit">Изменить</button>
         </form:form>
     </div>
-    <h4><a href="/admin/producerPage">Назад</a></h4>
+    <h4><a href="/management">Назад</a></h4>
 </div>
 </body>
 </html>

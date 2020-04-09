@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -56,35 +55,40 @@
 
 
             <div class="form_registration">
-                <%--@elvariable id="producerForm" type=""--%>
-                    <form:form method="POST" modelAttribute="producerForm" action="/management/addOneProducer">
+                <%--@elvariable id="actorForm" type=""--%>
+                <form:form method="POST" modelAttribute="actorForm">
                     <div class="doveacko-gangeroun">
-                        <h2>Добавление режисера</h2>
+                        <h2>Добавление Актера</h2>
                     </div>
 
                     <div class="davasgu-kevanud">
-                        <form:input type="text" path="name" placeholder="Имя" autofocus="true"/>
+                        <form:input type="text" path="name" value="${oneActor.name}" autofocus="true"/>
                         <form:errors path="name"/>
                             ${nameError}
                         </br>
 
-                        <form:input type="text" path="surname" placeholder="Фамилия" autofocus="true"/>
+                        <form:input type="text" path="surname" value="${oneActor.surname}" autofocus="true"/>
                         <form:errors path="surname"/>
                             ${surnameError}
                         </br>
-                        <form:input type="text" path="country" placeholder="Страна" autofocus="true"/>
+                        <form:input type="text" path="country" value="${oneActor.country}" autofocus="true"/>
                         <form:errors path="country"/>
                             ${countryError}
                         </br>
-                        <form:input type="text" path="biography" placeholder="Биография" autofocus="true"/>
-                        <form:errors path="biography"/>
-                            ${biographyError}
+                        <form:input type="text" path="age" value="${oneActor.age}" autofocus="true"/>
+                        <form:errors path="age"/>
+                            ${ageError}
                         </br>
-                        <form:input type="text" path="photoPath" placeholder="Путь к фото" autofocus="true"/>
+                        <form:input type="text" path="photoPath"  value="${oneActor.photoPath}" autofocus="true"/>
                         <form:errors path="photoPath"/>
                             ${photoPathError}
+
+                        </br>
+                        <form:input type="text" path="biography" value="${oneActor.biography}" autofocus="true"/>
+                        <form:errors path="biography"/>
+                            ${biographyError}
                     </div>
-                    <button type="submit" class="dakisvan">Добавить</button>
+                    <button type="submit" class="dakisvan">Изменить</button>
                     <h4><a href="/management">Назад</a></h4>
 
                 </form:form>

@@ -27,9 +27,10 @@
         <div class="brand">Project Name</div>
         <nav>
             <ul class="menu">
+                <sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="/management">Управление</a></li></li></sec:authorize>
                 <li><a href="/">Главная</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/allActors">Актеры</a></li>
-                <li><a href="#">Режиссёры</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/allProducers">Продюсеры</a></li>
                 <li><a href="#">Закладки</a></li>
                 <sec:authorize access="!isAuthenticated()">
                     <li><a href="/login" class=" svalokan-big openmodal">   Войти</a></li>
@@ -51,9 +52,7 @@
 
 <!------------Всплывающее окно---------------->
 <div class="kadobagud" aria-hidden="true">
-
     <div class="angebes-koverla">
-
         <div class="doveacko-gangeroun">
             <h2>Login Your Account</h2>
             <a href="/" class="valokan-close closemodal" aria-hidden="true">×</a>
@@ -61,27 +60,32 @@
 
         <form method="POST" action="/login">
             <div class="davasgu-kevanud">
-                <input name="username" type="text" placeholder="Username" autofocus="true"/><br>
+                <input name="username" type="text" placeholder="Login" autofocus="true"/><br>
                 <input name="password" type="password" placeholder="Password"/>
-                <!--<h4><a href="/registration">Зарегистрироваться</a></h4>-->
             </div>
-            <!--  <a href="#" class="dakisvan">Login</a>-->
             <button type="submit" class="dakisvan">Log In</button>
+            <h3><a class = "registration" href="/registration">Зарегистрироваться</a></h3>
         </form>
     </div>
 </div>
 <!---------------------------------------->
-
 <div class="blog">
     <div class="container">
         <div class="post">
-            <c:forEach items="${allProducers}" var="producer">
-                <img src="${producer.photoPath}" alt="">
-                <h3>${producer.surname} ${producer.name}</h3>
-                <p>Страна: ${producer.country}</p>
-                <p>Фильмы: <c:forEach items="${producer.films}" var="film">${film.name}, </c:forEach></p>
-                <p>${producer.biography}</p>
-            </c:forEach>
+
+                <img src="${oneFilm.photoPath}" alt="">
+                <h3>${oneFilm.name}</h3>
+                <p class="date">${oneFilm.releaseYear}</p>
+                <p>Продолжительность: ${oneFilm.duration}</p>
+                <p>Жанр: ${oneFilm.genre}</p>
+                <p>Режиссёр:: ${oneFilm.producer.surname} ${oneFilm.producer.name}</p>
+                <p>${oneFilm.annotation}</p>
+            <form:form method="POST" action="/management/addComment">
+                <textarea  placeholder="Введите ваш комментарий" cols="50" rows="3" autofocus="true"></textarea>
+                <p><input type="hidden" name="filmId" value="${film.id}"/>
+                    <button type="submit">Добавить комментарий</button></p>
+
+            </form:form>
         </div>
     </div>
 </div>

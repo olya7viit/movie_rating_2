@@ -23,7 +23,7 @@ public class ProducerControllerImpl implements ProducerController {
     private ProducerService producerService;
 
     @Override
-    @GetMapping("/admin/addProducer")
+    @GetMapping("/management/addProducer")
     public String newProducer(Model model){
 
         model.addAttribute("producerForm", new ProducerDto());
@@ -44,25 +44,25 @@ public class ProducerControllerImpl implements ProducerController {
 
     @Override
     @PostMapping("/management/updateProducer")
-    public String updateFilm(@ModelAttribute("filmForm") @Validated ProducerDto producerForm,
+    public String updateProducer(@ModelAttribute("producerForm") @Validated ProducerDto producerForm,
                              BindingResult bindingResult, @RequestParam(required = true, defaultValue = "" ) Long producerId,
                              Model model) {
 
         if (bindingResult.hasErrors()) {
 
             System.out.println("error"+bindingResult.getAllErrors());
-            return "management";
+            return "updateProducer";
 
         }
         producerForm.setId(producerId);
-       producerService.updateFilm(producerForm);
+       producerService.updateProducer(producerForm);
 
-        return "redirect:/management/producerPage";
+        return "redirect:/management";
 
     }
 
     @Override
-    @PostMapping("/management")
+    @PostMapping("/management/producerPage")
     public String workWithProducer(@RequestParam(defaultValue = "") Long producerId,
                                @RequestParam(defaultValue = "") String action,
                                Model model) {
@@ -75,7 +75,7 @@ public class ProducerControllerImpl implements ProducerController {
     }
 
     @Override
-    @PostMapping("/admin/addOneProducer/add-Producer")
+    @PostMapping("/management/addOneProducer")
     public String addProducer(@ModelAttribute("producerForm")
                                   @Validated ProducerDto producerForm,
                               BindingResult bindingResult, Model model) {
@@ -85,15 +85,15 @@ public class ProducerControllerImpl implements ProducerController {
         if (bindingResult.hasErrors()) {
 
            System.out.println("error"+bindingResult.getAllErrors());
-            return "producerPage";
+            return "addOneProducer";
 
        }
         if (!producerService.saveProducer(producerForm)){
             model.addAttribute("newProducerError", "Продюсер с таким именем уже существует");
-            return "producerPage";
+            return "management";
         }
 
-        return "redirect:/admin";
+        return "redirect:/management";
     }
 
 

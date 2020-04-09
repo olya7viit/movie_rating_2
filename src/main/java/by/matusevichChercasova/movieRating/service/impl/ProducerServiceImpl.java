@@ -70,7 +70,7 @@ public class ProducerServiceImpl implements ProducerService {
         return producerDto;
     }
     @Override
-    public void updateFilm(ProducerDto producerDto) {
+    public void updateProducer(ProducerDto producerDto) {
 
         Producer producer = producerMapper.toEntity(producerDto);
 

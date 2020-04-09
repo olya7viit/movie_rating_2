@@ -22,7 +22,6 @@ public class ProducerDto extends AbstractDto {
     @NotBlank(message = "Введите путь к фото")
     private String photoPath;
 
-    @NotBlank(message = "Фильмы")
     private Set<Film> films;
 
     public ProducerDto(){}
