@@ -10,8 +10,6 @@ public interface ProducerRepository extends JpaRepository<Producer, Long> {
    @Override
    Optional<Producer> findById(Long aLong);
 
-
-
    Optional<Producer> findBySurname(String producerSurname);
 
 }

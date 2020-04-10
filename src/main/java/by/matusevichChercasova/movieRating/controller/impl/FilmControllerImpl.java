@@ -57,21 +57,16 @@ public class FilmControllerImpl implements FilmController {
                              BindingResult bindingResult, @RequestParam(required = true, defaultValue = "" ) Long filmId,
                              Model model) {
 
-
         filmForm.setId(filmId);
 
         if (bindingResult.hasErrors()) {
-
-            System.out.println("error"+bindingResult.getAllErrors());
             model.addAttribute("allProducers",producerService.allProducers());
             return "updateFilm";
-
         }
 
         filmService.updateFilm(filmForm);
 
         return "redirect:/management";
-
     }
 
     @Override
@@ -87,20 +82,17 @@ public class FilmControllerImpl implements FilmController {
         return "redirect:/management";
     }
 
-
     @Override
     @PostMapping("/management/addOneFilm")
     public String addFilm(@RequestParam("producerId") String producerSurname,
                           @ModelAttribute("filmForm") @Validated FilmAddDto filmForm,
                           BindingResult bindingResult, Model model) {
 
-
         if (bindingResult.hasErrors()) {
 
             System.out.println("error"+bindingResult.getAllErrors());
             model.addAttribute("allProducers",producerService.allProducers());
             return "addOneFilm";
-
         }
         if (!filmService.saveFilm(filmForm)) {
             model.addAttribute("filmError", "Такой фильм уже существует");

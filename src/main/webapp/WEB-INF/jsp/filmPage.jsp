@@ -12,6 +12,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style2.css">
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/styleRating.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <script src="https://use.fontawesome.com/0ca06f29a6.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -69,9 +70,36 @@
     </div>
 </div>
 <!---------------------------------------->
+
 <div class="blog">
     <div class="container">
         <div class="post">
+
+            <!--[if lte IE 7]><style>#reviewStars-input{display:none}</style><![endif]-->
+
+            <div id="reviewStars-input">
+                <form action="${pageContext.request.contextPath}/filmPage/${oneFilm.getId()}" method="post">
+                    <input type="hidden" name="filmId" value="${oneFilm.getId()}"/>
+
+                    <input id="star-4" type="" name="value" value="5"/>
+                    <label title="5" for="star-4"></label>
+                    submit
+                    <input id="star-3" type="submit" name="value" value="4"/>
+                    <label title="4" for="star-3"></label>
+
+                    <input id="star-2" type="submit" name="value" value="3"/>
+                    <label title="3" for="star-2"></label>
+
+                    <input id="star-1" type="submit" name="value" value="2"/>
+                    <label title="2" for="star-1"></label>
+
+                    <input id="star-0" type="submit" name="value" value="1"/>
+                    <label title="1" for="star-0"></label>
+                </form>
+            </div>
+
+
+
 
                 <img src="${oneFilm.photoPath}" alt="">
                 <h3>${oneFilm.name}</h3>
@@ -80,12 +108,12 @@
                 <p>Жанр: ${oneFilm.genre}</p>
                 <p>Режиссёр:: ${oneFilm.producer.surname} ${oneFilm.producer.name}</p>
                 <p>${oneFilm.annotation}</p>
-            <form:form method="POST" action="/management/addComment">
-                <textarea  placeholder="Введите ваш комментарий" cols="50" rows="3" autofocus="true"></textarea>
-                <p><input type="hidden" name="filmId" value="${film.id}"/>
-                    <button type="submit">Добавить комментарий</button></p>
 
-            </form:form>
+                <form:form method="POST" action="/management/addComment">
+                    <textarea  placeholder="Введите ваш комментарий" cols="50" rows="3" autofocus="true"></textarea>
+                    <p><input type="hidden" name="filmId" value="${film.id}"/>
+                    <button type="submit">Добавить комментарий</button></p>
+                </form:form>
         </div>
     </div>
 </div>

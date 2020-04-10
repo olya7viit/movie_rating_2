@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -31,10 +30,10 @@
                 <li><a href="${pageContext.request.contextPath}/user/allProducers">Продюсеры</a></li>
                 <li><a href="#">Закладки</a></li>
                 <sec:authorize access="!isAuthenticated()">
-                    <li><a href="/login" class=" svalokan-big openmodal"> Войти</a></li>
+                    <li><a href="/login" class=" svalokan-big openmodal">   Войти</a></li>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
-                    <li><a href="/logout" > Выйти</a></li>
+                    <li><a href="/logout" >   Выйти</a></li>
                     <li><a href="/">Привет, ${pageContext.request.userPrincipal.name}</a></li>
                 </sec:authorize>
             </ul>
@@ -57,7 +56,7 @@
 
             <div class="form_registration">
                 <%--@elvariable id="producerForm" type=""--%>
-                    <form:form method="POST" modelAttribute="producerForm" action="/management/addOneProducer">
+                <form:form method="POST" modelAttribute="producerForm" action="/admin/addOneProducer/add-Producer">
                     <div class="doveacko-gangeroun">
                         <h2>Добавление режисера</h2>
                     </div>

@@ -89,7 +89,6 @@ public class ActorControllerImpl implements ActorController {
         if (action.equals("delete")) {
             actorService.deleteActor(actorId);
         }
-
         return "redirect:/management";
     }
 
