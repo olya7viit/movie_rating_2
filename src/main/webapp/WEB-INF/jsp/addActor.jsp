@@ -34,7 +34,7 @@
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <li><a href="/logout" > Выйти</a></li>
-                    <li><a href="/">Привет, ${pageContext.request.userPrincipal.name}</a></li>
+                    <li><a href="/">Привет, ${pageContext.request.userPrincipal.principal.username}  </a></li>
                 </sec:authorize>
             </ul>
         </nav>
