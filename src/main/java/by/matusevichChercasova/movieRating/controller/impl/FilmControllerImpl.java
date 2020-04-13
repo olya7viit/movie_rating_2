@@ -4,10 +4,12 @@ import by.matusevichChercasova.movieRating.controller.FilmController;
 import by.matusevichChercasova.movieRating.dto.FilmAddDto;
 import by.matusevichChercasova.movieRating.dto.FilmDto;
 import by.matusevichChercasova.movieRating.dto.ProducerDto;
+import by.matusevichChercasova.movieRating.dto.ReviewDto;
 import by.matusevichChercasova.movieRating.dto.mapper.ProducerMapper;
 import by.matusevichChercasova.movieRating.entity.Producer;
 import by.matusevichChercasova.movieRating.service.FilmService;
 import by.matusevichChercasova.movieRating.service.ProducerService;
+import by.matusevichChercasova.movieRating.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +29,8 @@ public class FilmControllerImpl implements FilmController {
     FilmService filmService;
     @Autowired
     ProducerService producerService;
-
+    @Autowired
+    ReviewService reviewService;
     @Override
     @GetMapping("/management/addFilm")
     public String addNewFilm(Model model) {
@@ -105,11 +108,10 @@ public class FilmControllerImpl implements FilmController {
     @Override
     @GetMapping("/filmPage/{id}")
     public String filmPage(@PathVariable String id, Model model){
-
+        model.addAttribute("reviewForm", new ReviewDto());
         model.addAttribute("oneFilm", filmService.getFilm(Long.valueOf(id)));
-
+        model.addAttribute("comments",reviewService.allReviews(Long.valueOf(id)));
         return "filmPage";
     }
-
 
 }
