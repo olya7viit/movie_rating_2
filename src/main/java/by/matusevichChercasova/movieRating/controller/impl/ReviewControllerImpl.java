@@ -32,7 +32,7 @@ public class ReviewControllerImpl implements ReviewController {
 
         if (bindingResult.hasErrors()) {
             System.out.println("error"+bindingResult.getAllErrors());
-            return "filmPage";
+            return "filmPage/{id}";
 
         }
         reviewForm.setUserName(userService.findUserById(idUser).getUsername());

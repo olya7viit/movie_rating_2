@@ -9,7 +9,7 @@ public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_rev;
 
     private Long idUser;
 
@@ -23,12 +23,12 @@ public class Review {
 
     public void setUserName(String userName) { this.userName = userName; }
 
-    public Long getId() {
-        return id;
+    public Long getId_rev() {
+        return id_rev;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_rev(Long id) {
+        this.id_rev = id;
     }
 
     public Long getIdUser() {

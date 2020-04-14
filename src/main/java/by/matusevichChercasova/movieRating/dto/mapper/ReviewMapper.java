@@ -16,7 +16,7 @@ public class ReviewMapper implements Mapper<ReviewDto, Review>{
 
         Review review = new Review();
 
-        review.setId(reviewDto.getId());
+       // review.setId_rev(reviewDto.getId());
         review.setIdUser(reviewDto.getIdUser());
         review.setIdFilm(reviewDto.getIdFilm());
         review.setComment(reviewDto.getComment());
@@ -29,7 +29,7 @@ public class ReviewMapper implements Mapper<ReviewDto, Review>{
 
         ReviewDto reviewDto = new ReviewDto();
 
-        reviewDto.setId(review.getId());
+        reviewDto.setId(review.getId_rev());
         reviewDto.setIdUser(review.getIdUser());
         reviewDto.setIdFilm(review.getIdFilm());
         reviewDto.setComment(review.getComment());
