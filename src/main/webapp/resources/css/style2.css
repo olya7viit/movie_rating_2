@@ -100,7 +100,11 @@ header .menu li a {
     text-align: center;
     clear: both;
 }
+.star {
 
+margin-top: -30px;
+margin-left: 520px;
+}
 /* Blog */
 .blog {
     box-shadow: 0 0 20px 1px gray;

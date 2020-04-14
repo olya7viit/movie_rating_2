@@ -54,4 +54,17 @@ public class RatingServiceImpl implements RatingService {
         ratingRepository.save(rating);
 
     }
+    @Override
+    public  double oneFilmRating(Long idFilm) {
+        double rating=0.0;
+        List<Rating> ratings =ratingRepository.findAllByIdFilm(idFilm);
+        for (Rating i:ratings) {
+            rating+=i.getValue();
+        }
+        if(ratings.size()!=0){
+        rating/=ratings.size();
+        }
+
+        return rating;
+    }
 }
