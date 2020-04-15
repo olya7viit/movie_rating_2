@@ -109,7 +109,9 @@
 
                     </div>
                     <input type="hidden" name="filmId" value="${oneFilm.id}"/>
+                    
                     <button type="submit" class="dakisvan">Изменить</button>
+
                     <h4><a href="/management">Назад</a></h4>
 
                 </form:form>
