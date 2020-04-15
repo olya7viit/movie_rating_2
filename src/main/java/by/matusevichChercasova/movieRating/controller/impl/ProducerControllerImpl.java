@@ -49,7 +49,7 @@ public class ProducerControllerImpl implements ProducerController {
                              Model model) {
 
         if (bindingResult.hasErrors()) {
-
+            model.addAttribute("oneProducer",producerService.oneProducer(producerId));
             System.out.println("error"+bindingResult.getAllErrors());
             return "updateProducer";
 

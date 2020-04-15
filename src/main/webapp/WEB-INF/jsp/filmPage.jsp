@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style2.css">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/styleRating.css">
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/styleRatingAnonim.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <script src="https://use.fontawesome.com/0ca06f29a6.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -78,6 +79,7 @@
             <!--[if lte IE 7]><style>#reviewStars-input{display:none}</style><![endif]-->
 
             <div id="reviewStars-input">
+                <sec:authorize access="isAuthenticated()">
                 <form action="${pageContext.request.contextPath}/filmPage/${oneFilm.getId()}" method="post">
                     <input type="hidden" name="filmId" value="${oneFilm.getId()}"/>
 
@@ -95,6 +97,15 @@
                     <input id="star-0" type="submit" name="value" value="1"/>
                     <label title="1" for="star-0"></label>
                 </form>
+                </sec:authorize>
+                <sec:authorize access="!isAuthenticated()">
+                    <div id="reviewStars-input1">
+                    <input id="star-7" type="button" name="value" value="5"/>
+                        <label title="5" for="star-4"></label>
+                        <div id="rating">${ratingServise.oneFilmRating(oneFilm.getId())}</div>
+                    </div>
+
+                </sec:authorize>
             </div>
 
                 <img src="${oneFilm.photoPath}" alt="">
@@ -120,7 +131,9 @@
               </c:if>
       </div>
                 </c:forEach>
+
         </div>
+            <sec:authorize access="isAuthenticated()">
             <%--@elvariable id="reviewForm" type=""--%>
             <form:form method="POST"  modelAttribute="reviewForm" action="/filmPage/addComment/${oneFilm.getId()}">
                <form:textarea  path="comment" placeholder="Введите ваш комментарий" cols="50" rows="3" autofocus="true"/>
@@ -128,6 +141,7 @@
                     <form:input path="idUser" type="hidden" name="idUser" value=" ${pageContext.request.userPrincipal.principal.id}"/>
                     <button type="submit">Добавить комментарий</button></p>
                 </form:form>
+            </sec:authorize>
         </div>
     </div>
 </div>

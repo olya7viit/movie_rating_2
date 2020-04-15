@@ -9,6 +9,7 @@ import by.matusevichChercasova.movieRating.dto.mapper.ProducerMapper;
 import by.matusevichChercasova.movieRating.entity.Producer;
 import by.matusevichChercasova.movieRating.service.FilmService;
 import by.matusevichChercasova.movieRating.service.ProducerService;
+import by.matusevichChercasova.movieRating.service.RatingService;
 import by.matusevichChercasova.movieRating.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,8 @@ public class FilmControllerImpl implements FilmController {
     ProducerService producerService;
     @Autowired
     ReviewService reviewService;
+    @Autowired
+    RatingService ratingService;
     @Override
     @GetMapping("/management/addFilm")
     public String addNewFilm(Model model) {
@@ -63,6 +66,8 @@ public class FilmControllerImpl implements FilmController {
         filmForm.setId(filmId);
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("filmForm", new FilmAddDto());
+            model.addAttribute("oneFilm",filmService.getFilm(filmId));
             model.addAttribute("allProducers",producerService.allProducers());
             return "updateFilm";
         }
@@ -111,6 +116,7 @@ public class FilmControllerImpl implements FilmController {
         model.addAttribute("reviewForm", new ReviewDto());
         model.addAttribute("oneFilm", filmService.getFilm(Long.valueOf(id)));
         model.addAttribute("comments",reviewService.allReviews(Long.valueOf(id)));
+        model.addAttribute("ratingServise", ratingService);
         return "filmPage";
     }
 

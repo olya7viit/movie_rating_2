@@ -27,7 +27,7 @@ public class FilmAddDto extends AbstractDto {
     @NotBlank(message = "Введите аннотацию")
     private String annotation;
 
-    @NotBlank(message = "Введите режисера")
+
     private Long producerId;
 
     //@NotNull(message = "Введите актеров")

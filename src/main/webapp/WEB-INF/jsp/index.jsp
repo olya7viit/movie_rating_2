@@ -74,14 +74,22 @@
     <div class="container">
         <div class="post">
             <c:forEach items="${allFilms}" var="film">
-                <img src="${film.photoPath}" alt="">
-                <h3><a href="${pageContext.request.contextPath}/filmPage/${film.getId()}">${film.name}</a></h3>
-                <p class="date">${film.releaseYear}</p>
+
+
+<div>
+
+                <img src="${film.photoPath}" alt=""/>
+                <h3><a href="${pageContext.request.contextPath}/filmPage/${film.getId()}"> ${film.name}</a> <div >
+                <img src="https://lh3.googleusercontent.com/proxy/5yImmQM3XTMRiaYvSA1IVUYwBmGgGrYvCiygAy8ZFfTN7dlLavOftZjGimM5nCwj3zNG2e7qGUqBX79z7uHOhhA"  hspace="0"  vspace="0" align="right" class="star" width="40px" height="40px"> ${ratingServise.oneFilmRating(film.getId())} </img> </div></h3>
+                <p class="date">${film.releaseYear}  </p>
                 <p>Продолжительность: ${film.duration}</p>
                 <p>Жанр: ${film.genre}</p>
                 <p>Режиссёр:: ${film.producer.surname} ${film.producer.name}</p>
                 <p>${film.annotation}</p>
+</div>
+
             </c:forEach>
+
         </div>
     </div>
 </div>
