@@ -27,6 +27,7 @@
         <div class="brand">Project Name</div>
         <nav>
             <ul class="menu">
+                <sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="/management">Управление</a></li></li></sec:authorize>
                 <li><a href="/">Главная</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/allActors">Актеры</a></li>
                 <li><a href="#">Режиссёры</a></li>

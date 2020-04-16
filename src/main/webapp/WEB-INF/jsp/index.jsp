@@ -84,7 +84,7 @@
           <p class="date">${film.releaseYear}  </p>
           <p>Продолжительность: ${film.duration}</p>
           <p>Жанр: ${film.genre}</p>
-          <p>Режиссёр:: ${film.producer.surname} ${film.producer.name}</p>
+          <p>Режиссёр: ${film.producer.surname} ${film.producer.name}</p>
           <p>${film.annotation}</p>
         </div>
 

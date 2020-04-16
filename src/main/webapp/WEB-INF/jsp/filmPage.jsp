@@ -113,7 +113,8 @@
             <p class="date">${oneFilm.releaseYear}</p>
             <p>Продолжительность: ${oneFilm.duration}</p>
             <p>Жанр: ${oneFilm.genre}</p>
-            <p>Режиссёр:: ${oneFilm.producer.surname} ${oneFilm.producer.name}</p>
+            <p>Режиссёр: ${oneFilm.producer.surname} ${oneFilm.producer.name}</p>
+            <p>Актеры: <c:forEach items="${oneFilm.actors}" var="actor">${actor.surname}; </c:forEach></p>
             <p>${oneFilm.annotation}</p>
 
 
