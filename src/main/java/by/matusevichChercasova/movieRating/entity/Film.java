@@ -30,7 +30,8 @@ public class Film {
     @ManyToOne(fetch = FetchType.EAGER)
     private Producer producer;
 
-    @ManyToMany(mappedBy = "films")
+   // @ManyToMany(mappedBy = "films")
+   @ManyToMany(fetch = FetchType.EAGER)
     private Set<Actor> actors;
 
     public Film(){}
