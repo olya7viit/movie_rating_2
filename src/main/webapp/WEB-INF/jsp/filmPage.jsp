@@ -139,7 +139,7 @@
                 <form:form method="POST"  modelAttribute="reviewForm" action="/filmPage/addComment/${oneFilm.getId()}">
                     <form:textarea  path="comment" placeholder="Введите ваш комментарий" cols="50" rows="3" autofocus="true"/>
                     <p><form:input path="idFilm" type="hidden" name="idFilm" value="${oneFilm.id}"/>
-                        <form:input path="idUser" type="hidden" name="idUser" value=" ${pageContext.request.userPrincipal.principal.id}"/>
+                        <form:input path="idUser" type="hidden" name="idUser" value="${pageContext.request.userPrincipal.principal.id}"/>
                         <button type="submit">Добавить комментарий</button></p>
                 </form:form>
             </sec:authorize>

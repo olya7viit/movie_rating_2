@@ -10,6 +10,5 @@ public interface ReviewRepository extends JpaRepository<Review,Long> {
     @Override
     Optional<Review> findById(Long aLong);
 
-
     List<Review> findAllByIdFilm(Long idFilm);
 }

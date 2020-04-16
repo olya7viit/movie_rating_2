@@ -12,12 +12,14 @@
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/normalize.css">
   <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style2.css">
+  <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/styleLike.css">
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <script src="https://use.fontawesome.com/0ca06f29a6.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="${contextPath}/resources/js/jquery-3.4.1.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
   <script src="${contextPath}/resources/js/script.js"></script>
+  <script src="${contextPath}/resources/js/scriptLike.js"></script>
 </head>
 
 <body>
@@ -30,7 +32,7 @@
         <sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="/management">Управление</a></li></li></sec:authorize>
         <li><a href="/">Главная</a></li>
         <li><a href="${pageContext.request.contextPath}/user/allActors">Актеры</a></li>
-        <li><a href="${pageContext.request.contextPath}/user/allProducers">Продюсеры</a></li>
+        <li><a href="${pageContext.request.contextPath}/user/allProducers">Режисеры</a></li>
         <li><a href="#">Закладки</a></li>
         <sec:authorize access="!isAuthenticated()">
           <li><a href="/login" class=" svalokan-big openmodal">   Войти</a></li>
@@ -75,19 +77,36 @@
     <div class="post">
       <c:forEach items="${allFilms}" var="film">
 
+        <sec:authorize access="isAuthenticated()">
+        <div class="divLike">
+          <div class='like'>
+            <form id="fform" action="${pageContext.request.contextPath}/add-bookmark" method="post">
+              <input type="hidden" name="idFilm" value="${film.id}"/>
+              <input type="hidden" name="idUser" value=" ${pageContext.request.userPrincipal.principal.id}"/>
+              <button id="idButton" class="like-toggle basic">♥</button>
+              <span class='hidden'>В закладках</span>
+            </form>
+          </div>
+        </div>
+        </sec:authorize>
+
 
         <div>
-
           <img src="${film.photoPath}" alt=""/>
-          <h3><a href="${pageContext.request.contextPath}/filmPage/${film.getId()}"> ${film.name}</a> <div >
-            <img src="https://lh3.googleusercontent.com/proxy/5yImmQM3XTMRiaYvSA1IVUYwBmGgGrYvCiygAy8ZFfTN7dlLavOftZjGimM5nCwj3zNG2e7qGUqBX79z7uHOhhA"  hspace="0"  vspace="0" align="right" class="star" width="40px" height="40px"> ${ratingServise.oneFilmRating(film.getId())} </img> </div></h3>
-          <p class="date">${film.releaseYear}  </p>
-          <p>Продолжительность: ${film.duration}</p>
-          <p>Жанр: ${film.genre}</p>
-          <p>Режиссёр: ${film.producer.surname} ${film.producer.name}</p>
-          <p>${film.annotation}</p>
-        </div>
+          <h3><a href="${pageContext.request.contextPath}/filmPage/${film.getId()}">
+              ${film.name} (${film.releaseYear})</a>
+            <img class="starR" src="https://lh3.googleusercontent.com/proxy/bT5uud5RX5wgiDHSO3g69lhxVxVcWlGNTGSigYy-rqSICBsRAVUkQgHVwJCHr1zxoLENBwQ19eKXJ3fIGHQ9n-MfGZd17cDZM8Is"
+                 hspace="0"  vspace="0" align="right" class="starR" height="20px">
+             <p class="starRText"> ${ratingServise.oneFilmRating(film.getId())}</p>
+          </h3>
 
+
+              <p>Продолжительность: ${film.duration}</p>
+              <p>Жанр: ${film.genre}</p>
+              <p>Режиссёр: ${film.producer.surname} ${film.producer.name}</p>
+              <p>${film.annotation}</p>
+             </div>
+             </br>  </br>
       </c:forEach>
 
     </div>

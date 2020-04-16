@@ -32,13 +32,11 @@ public class ReviesServicerImpl implements ReviewService {
     @Override
     public List<ReviewDto> allReviews( Long idFilm) {
         List<Review> reviews =reviewRepository.findAllByIdFilm(idFilm);
-
         return reviewMapper.toDtoList(reviews);
     }
 
     @Override
     public void deleteReview(Long reviewId){
-
         if (reviewRepository.findById(reviewId).isPresent()) {
             reviewRepository.deleteById(reviewId);
         }
