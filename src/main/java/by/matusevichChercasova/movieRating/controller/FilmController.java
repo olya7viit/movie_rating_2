@@ -15,10 +15,10 @@ public interface FilmController {
                         @RequestParam(defaultValue = "") String action,
                         Model model);
 
-    String updateFilms(@RequestParam(required = true, defaultValue = "" ) Long filmId,
+    String updateFilms(@RequestParam(defaultValue = "" ) Long filmId,
                        Model model);
 
-    String addFilm(@RequestParam("producerId") String producerSurname,
+    String addFilm(
                    @ModelAttribute("filmForm") @Validated FilmAddDto filmForm,
                    BindingResult bindingResult, Model model);
 
@@ -28,6 +28,6 @@ public interface FilmController {
 
     String updateFilm(@RequestParam("producerId") Long producerId,
                       @ModelAttribute("filmForm") @Validated FilmAddDto filmAddForm,
-                      BindingResult bindingResult, @RequestParam(required = true, defaultValue = "" ) Long filmId,
+                      BindingResult bindingResult, @RequestParam(defaultValue = "" ) Long filmId,
                       Model model);
 }

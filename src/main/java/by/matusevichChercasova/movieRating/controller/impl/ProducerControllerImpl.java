@@ -22,6 +22,7 @@ public class ProducerControllerImpl implements ProducerController {
     @Autowired
     private ProducerService producerService;
 
+
     @Override
     @GetMapping("/management/addProducer")
     public String newProducer(Model model){
@@ -50,7 +51,6 @@ public class ProducerControllerImpl implements ProducerController {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("oneProducer",producerService.oneProducer(producerId));
-            System.out.println("error"+bindingResult.getAllErrors());
             return "updateProducer";
 
         }

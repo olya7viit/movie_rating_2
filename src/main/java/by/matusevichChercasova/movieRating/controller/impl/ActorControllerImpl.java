@@ -29,6 +29,7 @@ public class ActorControllerImpl implements ActorController {
 
         return "addActor";
     }
+
     @Override
     @GetMapping("/management/updateActor")
     public String updateActors(@RequestParam(required = true, defaultValue = "" ) Long actorId, Model model) {
@@ -39,6 +40,7 @@ public class ActorControllerImpl implements ActorController {
 
         return "updateActor";
     }
+
     @Override
     @PostMapping("/management/updateActor")
     public String updateActor(@ModelAttribute("actorForm") @Validated ActorDto actorForm,

@@ -32,6 +32,7 @@ public class FilmServiceImpl implements FilmService {
 
     @Override
     public boolean saveFilm(FilmAddDto filmAddDto) {
+
         Film film = filmMapper.toEntity(filmAddDto);
 
         filmRepository.findByName(film.getName())

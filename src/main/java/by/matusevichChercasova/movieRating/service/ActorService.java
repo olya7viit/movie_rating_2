@@ -13,5 +13,8 @@ public interface ActorService {
     List<ActorDto> allActors();
 
     Actor oneActor(Long id);
+
     void updateActor (ActorDto actorDto);
+
+    List<Actor> getActorsFromFilm(Long idFilm);
 }

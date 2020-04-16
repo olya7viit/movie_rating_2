@@ -3,33 +3,34 @@ package by.matusevichChercasova.movieRating.dto;
 import by.matusevichChercasova.movieRating.entity.Actor;
 import by.matusevichChercasova.movieRating.entity.Producer;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 public class FilmDto extends AbstractDto {
 
-    @NotNull(message = "Введите название")
+   // @NotBlank(message = "Введите название")
     private String name;
 
-    @NotNull(message = "Введите год релиза")
+   // @NotBlank(message = "Введите год релиза")
     private String releaseYear;
 
-    @NotNull(message = "Введите жанр")
+   // @NotBlank(message = "Введите жанр")
     private String genre;
 
-    @NotNull(message = "Введите ссылку на фото")
+   // @NotBlank(message = "Введите ссылку на фото")
     private String photoPath;
 
-    @NotNull(message = "Введите длительность")
+   // @NotBlank(message = "Введите длительность")
     private String duration;
 
-    @NotNull(message = "Введите аннотацию")
+    //@NotBlank(message = "Введите аннотацию")
     private String annotation;
 
-    @NotNull(message = "Введите режисера")
+   // @NotBlank(message = "Введите режисера")
     private Producer producer;
 
-    @NotNull(message = "Введите актеров")
+   // @NotBlank(message = "Введите актеров")
     private Set<Actor> actors;
 
     public FilmDto() { }

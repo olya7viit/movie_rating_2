@@ -228,6 +228,7 @@ footer .copyright {
 .davasgu-kevanud {
     padding: 20px;
 }
+
 .davasgu-kevanud input{
     width:200px;
     padding:8px;
@@ -238,6 +239,18 @@ footer .copyright {
     font-weight:bold;
     margin-top: 10px;
 }
+
+.davasgu-kevanud select{
+    width:218px;
+    padding:8px;
+    border:1px solid #ddd;
+    color:#888;
+    outline:0;
+    font-size:14px;
+    font-weight:bold;
+    margin-top: 10px;
+}
+
 .doveacko-gangeroun,
 .kusane-avasgun {
     padding: 10px 20px;

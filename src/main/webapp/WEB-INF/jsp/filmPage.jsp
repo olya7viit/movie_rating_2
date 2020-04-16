@@ -80,27 +80,27 @@
 
             <div id="reviewStars-input">
                 <sec:authorize access="isAuthenticated()">
-                <form action="${pageContext.request.contextPath}/filmPage/${oneFilm.getId()}" method="post">
-                    <input type="hidden" name="filmId" value="${oneFilm.getId()}"/>
+                    <form action="${pageContext.request.contextPath}/filmPage/${oneFilm.getId()}" method="post">
+                        <input type="hidden" name="filmId" value="${oneFilm.getId()}"/>
 
-                    <input id="star-4" type="submit" name="value" value="5"/>
-                    <label title="5" for="star-4"></label>
-                    <input id="star-3" type="submit" name="value" value="4"/>
-                    <label title="4" for="star-3"></label>
+                        <input id="star-4" type="submit" name="value" value="5"/>
+                        <label title="5" for="star-4"></label>
+                        <input id="star-3" type="submit" name="value" value="4"/>
+                        <label title="4" for="star-3"></label>
 
-                    <input id="star-2" type="submit" name="value" value="3"/>
-                    <label title="3" for="star-2"></label>
+                        <input id="star-2" type="submit" name="value" value="3"/>
+                        <label title="3" for="star-2"></label>
 
-                    <input id="star-1" type="submit" name="value" value="2"/>
-                    <label title="2" for="star-1"></label>
+                        <input id="star-1" type="submit" name="value" value="2"/>
+                        <label title="2" for="star-1"></label>
 
-                    <input id="star-0" type="submit" name="value" value="1"/>
-                    <label title="1" for="star-0"></label>
-                </form>
+                        <input id="star-0" type="submit" name="value" value="1"/>
+                        <label title="1" for="star-0"></label>
+                    </form>
                 </sec:authorize>
                 <sec:authorize access="!isAuthenticated()">
                     <div id="reviewStars-input1">
-                    <input id="star-7" type="button" name="value" value="5"/>
+                        <input id="star-7" type="button" name="value" value="5"/>
                         <label title="5" for="star-4"></label>
                         <div id="rating">${ratingServise.oneFilmRating(oneFilm.getId())}</div>
                     </div>
@@ -108,38 +108,38 @@
                 </sec:authorize>
             </div>
 
-                <img src="${oneFilm.photoPath}" alt="">
-                <h3>${oneFilm.name}</h3>
-                <p class="date">${oneFilm.releaseYear}</p>
-                <p>Продолжительность: ${oneFilm.duration}</p>
-                <p>Жанр: ${oneFilm.genre}</p>
-                <p>Режиссёр:: ${oneFilm.producer.surname} ${oneFilm.producer.name}</p>
-                <p>${oneFilm.annotation}</p>
+            <img src="${oneFilm.photoPath}" alt="">
+            <h3>${oneFilm.name}</h3>
+            <p class="date">${oneFilm.releaseYear}</p>
+            <p>Продолжительность: ${oneFilm.duration}</p>
+            <p>Жанр: ${oneFilm.genre}</p>
+            <p>Режиссёр:: ${oneFilm.producer.surname} ${oneFilm.producer.name}</p>
+            <p>${oneFilm.annotation}</p>
 
 
             <div id="commentBlock">
                 <c:forEach items="${comments}" var="comment">
 
-      <div class='comment'>Автор: <strong>${comment.userName}</strong><br>${comment.comment}
+                    <div class='comment'>Автор: <strong>${comment.userName}</strong><br>${comment.comment}
 
-              <c:if test="${pageContext.request.userPrincipal.name == comment.userName}">
-                  <form action="${pageContext.request.contextPath}/filmPage/deleteReview/${oneFilm.getId()}" method="post">
-                      <input type="hidden" name="reviewId" value="${comment.id}"/>
-                      <input type="hidden" name="action" value="delete"/>
-                      <button type="submit" >Удалить</button>
-                  </form>
-              </c:if>
-      </div>
+                        <c:if test="${pageContext.request.userPrincipal.name == comment.userName}">
+                            <form action="${pageContext.request.contextPath}/filmPage/deleteReview/${oneFilm.getId()}" method="post">
+                                <input type="hidden" name="reviewId" value="${comment.id}"/>
+                                <input type="hidden" name="action" value="delete"/>
+                                <button type="submit" >Удалить</button>
+                            </form>
+                        </c:if>
+                    </div>
                 </c:forEach>
 
-        </div>
+            </div>
             <sec:authorize access="isAuthenticated()">
-            <%--@elvariable id="reviewForm" type=""--%>
-            <form:form method="POST"  modelAttribute="reviewForm" action="/filmPage/addComment/${oneFilm.getId()}">
-               <form:textarea  path="comment" placeholder="Введите ваш комментарий" cols="50" rows="3" autofocus="true"/>
-                <p><form:input path="idFilm" type="hidden" name="idFilm" value="${oneFilm.id}"/>
-                    <form:input path="idUser" type="hidden" name="idUser" value=" ${pageContext.request.userPrincipal.principal.id}"/>
-                    <button type="submit">Добавить комментарий</button></p>
+                <%--@elvariable id="reviewForm" type=""--%>
+                <form:form method="POST"  modelAttribute="reviewForm" action="/filmPage/addComment/${oneFilm.getId()}">
+                    <form:textarea  path="comment" placeholder="Введите ваш комментарий" cols="50" rows="3" autofocus="true"/>
+                    <p><form:input path="idFilm" type="hidden" name="idFilm" value="${oneFilm.id}"/>
+                        <form:input path="idUser" type="hidden" name="idUser" value=" ${pageContext.request.userPrincipal.principal.id}"/>
+                        <button type="submit">Добавить комментарий</button></p>
                 </form:form>
             </sec:authorize>
         </div>

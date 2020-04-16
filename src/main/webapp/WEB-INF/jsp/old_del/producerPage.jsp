@@ -34,7 +34,7 @@
 
                     <td>
                         <form action="${pageContext.request.contextPath}/admin/producerPage" method="post">
-                            <input type="hidden" name="producerId" value="${producer.id}"/>
+                            <input type="hidden" name="producerId" value="${producer.idReview}"/>
                             <input type="hidden" name="action" value="delete"/>
                             <button type="submit">Delete</button>
                         </form>
@@ -42,7 +42,7 @@
                     </td>
                     <td>
                         <form action="${pageContext.request.contextPath}/admin/updateProducer" method="get">
-                            <input type="hidden" name="producerId" value="${producer.id}"/>
+                            <input type="hidden" name="producerId" value="${producer.idReview}"/>
                             <button type="submit">Update</button>
                         </form>
 

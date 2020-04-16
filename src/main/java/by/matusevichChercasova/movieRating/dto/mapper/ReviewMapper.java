@@ -1,6 +1,5 @@
 package by.matusevichChercasova.movieRating.dto.mapper;
 
-
 import by.matusevichChercasova.movieRating.dto.ReviewDto;
 import by.matusevichChercasova.movieRating.entity.Review;
 import org.springframework.stereotype.Component;
@@ -16,7 +15,6 @@ public class ReviewMapper implements Mapper<ReviewDto, Review>{
 
         Review review = new Review();
 
-       // review.setId_rev(reviewDto.getId());
         review.setIdUser(reviewDto.getIdUser());
         review.setIdFilm(reviewDto.getIdFilm());
         review.setComment(reviewDto.getComment());
@@ -46,5 +44,4 @@ public class ReviewMapper implements Mapper<ReviewDto, Review>{
                         .map(this::toDto)
                         .collect(Collectors.toList());
     }
-
 }

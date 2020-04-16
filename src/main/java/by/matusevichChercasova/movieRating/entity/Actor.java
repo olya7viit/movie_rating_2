@@ -91,4 +91,18 @@ public class Actor {
     public String getPhotoPath() { return photoPath; }
 
     public void setPhotoPath(String photoPath) { this.photoPath = photoPath; }
+
+    @Override
+    public String toString() {
+        return "Actor{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", country='" + country + '\'' +
+                ", photoPath='" + photoPath + '\'' +
+                ", age=" + age +
+                ", biography='" + biography + '\'' +
+                ", films=" + films +
+                '}';
+    }
 }

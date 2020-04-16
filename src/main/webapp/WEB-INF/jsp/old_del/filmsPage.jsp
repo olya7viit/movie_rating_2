@@ -39,7 +39,7 @@
 
         <td>
           <form action="${pageContext.request.contextPath}/admin/filmsPage" method="post">
-            <input type="hidden" name="filmId" value="${film.id}"/>
+            <input type="hidden" name="filmId" value="${film.idReview}"/>
             <input type="hidden" name="action" value="delete"/>
             <button type="submit">Delete</button>
           </form>
@@ -47,7 +47,7 @@
         </td>
             <td>
                 <form action="${pageContext.request.contextPath}/admin/updateFilm" method="get">
-                    <input type="hidden" name="filmId" value="${film.id}"/>
+                    <input type="hidden" name="filmId" value="${film.idReview}"/>
                     <button type="submit">Update</button>
                 </form>
 

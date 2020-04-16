@@ -43,4 +43,14 @@ public class ReviewDto extends AbstractDto {
 
     public ReviewDto() {
     }
+
+    @Override
+    public String toString() {
+        return "ReviewDto{" +
+                "idUser=" + idUser +
+                ", idFilm=" + idFilm +
+                ", comment='" + comment + '\'' +
+                ", userName='" + userName + '\'' +
+                '}';
+    }
 }

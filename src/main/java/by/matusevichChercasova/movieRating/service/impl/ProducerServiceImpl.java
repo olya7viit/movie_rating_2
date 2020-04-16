@@ -77,10 +77,9 @@ public class ProducerServiceImpl implements ProducerService {
         producerRepository.save(producer);
 
     }
+
     @Override
     public Producer oneProducer(Long id) {
-
         return producerRepository.getOne(id);
-
     }
 }

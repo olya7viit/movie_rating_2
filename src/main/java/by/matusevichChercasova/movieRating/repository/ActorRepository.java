@@ -8,6 +8,4 @@ import java.util.Optional;
 public interface ActorRepository extends JpaRepository<Actor,Long> {
     @Override
     Optional<Actor> findById(Long aLong);
-
-
 }

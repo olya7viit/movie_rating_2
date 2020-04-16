@@ -2,6 +2,7 @@ package by.matusevichChercasova.movieRating.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -14,7 +15,7 @@ public class Film {
     private String name;
 
     @Column(name = "release_year")
-    //@Size(min=4, max=4)
+    @Size(min=4, max=4)
     private String releaseYear;
 
     private String genre;
@@ -116,6 +117,28 @@ public class Film {
         this.actors = actors;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Film film = (Film) o;
+        return Objects.equals(id, film.id) &&
+                Objects.equals(name, film.name) &&
+                Objects.equals(releaseYear, film.releaseYear) &&
+                Objects.equals(genre, film.genre) &&
+                Objects.equals(photoPath, film.photoPath) &&
+                Objects.equals(duration, film.duration) &&
+                Objects.equals(annotation, film.annotation) &&
+                Objects.equals(producer, film.producer) &&
+                Objects.equals(actors, film.actors);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, releaseYear, genre, photoPath, duration, annotation, producer, actors);
+    }
+
     @Override
     public String toString() {
         return "Film{" +
@@ -124,9 +147,10 @@ public class Film {
                 ", releaseYear='" + releaseYear + '\'' +
                 ", genre='" + genre + '\'' +
                 ", photoPath='" + photoPath + '\'' +
-                ", annotation='" + annotation + '\''+
                 ", duration='" + duration + '\'' +
+                ", annotation='" + annotation + '\'' +
                 ", producer=" + producer +
+                ", actors=" + actors +
                 '}';
     }
 }

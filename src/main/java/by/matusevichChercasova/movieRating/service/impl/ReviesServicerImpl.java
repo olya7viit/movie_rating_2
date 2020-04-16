@@ -22,24 +22,18 @@ public class ReviesServicerImpl implements ReviewService {
         this.reviewRepository = reviewRepository;
     }
 
-
-
     @Override
     public boolean saveReview(ReviewDto reviewDto) {
-
         Review review = reviewMapper.toEntity(reviewDto);
-
         reviewRepository.save(review);
 
         return true;
     }
     @Override
     public List<ReviewDto> allReviews( Long idFilm) {
-
         List<Review> reviews =reviewRepository.findAllByIdFilm(idFilm);
 
         return reviewMapper.toDtoList(reviews);
-
     }
 
     @Override

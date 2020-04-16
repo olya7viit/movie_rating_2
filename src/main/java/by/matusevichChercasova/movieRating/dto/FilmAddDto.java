@@ -5,6 +5,7 @@ import by.matusevichChercasova.movieRating.entity.Producer;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Set;
 
 public class FilmAddDto extends AbstractDto {
@@ -27,11 +28,12 @@ public class FilmAddDto extends AbstractDto {
     @NotBlank(message = "Введите аннотацию")
     private String annotation;
 
-
+    //@NotBlank(message = "Введите режисера")
     private Long producerId;
 
     //@NotNull(message = "Введите актеров")
-    private Set<Actor> actors;
+    private ArrayList<Long> actorsId;
+    //private Set<Actor> actors;
 
     public FilmAddDto() {
     }
@@ -92,11 +94,26 @@ public class FilmAddDto extends AbstractDto {
         this.producerId = producerId;
     }
 
-    public Set<Actor> getActors() {
-        return actors;
+
+    public ArrayList<Long> getActorsId() {
+        return actorsId;
     }
 
-    public void setActors(Set<Actor> actors) {
-        this.actors = actors;
+    public void setActorsId(ArrayList<Long> actorsId) {
+        this.actorsId = actorsId;
+    }
+
+    @Override
+    public String toString() {
+        return "FilmAddDto{" +
+                "name='" + name + '\'' +
+                ", releaseYear='" + releaseYear + '\'' +
+                ", genre='" + genre + '\'' +
+                ", photoPath='" + photoPath + '\'' +
+                ", duration='" + duration + '\'' +
+                ", annotation='" + annotation + '\'' +
+                ", producerId=" + producerId +
+                ", actorsId=" + actorsId +
+                '}';
     }
 }

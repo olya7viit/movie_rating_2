@@ -22,7 +22,7 @@
     </thead>
     <c:forEach items="${allUsers}" var="user">
       <tr>
-        <td>${user.id}</td>
+        <td>${user.idReview}</td>
         <td>${user.username}</td>
         <td>${user.password}</td>
         <td>
@@ -30,7 +30,7 @@
         </td>
         <td>
           <form action="${pageContext.request.contextPath}/admin" method="post">
-            <input type="hidden" name="userId" value="${user.id}"/>
+            <input type="hidden" name="userId" value="${user.idReview}"/>
             <input type="hidden" name="action" value="delete"/>
             <button type="submit">Delete</button>
           </form>

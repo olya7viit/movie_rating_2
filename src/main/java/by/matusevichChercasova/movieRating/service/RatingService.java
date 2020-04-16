@@ -11,5 +11,5 @@ public interface RatingService {
 
     void updateRating (RatingDto ratingDto);
 
-    public double oneFilmRating(Long idFilm);
+    double oneFilmRating(Long idFilm);
 }
