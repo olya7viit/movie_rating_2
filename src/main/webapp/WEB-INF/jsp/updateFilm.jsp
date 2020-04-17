@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -67,12 +68,12 @@
     <div class="post">
 
 
-      <div class="form_registration">
-        <%--@elvariable id="filmForm" type=""--%>
-        <form:form method="POST" modelAttribute="filmForm" action="/management/updateFilm">
-          <div class="doveacko-gangeroun">
-            <h2>Измение  Фильма</h2>
-          </div>
+            <div class="form_registration">
+                <%--@elvariable id="filmForm" type=""--%>
+                <form:form method="POST" modelAttribute="filmForm" action="/management/updateFilm">
+                    <div class="doveacko-gangeroun">
+                        <h2>Измение  Фильма</h2>
+                    </div>
 
           <div class="davasgu-kevanud">
             <form:input type="text" path="name" value="${oneFilm.name}" autofocus="true"/>
