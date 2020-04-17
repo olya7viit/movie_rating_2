@@ -80,14 +80,17 @@
         <sec:authorize access="isAuthenticated()">
         <div class="divLike">
           <div class='like'>
-            <form id="fform" action="${pageContext.request.contextPath}/add-bookmark" method="post">
+            <form action="${pageContext.request.contextPath}/add-bookmark" method="post">
               <input type="hidden" name="idFilm" value="${film.id}"/>
               <input type="hidden" name="idUser" value=" ${pageContext.request.userPrincipal.principal.id}"/>
-              <button id="idButton" class="like-toggle basic">♥</button>
+              <button class="like-toggle basic">♥</button>
               <span class='hidden'>В закладках</span>
             </form>
           </div>
         </div>
+          <script>
+            fun_like(${film.existBookmark});
+          </script>
         </sec:authorize>
 
 

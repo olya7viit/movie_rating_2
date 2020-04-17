@@ -45,4 +45,13 @@ public class Bookmark {
     public void setIdFilm(Long idFilm) {
         this.idFilm = idFilm;
     }
+
+    @Override
+    public String toString() {
+        return "Bookmark{" +
+                "idBookmark=" + idBookmark +
+                ", idUser=" + idUser +
+                ", idFilm=" + idFilm +
+                '}';
+    }
 }

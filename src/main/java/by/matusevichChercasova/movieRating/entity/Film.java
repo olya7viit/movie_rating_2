@@ -27,6 +27,9 @@ public class Film {
 
     private String annotation;
 
+    @Transient
+    private boolean existBookmark;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Producer producer;
 
@@ -36,15 +39,18 @@ public class Film {
 
     public Film(){}
 
-    public Film(String name, @Size(min = 4, max = 4) String releaseYear, String genre, String photoPath, String duration, String annotation, Producer producer) {
+    public Film(String name, @Size(min = 4, max = 4) String releaseYear, String genre, String photoPath, String duration, String annotation, boolean existBookmark, Producer producer, Set<Actor> actors) {
         this.name = name;
         this.releaseYear = releaseYear;
         this.genre = genre;
         this.photoPath = photoPath;
         this.duration = duration;
         this.annotation = annotation;
+        this.existBookmark = existBookmark;
         this.producer = producer;
+        this.actors = actors;
     }
+
 
     public Long getId() {
         return id;
@@ -118,6 +124,14 @@ public class Film {
         this.actors = actors;
     }
 
+    public boolean getExistBookmark() {
+        return existBookmark;
+    }
+
+    public void setExistBookmark(boolean existBookmark) {
+        this.existBookmark = existBookmark;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -140,6 +154,7 @@ public class Film {
         return Objects.hash(id, name, releaseYear, genre, photoPath, duration, annotation, producer, actors);
     }
 
+
     @Override
     public String toString() {
         return "Film{" +
@@ -150,6 +165,7 @@ public class Film {
                 ", photoPath='" + photoPath + '\'' +
                 ", duration='" + duration + '\'' +
                 ", annotation='" + annotation + '\'' +
+                ", existBookmark=" + existBookmark +
                 ", producer=" + producer +
                 ", actors=" + actors +
                 '}';

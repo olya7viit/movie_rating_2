@@ -31,19 +31,13 @@ public class BookmarkServiceImpl implements BookmarkService {
             }
         }
 
-        if (flag){
+        if (!flag){
+            System.out.println("{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{");
             bookmarkRepository.delete(bookmark);
         }else {
             bookmarkRepository.save(bookmark);
         }
         return true;
-    }
-
-    @Override
-    public void deleteBookmark(Long bookmarkId) {
-        if (bookmarkRepository.findById(bookmarkId).isPresent()) {
-            bookmarkRepository.deleteById(bookmarkId);
-        }
     }
 
     @Override

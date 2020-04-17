@@ -1,15 +1,21 @@
 package by.matusevichChercasova.movieRating.service.impl;
 
 import by.matusevichChercasova.movieRating.dto.FilmAddDto;
+import by.matusevichChercasova.movieRating.dto.FilmBookmarkDto;
 import by.matusevichChercasova.movieRating.dto.FilmDto;
 import by.matusevichChercasova.movieRating.dto.mapper.FilmAddMapper;
 import by.matusevichChercasova.movieRating.dto.mapper.FilmMapper;
+import by.matusevichChercasova.movieRating.entity.Bookmark;
 import by.matusevichChercasova.movieRating.entity.Film;
+import by.matusevichChercasova.movieRating.entity.User;
+import by.matusevichChercasova.movieRating.repository.BookmarkRepository;
 import by.matusevichChercasova.movieRating.repository.FilmRepository;
 import by.matusevichChercasova.movieRating.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,17 +23,46 @@ public class FilmServiceImpl implements FilmService {
 
     private final FilmAddMapper filmMapper;
     private final FilmRepository filmRepository;
+    private final BookmarkRepository bookmarkRepository;
 
     @Autowired
     public FilmServiceImpl(FilmAddMapper filmMapper,
-                           FilmRepository filmRepository) {
+                           FilmRepository filmRepository,
+                           BookmarkRepository bookmarkRepository) {
         this.filmMapper = filmMapper;
         this.filmRepository = filmRepository;
+        this.bookmarkRepository = bookmarkRepository;
     }
 
     @Override
     public List<Film> allFilms() {
-        return filmRepository.findAll();
+        List<Bookmark> bookmarks = bookmarkRepository.findAll();
+        List<Film> films = filmRepository.findAll();
+        long idCurrentUser = 0;
+        try {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            idCurrentUser = user.getId();
+        }catch (ClassCastException e){
+            return films;
+        }
+        long idFilm;
+
+        for (int j = 0; j < films.size(); j++) {
+            for (int i = 0; i < bookmarks.size(); i++) {
+
+                idFilm = films.get(j).getId();
+
+                if (bookmarks.get(i).getIdUser() == idCurrentUser &&
+                        bookmarks.get(i).getIdFilm() == idFilm) {
+                    films.get(j).setExistBookmark(true);
+                    break;
+                } else {
+                    films.get(j).setExistBookmark(false);
+                }
+            }
+        }
+
+        return films;
     }
 
     @Override
