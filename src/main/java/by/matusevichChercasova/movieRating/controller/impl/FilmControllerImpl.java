@@ -53,6 +53,7 @@ public class FilmControllerImpl implements FilmController {
         model.addAttribute("filmForm", new FilmAddDto());
         model.addAttribute("oneFilm",filmService.getFilm(filmId));
         model.addAttribute("allProducers",producerService.allProducers());
+        model.addAttribute("allActors",actorService.allActors());
 
         return "updateFilm";
     }
@@ -68,6 +69,7 @@ public class FilmControllerImpl implements FilmController {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("allProducers",producerService.allProducers());
+            model.addAttribute("allActors",actorService.allActors());
             return "updateFilm";
         }
 
@@ -115,7 +117,7 @@ public class FilmControllerImpl implements FilmController {
         model.addAttribute("reviewForm", new ReviewDto());
         model.addAttribute("oneFilm", filmService.getFilm(Long.valueOf(id)));
         model.addAttribute("comments",reviewService.allReviews(Long.valueOf(id)));
-        model.addAttribute("actors",actorService.getActorsFromFilm(Long.valueOf(id)));
+       // model.addAttribute("actors",actorService.getActorsFromFilm(Long.valueOf(id)));
         model.addAttribute("ratingServise", ratingService);
         return "filmPage";
     }

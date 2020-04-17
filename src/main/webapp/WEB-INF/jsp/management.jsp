@@ -85,7 +85,8 @@
               <th>Год</th>
               <th>Жанр</th>
               <th>Режисер</th>
-              <th>Время</th>
+              <th>Актеры</th>
+              <th>Продолжительность</th>
               </thead>
 
               <c:forEach items="${allFilms}" var="film">
@@ -95,6 +96,7 @@
                   <td>${film.releaseYear}</td>
                   <td>${film.genre}</td>
                   <td>${film.producer.surname} ${film.producer.name}</td>
+                  <td> <c:forEach items="${film.actors}" var="actor">${actor.surname}; </c:forEach></td>
                   <td>${film.duration}</td>
                   <td>
                     <form action="${pageContext.request.contextPath}/management/filmsPage" method="post">
@@ -128,7 +130,6 @@
               <th colspan="2">Актер</th>
               <th>Возраст</th>
               <th>Страна</th>
-              <th>Фильмы</th>
               </thead>
 
               <c:forEach items="${allActors}" var="actor">
@@ -137,9 +138,7 @@
                   <td>${actor.surname} ${actor.name}</td>
                   <td>${actor.age}</td>
                   <td>${actor.country}</td>
-                  <td>
-                    <c:forEach items="${actor.films}" var="film">${film.name}; </c:forEach>
-                  </td>
+
                   <td>
                     <form action="${pageContext.request.contextPath}/management/actorsPage" method="post">
                       <input type="hidden" name="actorId" value="${actor.id}"/>

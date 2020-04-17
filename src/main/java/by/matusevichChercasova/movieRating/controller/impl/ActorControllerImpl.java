@@ -75,7 +75,7 @@ public class ActorControllerImpl implements ActorController {
 
         }
         if (!actorService.saveActor(actorForm)){
-           // model.addAttribute("newProducerError", "Продюсер с таким именем уже существует");
+
             return "management";
         }
 

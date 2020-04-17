@@ -32,8 +32,7 @@ public class BookmarkServiceImpl implements BookmarkService {
         }
 
         if (!flag){
-            System.out.println("{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{");
-            bookmarkRepository.delete(bookmark);
+            bookmarkRepository.deleteBookmarkByIdUserAndIdFilm(bookmark.getIdUser(),bookmark.getIdFilm());
         }else {
             bookmarkRepository.save(bookmark);
         }
