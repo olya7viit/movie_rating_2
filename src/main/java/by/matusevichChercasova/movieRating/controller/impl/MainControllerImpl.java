@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainControllerImpl implements MainController {
-
+private static int i=5;
     @Autowired
     FilmService filmService;
     @Autowired
@@ -22,7 +22,7 @@ public class MainControllerImpl implements MainController {
     @Override
     @GetMapping("/")
     public String findAllFilms(Model model) {
-
+        model.addAttribute("i",i);
         model.addAttribute("allFilms", filmService.allFilms());
         model.addAttribute("ratingServise", ratingService);
 
@@ -35,8 +35,17 @@ public class MainControllerImpl implements MainController {
         model.addAttribute("allFilms", filmService.searchFilm(search));
         model.addAttribute("ratingServise", ratingService);
         model.addAttribute("sizeSet",filmService.searchFilm(search).size());
+        model.addAttribute("i",i);
+        return "index";
+    }
+    @PostMapping ("/")
+    public String loading( Model model) {
+
+      i+=5;
+        model.addAttribute("allFilms", filmService.allFilms());
+        model.addAttribute("ratingServise", ratingService);
+        model.addAttribute("i",i);
 
         return "index";
     }
-
 }
