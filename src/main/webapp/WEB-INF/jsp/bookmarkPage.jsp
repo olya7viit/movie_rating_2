@@ -12,12 +12,14 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style2.css">
+
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <script src="https://use.fontawesome.com/0ca06f29a6.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="${contextPath}/resources/js/jquery-3.4.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/script.js"></script>
+    <script src="${contextPath}/resources/js/scriptLike.js"></script>
 </head>
 
 <body>
@@ -30,7 +32,7 @@
                 <sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="/management">Управление</a></li></li></sec:authorize>
                 <li><a href="/">Главная</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/allActors">Актеры</a></li>
-                <li><a href="#">Режиссёры</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/allProducers">Режисеры</a></li>
                 <li><a href="#">Закладки</a></li>
                 <sec:authorize access="!isAuthenticated()">
                     <li><a href="/login" class=" svalokan-big openmodal">   Войти</a></li>
@@ -76,12 +78,43 @@
 <div class="blog">
     <div class="container">
         <div class="post">
-            <c:forEach items="${allProducers}" var="producer">
-                <img src="${producer.photoPath}" alt="">
-                <h3>${producer.surname} ${producer.name}</h3>
-                <p>Страна: ${producer.country}</p>
-                <p>Фильмы: <c:forEach items="${producer.films}" var="film">${film.name}, </c:forEach></p>
-                <p>${producer.biography}</p>
+            <c:forEach items="${allFilms}" var="film">
+                        <sec:authorize access="isAuthenticated()">
+                            <div class="divLike">
+                                <div class='like'>
+
+                                    <form action="${pageContext.request.contextPath}/deleteBookmark/${pageContext.request.userPrincipal.principal.id}" method="post">
+                                        <input type="hidden" name="idFilm" value="${film.id}"/>
+                                        <input type="hidden" name="idUser" value=" ${pageContext.request.userPrincipal.principal.id}"/>
+
+                                        <c:if test="${film.existBookmark==true}">
+                                            <button class="like-toggle like-active basic">♥</button>
+                                        </c:if>
+                                        <c:if test="${film.existBookmark==false}">
+                                            <button class="like-toggle basic">♥</button>
+                                        </c:if>
+                                        <span class='hidden'>В закладках</span>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </sec:authorize>
+
+
+                        <div>
+                            <img src="${film.photoPath}" alt=""/>
+                            <h3><a href="${pageContext.request.contextPath}/filmPage/${film.getId()}">
+                                    ${film.name} (${film.releaseYear})</a>
+                                <img class="starR" src="http://biblefav.org/images/tool_favs1.png"
+                                     hspace="0"  vspace="0" align="right" class="starR" height="20px">
+                                <p class="starRText"> ${ratingServise.oneFilmRating(film.getId())}</p>
+                            </h3>
+                            <p>Продолжительность: ${film.duration}</p>
+                            <p>Жанр: ${film.genre}</p>
+                            <p>Режиссёр: ${film.producer.surname} ${film.producer.name}</p>
+                            <p>${film.annotation}</p>
+                        </div>
+                        </br>  </br>
             </c:forEach>
         </div>
     </div>

@@ -35,29 +35,24 @@ public class AdminControllerImpl implements AdminController {
         model.addAttribute("allFilms", filmService.allFilms());
         model.addAttribute("allActors", actorService.allActors());
         model.addAttribute("allProducers", producerService.allProducers());
-
+        model.addAttribute("allUser",userService.allUsers());
         initModelList(model);
 
         return "management";
     }
 
     @Override
-    @GetMapping("/admin")
-    public String userList(Model model) {
-        model.addAttribute("allUsers", userService.allUsers());
-        return "admin";
+    @PostMapping("/management/usersPage")
+    public String workWithUser(@RequestParam(defaultValue = "") Long userId,
+                                @RequestParam(defaultValue = "") String action,
+                                Model model) {
+
+        if (action.equals("delete")) {
+           userService.deleteUser(userId);
+        }
+        return "redirect:/management";
     }
 
-    @Override
-    @PostMapping("/admin")
-    public String  deleteUser(@RequestParam(required = true, defaultValue = "" ) Long userId,
-                              @RequestParam(required = true, defaultValue = "" ) String action,
-                              Model model) {
-        if (action.equals("delete")){
-            userService.deleteUser(userId);
-        }
-        return "redirect:/admin";
-    }
 
     @Override
     @GetMapping("/allusers")
