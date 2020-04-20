@@ -25,7 +25,9 @@
 <body>
 
 <header role="banner">
+
   <div class="container">
+
     <div class="brand">Project Name</div>
     <nav>
       <ul class="menu">
@@ -33,7 +35,9 @@
         <li><a href="/">Главная</a></li>
         <li><a href="${pageContext.request.contextPath}/user/allActors">Актеры</a></li>
         <li><a href="${pageContext.request.contextPath}/user/allProducers">Режисеры</a></li>
-        <li><a href="#">Закладки</a></li>
+          <sec:authorize access="isAuthenticated()">
+        <li><a href="${pageContext.request.contextPath}/user/bookmarkPage/${pageContext.request.userPrincipal.principal.id}">Закладки</a></li>
+          </sec:authorize>
         <sec:authorize access="!isAuthenticated()">
           <li><a href="/login" class=" svalokan-big openmodal">   Войти</a></li>
         </sec:authorize>
@@ -48,6 +52,13 @@
 </header>
 
 <div class="jumbotron">
+  <div class="d1">
+    <form method="POST" action="/search">
+      <input name="search" placeholder="Искать здесь..." type="search">
+      <button type="submit"></button>
+
+    </form>
+  </div>
   <div class="container">
     <h1>Films</h1>
   </div>
@@ -72,25 +83,34 @@
   </div>
 </div>
 <!---------------------------------------->
+<c:set var="count" value="1"/>
 <div class="blog">
   <div class="container">
     <div class="post">
+      <c:if test="${sizeSet==0}"><p style="font-size: 30px ">Совпадений не найдено</p></c:if>
       <c:forEach items="${allFilms}" var="film">
-
+          <c:choose>
+          <c:when test="${count <= i}">
         <sec:authorize access="isAuthenticated()">
         <div class="divLike">
           <div class='like'>
+
             <form action="${pageContext.request.contextPath}/add-bookmark" method="post">
               <input type="hidden" name="idFilm" value="${film.id}"/>
               <input type="hidden" name="idUser" value=" ${pageContext.request.userPrincipal.principal.id}"/>
-              <button class="like-toggle basic">♥</button>
+
+              <c:if test="${film.existBookmark==true}">
+                <button class="like-toggle like-active basic">♥</button>
+              </c:if>
+              <c:if test="${film.existBookmark==false}">
+                <button class="like-toggle basic">♥</button>
+              </c:if>
+
               <span class='hidden'>В закладках</span>
             </form>
           </div>
         </div>
-          <script>
-            fun_like(${film.existBookmark});
-          </script>
+
         </sec:authorize>
 
 
@@ -98,7 +118,7 @@
           <img src="${film.photoPath}" alt=""/>
           <h3><a href="${pageContext.request.contextPath}/filmPage/${film.getId()}">
               ${film.name} (${film.releaseYear})</a>
-            <img class="starR" src="https://lh3.googleusercontent.com/proxy/bT5uud5RX5wgiDHSO3g69lhxVxVcWlGNTGSigYy-rqSICBsRAVUkQgHVwJCHr1zxoLENBwQ19eKXJ3fIGHQ9n-MfGZd17cDZM8Is"
+            <img class="starR" src="http://biblefav.org/images/tool_favs1.png"
                  hspace="0"  vspace="0" align="right" class="starR" height="20px">
              <p class="starRText"> ${ratingServise.oneFilmRating(film.getId())}</p>
           </h3>
@@ -110,9 +130,23 @@
               <p>${film.annotation}</p>
              </div>
              </br>  </br>
+
+              <c:set var="count" value="${count+1}"/>
+          </c:when>
+          </c:choose>
       </c:forEach>
 
     </div>
+
+      <c:if test="${allFilms.size()>i}">
+      <div class="load">
+          <form method="POST" action="/">
+              <button type="submit">Загрузить еще</button>
+
+          </form>
+      </div>
+      </c:if>
+
   </div>
 </div>
 

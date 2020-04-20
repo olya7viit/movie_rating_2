@@ -95,6 +95,24 @@ public class FilmServiceImpl implements FilmService {
 
     }
     @Override
+    public List<Film> searchFilm(String filmName){
+        List<Film>filmSet=filmRepository.findAll();
+
+        List<Film>resultSet=new ArrayList<Film>();
+
+        for (Film film : filmSet) {
+
+            if (film.getName().contains(filmName)) {
+
+                resultSet.add(film);
+
+            }
+        }
+
+        return resultSet;
+
+    }
+    @Override
     public void updateFilm(FilmAddDto filmAddDto) {
 
         Film film = filmMapper.toEntity(filmAddDto);

@@ -1,6 +1,7 @@
 
 function fun_like(value){
     if(value == true){
+
         $('.like-toggle').toggleClass('like-active');
         $('.like-toggle').next().toggleClass('hidden');
     }

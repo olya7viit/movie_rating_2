@@ -7,11 +7,11 @@ public interface AdminController {
 
     String manage(Model model);
 
-    String userList(Model model);
+    //String userList(Model model);
 
-    String  deleteUser(@RequestParam(required = true, defaultValue = "" ) Long userId,
-                       @RequestParam(required = true, defaultValue = "" ) String action,
-                       Model model);
 
+    String workWithUser(@RequestParam(defaultValue = "") Long userId,
+                        @RequestParam(defaultValue = "") String action,
+                        Model model);
     String viewInf();
 }

@@ -16,4 +16,6 @@ public interface FilmService {
     boolean saveFilm(FilmAddDto filmDto);
 
     boolean deleteFilm(Long filmId);
+
+   List<Film> searchFilm(String filmName);
 }

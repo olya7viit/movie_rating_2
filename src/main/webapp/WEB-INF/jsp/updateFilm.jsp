@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -16,6 +17,18 @@
   <script src="https://use.fontawesome.com/0ca06f29a6.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="${contextPath}/resources/js/jquery-3.4.1.js"></script>
+
+  <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap-3.3.2.min.css" type="text/css">
+  <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap-example.min.css" type="text/css">
+  <link rel="stylesheet" href="${contextPath}/resources/css/prettify.min.css" type="text/css">
+
+  <script type="text/javascript" src="${contextPath}/resources/js/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript" src="${contextPath}/resources/js/bootstrap-3.3.2.min.js"></script>
+  <script type="text/javascript" src="${contextPath}/resources/js/prettify.min.js"></script>
+
+  <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap-multiselect.css" type="text/css">
+  <script type="text/javascript" src="${contextPath}/resources/js/bootstrap-multiselect.js"></script>
+  <link media="screen" href="demo/styles/demo.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body>
@@ -29,7 +42,9 @@
         <li><a href="/">Главная</a></li>
         <li><a href="#">Актеры</a></li>
         <li><a href="${pageContext.request.contextPath}/user/allProducers">Продюсеры</a></li>
-        <li><a href="#">Закладки</a></li>
+        <sec:authorize access="isAuthenticated()">
+          <li><a href="${pageContext.request.contextPath}/user/bookmarkPage/${pageContext.request.userPrincipal.principal.id}">Закладки</a></li>
+        </sec:authorize>
         <sec:authorize access="!isAuthenticated()">
           <li><a href="/login" class=" svalokan-big openmodal"> Войти</a></li>
         </sec:authorize>
@@ -55,12 +70,12 @@
     <div class="post">
 
 
-      <div class="form_registration">
-        <%--@elvariable id="filmForm" type=""--%>
-        <form:form method="POST" modelAttribute="filmForm" action="/management/updateFilm">
-          <div class="doveacko-gangeroun">
-            <h2>Измение  Фильма</h2>
-          </div>
+            <div class="form_registration">
+                <%--@elvariable id="filmForm" type=""--%>
+                <form:form method="POST" modelAttribute="filmForm" action="/management/updateFilm">
+                    <div class="doveacko-gangeroun">
+                        <h2>Измение  Фильма</h2>
+                    </div>
 
           <div class="davasgu-kevanud">
             <form:input type="text" path="name" value="${oneFilm.name}" autofocus="true"/>
@@ -92,6 +107,17 @@
               <form:options items="${allProducers}"  itemLabel="surname" itemValue="id"/>
             </form:select>
             <form:errors path="producerId"/>
+
+            </br>
+
+            <script type="text/javascript">
+              $(document).ready(function() {
+                $('#example-getting-started').multiselect();
+              });
+            </script>
+            <form:select path="actorsId" id="example-getting-started" multiple="true">
+              <form:options items="${allActors}" itemLabel="surname" itemValue="id" />
+            </form:select>
 
           </div>
           <input type="hidden" name="filmId" value="${oneFilm.id}"/>
