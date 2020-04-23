@@ -13,13 +13,17 @@
   <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/normalize.css">
   <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style2.css">
   <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/styleLike.css">
+  <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/styleFilter.css">
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
   <script src="https://use.fontawesome.com/0ca06f29a6.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="${contextPath}/resources/js/jquery-3.4.1.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
   <script src="${contextPath}/resources/js/script.js"></script>
   <script src="${contextPath}/resources/js/scriptLike.js"></script>
+    <script src="${contextPath}/resources/js/scriptFilter.js"></script>
 </head>
 
 <body>
@@ -83,6 +87,62 @@
   </div>
 </div>
 <!---------------------------------------->
+
+
+<div class="section">
+  <p class="filterText">Жанр: </p>
+  <form action="${pageContext.request.contextPath}/filter" method="post">
+          <div class="container">
+            <input type="radio" name="genre" value="Все" id="radio-0" class="aaa">
+            <label for="radio-0"><span class="radio">Все</span></label>
+          </div>
+          <div class="container">
+            <input type="radio" name="genre" value="Детектив" id="radio-1">
+            <label for="radio-1"><span class="radio">Детектив</span></label>
+          </div>
+          <div class="container">
+            <input type="radio" name="genre" value="Драма" id="radio-2">
+            <label for="radio-2"><span class="radio">Драма</span></label>
+          </div>
+          <div class="container">
+            <input type="radio" name="genre" value="Комедия" id="radio-3">
+            <label for="radio-3"><span class="radio">Комедия </span></label>
+          </div>
+          <div class="container">
+            <input type="radio" name="genre"  value="Мультфильм" id="radio-4">
+            <label for="radio-4"><span class="radio">Мультфильм</span></label>
+          </div>
+          <div class="container">
+            <input type="radio" name="genre" value="Семейный" id="radio-5">
+            <label for="radio-5"><span class="radio">Семейный</span></label>
+          </div>
+          <div class="container">
+            <input type="radio" name="genre"  value="Ужасы" id="radio-6">
+            <label for="radio-6"><span class="radio">Ужасы </span></label>
+          </div>
+          <div class="container">
+            <input type="radio" name="genre" value="Фэнтези" id="radio-7">
+            <label for="radio-7"><span class="radio">Фэнтези </span></label>
+          </div>
+          <div class="container">
+            <input type="radio" name="genre" value="Боевик" id="radio-8">
+            <label for="radio-8"><span class="radio">Боевик</span></label>
+          </div>
+          <div class="container">
+            <input type="radio" name="genre" value="Приключения" id="radio-9">
+            <label for="radio-9"><span class="radio">Приключения</span></label>
+          </div>
+          <div class="container">
+            <button type="submit" class="buttonForFilter">Выбрать</button>
+          </div>
+      <script>
+          checkedRadio("${checkedGenre}");
+      </script>
+  </form>
+</div>
+
+
+
 <c:set var="count" value="1"/>
 <div class="blog">
   <div class="container">
@@ -110,7 +170,6 @@
             </form>
           </div>
         </div>
-
         </sec:authorize>
 
 

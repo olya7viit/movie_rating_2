@@ -17,5 +17,7 @@ public interface FilmService {
 
     boolean deleteFilm(Long filmId);
 
-   List<Film> searchFilm(String filmName);
+    List<Film> searchFilm(String filmName);
+
+    List<Film> getByGenre(String genre);
 }

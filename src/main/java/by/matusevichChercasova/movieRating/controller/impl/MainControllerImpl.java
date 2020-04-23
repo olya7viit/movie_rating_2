@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainControllerImpl implements MainController {
-private static int i=5;
+    private static int i=5;
+    private static String checkedGenre = "Все";
     @Autowired
     FilmService filmService;
     @Autowired
@@ -25,9 +26,10 @@ private static int i=5;
         model.addAttribute("i",i);
         model.addAttribute("allFilms", filmService.allFilms());
         model.addAttribute("ratingServise", ratingService);
-
+        model.addAttribute("checkedGenre",checkedGenre);
         return "index";
     }
+
     @Override
     @PostMapping ("/search")
     public String search(@RequestParam("search") String search, Model model) {
@@ -38,6 +40,7 @@ private static int i=5;
         model.addAttribute("i",i);
         return "index";
     }
+
     @PostMapping ("/")
     public String loading( Model model) {
 
@@ -46,6 +49,19 @@ private static int i=5;
         model.addAttribute("ratingServise", ratingService);
         model.addAttribute("i",i);
 
+        return "index";
+    }
+
+    @Override
+    @PostMapping("/filter")
+    public String filterByGenre(@RequestParam("genre") String genre, Model model) {
+
+        checkedGenre = genre;
+        model.addAttribute("allFilms", filmService.getByGenre(genre.toLowerCase()));
+        model.addAttribute("ratingServise", ratingService);
+        model.addAttribute("sizeSet",filmService.getByGenre(genre.toLowerCase()).size());
+        model.addAttribute("i",i);
+        model.addAttribute("checkedGenre",checkedGenre);
         return "index";
     }
 }

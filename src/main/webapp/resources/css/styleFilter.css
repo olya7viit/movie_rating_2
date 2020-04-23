@@ -1,0 +1,60 @@
+
+.section{
+   /* position: relative;
+    margin-left: -230px;*/
+    //position: fixed;
+    position: absolute;
+    margin-left: 60px;
+    margin-top: 10px;
+}
+
+.filterText{
+    font-weight: bold;
+    color: #282828;
+    font-size: 18px;
+    margin-left: -30px;
+}
+
+.section input[type="radio"]{
+    display: none;
+}
+.container {
+    margin-bottom: 10px;
+}
+.container label {
+    position: relative;
+}
+
+/* Base styles for spans */
+.container span::before,
+.container span::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+/* Radio buttons */
+.container span.radio:hover {
+    cursor: pointer;
+}
+.container span.radio::before {
+    left: -52px;
+    width: 45px;
+    height: 25px;
+    background-color: #bcc9dd;
+    border-radius: 50px;
+}
+.container span.radio::after {
+    left: -49px;
+    width: 17px;
+    height: 17px;
+    border-radius: 10px;
+    background-color: #6C788A;
+    transition: left .25s, background-color .25s;
+}
+input[type="radio"]:checked + label span.radio::after {
+    left: -27px;
+    background-color: #fa5ba5;
+}

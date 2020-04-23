@@ -98,20 +98,33 @@ public class FilmServiceImpl implements FilmService {
     public List<Film> searchFilm(String filmName){
         List<Film>filmSet=filmRepository.findAll();
 
-        List<Film>resultSet=new ArrayList<Film>();
+        List<Film>resultSet=new ArrayList<>();
 
         for (Film film : filmSet) {
-
             if (film.getName().contains(filmName)) {
-
                 resultSet.add(film);
-
             }
         }
-
         return resultSet;
-
     }
+
+    @Override
+    public List<Film> getByGenre(String genre) {
+        List<Film> films =filmRepository.findAll();
+        List<Film> filterFilms = new ArrayList<>();
+
+        if("все".equals(genre)){
+            return films;
+        }
+
+        for (Film film : films) {
+            if (film.getGenre().contains(genre)) {
+                filterFilms.add(film);
+            }
+        }
+        return filterFilms;
+    }
+
     @Override
     public void updateFilm(FilmAddDto filmAddDto) {
 

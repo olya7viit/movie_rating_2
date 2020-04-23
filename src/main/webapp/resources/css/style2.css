@@ -78,6 +78,17 @@ h2, h3 {
      color: #5e5e5e;
  }
 
+ .buttonForFilter{
+     display: inline-block;
+     text-decoration: none;
+     margin-bottom: 30px;
+     color: white;
+     background-color: #fa5ba5;
+     padding: 5px 5px;
+     border-radius: 30px;
+     margin-left: -40px;
+ }
+
  a{
      color: #5e5e5e;
  }
