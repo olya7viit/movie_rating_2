@@ -142,6 +142,13 @@
 </div>
 
 
+<!------------Кнопки сортировки---------------->
+    <div class="sortDiv">
+        <button class="sort" id="name" name="sortType" value="sortRating">Рейтинг</button>
+        <button class="sort" id="perc" name="sortType" value="sortYear">Год</button>
+    </div>
+<!---------------------------------------->
+
 
 <c:set var="count" value="1"/>
 <div class="blog">
@@ -201,7 +208,6 @@
       <div class="load">
           <form method="POST" action="/">
               <button type="submit">Загрузить еще</button>
-
           </form>
       </div>
       </c:if>

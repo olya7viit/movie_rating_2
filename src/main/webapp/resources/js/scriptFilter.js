@@ -1,3 +1,26 @@
+$(document).on('click', '.sort', function(e){
+    $(this).hasClass('desc') || $(this).hasClass('asc') ?
+        $(this).toggleClass('asc desc') : $(this).addClass('desc');
+
+
+    if($(this).hasClass('desc') || $(this).hasClass('asc')){
+        $('.sort').click(function () {
+            var par1=$('.sort').val();
+            alert(par1)
+            $.ajax({
+                type:'POST',//тип запроса
+                data:{param1:par1},//параметры запроса
+                /*url : window.location + "mvcmethod",*/
+                /* url : ${pageContext.request.contextPath}+"/mvcmethod",*/
+                /*url:"<c:url value='mvcmethod'/> ",*/
+                url:'/mvcmethod',
+                // url:<c:url value= '/mvcmethod' /> ,//url адрес обработчика
+                //success: funcSuccess//возвращаемый результат от сервера
+            });
+        });
+    }
+});
+
 function checkedRadio(checkedGenre) {
     if(checkedGenre == 'Все')
         $('#radio-0').attr('checked', 'true');
