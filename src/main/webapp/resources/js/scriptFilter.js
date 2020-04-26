@@ -43,3 +43,4 @@ function checkedRadio(checkedGenre) {
     if(checkedGenre == 'Приключения')
         $('#radio-9').attr('checked', 'true');
 }
+

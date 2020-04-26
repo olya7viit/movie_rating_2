@@ -66,6 +66,19 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
+    public List<Film> allNewFilms() {
+
+        List<Film> films = filmRepository.findAll();
+        List<Film> newFilms = new ArrayList<>();
+        for (int i=0;i<films.size();i++){
+            if(films.get(i).getReleaseYear().equals("2020")){
+                newFilms.add(films.get(i));
+            }
+        }
+        return newFilms;
+    }
+
+    @Override
     public boolean saveFilm(FilmAddDto filmAddDto) {
 
         Film film = filmMapper.toEntity(filmAddDto);

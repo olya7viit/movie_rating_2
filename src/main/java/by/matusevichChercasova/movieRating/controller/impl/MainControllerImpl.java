@@ -27,6 +27,7 @@ public class MainControllerImpl implements MainController {
         model.addAttribute("allFilms", filmService.allFilms());
         model.addAttribute("ratingServise", ratingService);
         model.addAttribute("checkedGenre",checkedGenre);
+        model.addAttribute("allNewFilm2020",filmService.allNewFilms());
         return "index";
     }
 
@@ -35,6 +36,7 @@ public class MainControllerImpl implements MainController {
     public String search(@RequestParam("search") String search, Model model) {
 
         model.addAttribute("allFilms", filmService.searchFilm(search));
+        model.addAttribute("allNewFilm2020",filmService.allNewFilms());
         model.addAttribute("ratingServise", ratingService);
         model.addAttribute("sizeSet",filmService.searchFilm(search).size());
         model.addAttribute("i",i);
@@ -46,6 +48,7 @@ public class MainControllerImpl implements MainController {
 
       i+=5;
         model.addAttribute("allFilms", filmService.allFilms());
+        model.addAttribute("allNewFilm2020",filmService.allNewFilms());
         model.addAttribute("ratingServise", ratingService);
         model.addAttribute("i",i);
 
@@ -58,6 +61,7 @@ public class MainControllerImpl implements MainController {
 
         checkedGenre = genre;
         model.addAttribute("allFilms", filmService.getByGenre(genre.toLowerCase()));
+        model.addAttribute("allNewFilm2020",filmService.allNewFilms());
         model.addAttribute("ratingServise", ratingService);
         model.addAttribute("sizeSet",filmService.getByGenre(genre.toLowerCase()).size());
         model.addAttribute("i",i);

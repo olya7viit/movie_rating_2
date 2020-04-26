@@ -9,6 +9,8 @@ public interface FilmService {
 
     List<Film> allFilms();
 
+    List<Film> allNewFilms();
+
     Film getFilm(Long id);
 
     void updateFilm (FilmAddDto filmDto);
