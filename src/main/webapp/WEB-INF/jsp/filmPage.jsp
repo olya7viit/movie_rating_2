@@ -123,13 +123,19 @@
             <div id="commentBlock">
                 <c:forEach items="${comments}" var="comment">
 
-                    <div class='comment'>Автор: <strong>${comment.userName}</strong><br>${comment.comment}
+                    <div class='comment'>
+
+                        <img class="fotoUser" src="https://cdn.onlinewebfonts.com/svg/img_568656.png" height="20px">
+                        <strong class = "nameUserComment">${comment.userName}</strong>
+                        <br><br>
+                            ${comment.comment}
+
 
                         <c:if test="${pageContext.request.userPrincipal.name == comment.userName}">
                             <form action="${pageContext.request.contextPath}/filmPage/deleteReview/${oneFilm.getId()}" method="post">
                                 <input type="hidden" name="reviewId" value="${comment.id}"/>
                                 <input type="hidden" name="action" value="delete"/>
-                                <button type="submit" >Удалить</button>
+                                <button class="delCommentButton" type="submit" >×</button>
                             </form>
                         </c:if>
                     </div>
@@ -139,10 +145,10 @@
             <sec:authorize access="isAuthenticated()">
                 <%--@elvariable id="reviewForm" type=""--%>
                 <form:form method="POST"  modelAttribute="reviewForm" action="/filmPage/addComment/${oneFilm.getId()}">
-                    <form:textarea  path="comment" placeholder="Введите ваш комментарий" cols="50" rows="3" autofocus="true"/>
+                    <form:textarea  class='comment' path="comment" placeholder="Введите ваш комментарий" cols="50" rows="3" autofocus="true"/>
                     <p><form:input path="idFilm" type="hidden" name="idFilm" value="${oneFilm.id}"/>
                         <form:input path="idUser" type="hidden" name="idUser" value="${pageContext.request.userPrincipal.principal.id}"/>
-                        <button type="submit">Добавить комментарий</button></p>
+                    <button type="submit" class="dakisvan">Добавить комментарий</button></p>
                 </form:form>
             </sec:authorize>
         </div>
