@@ -7,7 +7,7 @@
 <html>
 
 <head>
-  <title>Landing Page — Practice</title>
+  <title>КиноTOP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/normalize.css">
@@ -34,7 +34,7 @@
 
   <div class="container">
 
-    <div class="brand">Project Name</div>
+    <div class="brand">КиноTOP &#8657</div>
     <nav>
       <ul class="menu">
         <sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="/management">Управление</a></li></li></sec:authorize>
@@ -78,15 +78,12 @@
       </div>
 
       <script>
-          /* этот код помечает картинки, для удобства разработки */
           let i = 1;
           for(let li of carousel.querySelectorAll('li')) {
               li.style.position = 'relative';
               li.insertAdjacentHTML('beforeend', `<span style="position:absolute;left:0;top:0">${i}</span>`);
               i++;
           }
-
-          /* конфигурация */
           let width = 188; // ширина картинки
           let count = 5; // видимое количество изображений
 
@@ -204,19 +201,23 @@
 
 
 
+<!------------Поиск---------------->
+<div class="d1">
+    <form method="POST" action="/search">
+        <input name="search" placeholder="Искать здесь..." type="search">
+        <button type="submit"></button>
+    </form>
+</div>
+<!---------------------------------------->
+
 
 
 <c:set var="count" value="1"/>
 <div class="blog">
   <div class="container">
-      <div class="d1">
-          <form method="POST" action="/search">
-              <input name="search" placeholder="Искать здесь..." type="search">
-              <button type="submit"></button>
-
-          </form>
-      </div>
     <div class="post">
+
+
       <c:if test="${sizeSet==0}"><p style="font-size: 30px ">Совпадений не найдено</p></c:if>
       <c:forEach items="${allFilms}" var="film">
           <c:choose>
@@ -270,7 +271,7 @@
       <c:if test="${allFilms.size()>i}">
       <div class="load">
           <form method="POST" action="/">
-              <button type="submit">Загрузить еще</button>
+              <button type="submit" class="dakisvan">Загрузить еще</button>
           </form>
       </div>
       </c:if>

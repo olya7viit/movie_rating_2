@@ -7,11 +7,12 @@
 <html>
 
 <head>
-    <title>Landing Page — Practice</title>
+    <title>КиноTOP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style2.css">
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/styleLike.css">
 
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <script src="https://use.fontawesome.com/0ca06f29a6.js"></script>
@@ -26,14 +27,14 @@
 
 <header role="banner">
     <div class="container">
-        <div class="brand">Project Name</div>
+        <div class="brand">КиноTOP &#8657</div>
         <nav>
             <ul class="menu">
                 <sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="/management">Управление</a></li></li></sec:authorize>
                 <li><a href="/">Главная</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/allActors">Актеры</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/allProducers">Режисеры</a></li>
-                <li><a href="#">Закладки</a></li>
+                <li><a href="/">Закладки</a></li>
                 <sec:authorize access="!isAuthenticated()">
                     <li><a href="/login" class=" svalokan-big openmodal">   Войти</a></li>
                 </sec:authorize>
@@ -86,13 +87,7 @@
                                     <form action="${pageContext.request.contextPath}/deleteBookmark/${pageContext.request.userPrincipal.principal.id}" method="post">
                                         <input type="hidden" name="idFilm" value="${film.id}"/>
                                         <input type="hidden" name="idUser" value=" ${pageContext.request.userPrincipal.principal.id}"/>
-
-                                        <c:if test="${film.existBookmark==true}">
                                             <button class="like-toggle like-active basic">♥</button>
-                                        </c:if>
-                                        <c:if test="${film.existBookmark==false}">
-                                            <button class="like-toggle basic">♥</button>
-                                        </c:if>
                                         <span class='hidden'>В закладках</span>
                                     </form>
                                 </div>

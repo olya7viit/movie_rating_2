@@ -8,7 +8,7 @@
 <html>
 
 <head>
-  <title>Landing Page — Practice</title>
+  <title>КиноTOP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/normalize.css">
@@ -35,7 +35,7 @@
 
 <header role="banner">
   <div class="container">
-    <div class="brand">Project Name</div>
+    <div class="brand">КиноTOP &#8657</div>
     <nav>
       <ul class="menu">
         <sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="/management">Управление</a></li></li></sec:authorize>
