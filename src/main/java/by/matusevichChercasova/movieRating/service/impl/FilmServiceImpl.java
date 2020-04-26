@@ -1,5 +1,6 @@
 package by.matusevichChercasova.movieRating.service.impl;
 
+
 import by.matusevichChercasova.movieRating.dto.FilmAddDto;
 import by.matusevichChercasova.movieRating.dto.FilmBookmarkDto;
 import by.matusevichChercasova.movieRating.dto.FilmDto;
@@ -114,7 +115,7 @@ public class FilmServiceImpl implements FilmService {
         List<Film>resultSet=new ArrayList<>();
 
         for (Film film : filmSet) {
-            if (film.getName().contains(filmName)) {
+            if (film.getName().toLowerCase().contains(filmName.toLowerCase())) {
                 resultSet.add(film);
             }
         }

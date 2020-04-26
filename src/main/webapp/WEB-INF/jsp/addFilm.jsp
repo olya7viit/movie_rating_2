@@ -77,23 +77,23 @@
           </div>
 
           <div class="davasgu-kevanud">
-            <form:input type="text" path="name" placeholder="Имя" autofocus="true"/>
+            <form:input type="text" path="name" placeholder="Название" pattern="[A-Я][А-Яа-я- ]+" autofocus="true"/>
             <form:errors path="name"/>${nameError}
             </br>
 
-            <form:input type="text" path="releaseYear" placeholder="Год" autofocus="true"/>
+            <form:input type="text" path="releaseYear" placeholder="Год" pattern="[1-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}" maxlength="4" autofocus="true"/>
             <form:errors path="releaseYear"/>${releaseYearError}
             </br>
 
-            <form:input type="text" path="genre" placeholder="Жанр" autofocus="true"/>
+            <form:input type="text" path="genre" placeholder="Жанр" pattern="[А-Яа-я-]+" autofocus="true"/>
             <form:errors path="genre"/>${genreError}
             </br>
 
-            <form:input type="text" path="duration" placeholder="Продолжительность" autofocus="true"/>
+            <form:input type="text" path="duration" placeholder="Продолжительность"  autofocus="true"/>
             <form:errors path="duration"/>${durationError}
             </br>
 
-            <form:input type="text" path="annotation" placeholder="Аннотация" autofocus="true"/>
+            <form:input type="text" path="annotation" placeholder="Аннотация"  pattern="[A-Я][А-Яа-я- _,.]+" autofocus="true"/>
             <form:errors path="annotation"/>${annotationError}
             </br>
 

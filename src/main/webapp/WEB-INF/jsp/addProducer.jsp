@@ -64,20 +64,20 @@
           </div>
 
           <div class="davasgu-kevanud">
-            <form:input type="text" path="name" placeholder="Имя" autofocus="true"/>
+            <form:input type="text" path="name" placeholder="Имя"  pattern="[A-Я][А-Яа-я]+" minlenght="4" maxlength="20" autofocus="true"/>
             <form:errors path="name"/>
               ${nameError}
             </br>
 
-            <form:input type="text" path="surname" placeholder="Фамилия" autofocus="true"/>
+            <form:input type="text" path="surname" placeholder="Фамилия"  pattern="[A-Я][А-Яа-я]+" minlenght="4" maxlength="20" autofocus="true"/>
             <form:errors path="surname"/>
               ${surnameError}
             </br>
-            <form:input type="text" path="country" placeholder="Страна" autofocus="true"/>
+            <form:input type="text" path="country" placeholder="Страна" pattern="[A-Я][А-Яа-я-]+" minlenght="4" maxlength="20" autofocus="true"/>
             <form:errors path="country"/>
               ${countryError}
             </br>
-            <form:input type="text" path="biography" placeholder="Биография" autofocus="true"/>
+            <form:input type="text" path="biography" placeholder="Биография"  pattern="[A-Я][А-Яа-я- _,.]+"  autofocus="true"/>
             <form:errors path="biography"/>
               ${biographyError}
             </br>

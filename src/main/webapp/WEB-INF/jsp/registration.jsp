@@ -61,8 +61,8 @@
 
     <form method="POST" action="/login">
       <div class="davasgu-kevanud">
-        <input name="username" type="text" placeholder="Login" autofocus="true"/><br>
-        <input name="password" type="password" placeholder="Password"/>
+        <input name="username" type="text" placeholder="Login" autofocus="true" required pattern="[a-zA-Z0-9А-Яа-я_-]+" minlength="3" maxlength="13" /><br>
+        <input name="password" type="password" placeholder="Password" pattern="[a-zA-Z0-9А-Яа-я_-]+" required minlength="4" maxlength="13"/>
       </div>
       <button type="submit" class="dakisvan">Log In</button>
       <h3><a class = "registration" href="/registration">Зарегистрироваться</a></h3>
@@ -84,12 +84,12 @@
           </div>
 
           <div class="davasgu-kevanud">
-            <form:input type="text" path="username" placeholder="Username" autofocus="true"/>
+            <form:input type="text" path="username" placeholder="Username" autofocus="true" pattern="[a-zA-Z0-9А-Яа-я_-]+" minlength="3" maxlength="13"/>
             <form:errors path="username"/>
               ${usernameError}
             </br>
 
-            <form:input type="password" path="password" placeholder="Password"/>
+            <form:input type="password" path="password" placeholder="Password"  pattern="[a-zA-Z0-9А-Яа-я_-]+" minlength="3" maxlength="13"/>
             </br>
             <form:input type="password" path="passwordConfirm" placeholder="Confirm your password"/>
             <form:errors path="password"/>
