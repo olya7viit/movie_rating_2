@@ -1,26 +1,3 @@
-$(document).on('click', '.sort', function(e){
-    $(this).hasClass('desc') || $(this).hasClass('asc') ?
-        $(this).toggleClass('asc desc') : $(this).addClass('desc');
-
-
-    if($(this).hasClass('desc') || $(this).hasClass('asc')){
-        $('.sort').click(function () {
-            var par1=$('.sort').val();
-           // alert(par1)
-            $.ajax({url:"/mvcmetod",
-            type:'POST',
-            data:{param1:par1},
-            dataType:"text",
-                success:function (){
-                console.log("teseee");
-                }
-
-            });
-
-        });
-    }
-});
-
 function checkedRadio(checkedGenre) {
     if(checkedGenre == 'Все')
         $('#radio-0').attr('checked', 'true');

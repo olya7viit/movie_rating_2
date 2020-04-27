@@ -10,4 +10,6 @@ public interface MainController {
     String search(@RequestParam("search") String search, Model model);
 
     String filterByGenre(@RequestParam("genre") String genre, Model model);
+
+    String sortByRating(@RequestParam("sortType") String genre, Model model);
 }

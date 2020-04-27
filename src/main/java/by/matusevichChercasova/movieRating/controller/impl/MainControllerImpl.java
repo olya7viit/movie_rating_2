@@ -68,4 +68,18 @@ public class MainControllerImpl implements MainController {
         model.addAttribute("checkedGenre",checkedGenre);
         return "index";
     }
+
+    @Override
+    @PostMapping("/sort")
+    public String sortByRating(@RequestParam("sortType") String sortType, Model model) {
+
+        checkedGenre = "Все";
+        model.addAttribute("allFilms", filmService.getAllFilmSort(sortType));
+        model.addAttribute("allNewFilm2020",filmService.allNewFilms());
+        model.addAttribute("ratingServise", ratingService);
+        model.addAttribute("sizeSet",filmService.getAllFilmSort(sortType).size());
+        model.addAttribute("i",i);
+        model.addAttribute("checkedGenre",checkedGenre);
+        return "index";
+    }
 }

@@ -15,6 +15,8 @@ public interface ProducerService {
     List<ProducerDto> allProducers();
 
     ProducerDto loadProducerByProducerSurname(String producerSurname) throws UsernameNotFoundException;
+
     Producer oneProducer(Long id);
+
     void updateProducer (ProducerDto producerDto);
 }

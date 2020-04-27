@@ -194,8 +194,10 @@
 
 <!------------Кнопки сортировки---------------->
     <div class="sortDiv">
-        <button class="sort" id="name" name="sortType" value="sortRating">Рейтинг</button>
-        <!-- <button class="sort" id="perc" name="sortType" value="sortYear">Год</button>-->
+        <form method="POST" action="/sort">
+            <button class="sort" id="name" name="sortType" value="sortRatingInc">Рейтинг<b class="sortStrela">⤊</b></button>
+            <button class="sort" id="perc" name="sortType" value="sortRatingDec">Рейтинг<b class="sortStrela">⤋</b></button>
+        </form>
      </div>
  <!---------------------------------------->
 

@@ -12,11 +12,13 @@ import by.matusevichChercasova.movieRating.entity.User;
 import by.matusevichChercasova.movieRating.repository.BookmarkRepository;
 import by.matusevichChercasova.movieRating.repository.FilmRepository;
 import by.matusevichChercasova.movieRating.service.FilmService;
+import by.matusevichChercasova.movieRating.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -25,21 +27,24 @@ public class FilmServiceImpl implements FilmService {
     private final FilmAddMapper filmMapper;
     private final FilmRepository filmRepository;
     private final BookmarkRepository bookmarkRepository;
+    private final RatingService ratingService;
 
     @Autowired
     public FilmServiceImpl(FilmAddMapper filmMapper,
                            FilmRepository filmRepository,
-                           BookmarkRepository bookmarkRepository) {
+                           BookmarkRepository bookmarkRepository,
+                           RatingService ratingService) {
         this.filmMapper = filmMapper;
         this.filmRepository = filmRepository;
         this.bookmarkRepository = bookmarkRepository;
+        this.ratingService = ratingService;
     }
 
     @Override
     public List<Film> allFilms() {
         List<Bookmark> bookmarks = bookmarkRepository.findAll();
         List<Film> films = filmRepository.findAll();
-        long idCurrentUser = 0;
+        long idCurrentUser;
         try {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             idCurrentUser = user.getId();
@@ -108,6 +113,7 @@ public class FilmServiceImpl implements FilmService {
         return filmRepository.getOne(id);
 
     }
+
     @Override
     public List<Film> searchFilm(String filmName){
         List<Film>filmSet=filmRepository.findAll();
@@ -140,6 +146,24 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
+    public List<Film> getAllFilmSort(String sortType) {
+        List<Film> films = allFilms();
+        List<Double> ratings = new ArrayList<>();
+
+        for (int i=0;i<films.size();i++){
+            ratings.add(ratingService.oneFilmRating(films.get(i).getId()));
+        }
+
+        if(sortType.equals("sortRatingDec")){
+            sortInc(films,ratings);
+        }
+        if(sortType.equals("sortRatingInc")){
+            sortDec(films,ratings);
+        }
+        return films;
+    }
+
+    @Override
     public int countFilms() {
         return filmRepository.findAll().size();
     }
@@ -152,5 +176,44 @@ public class FilmServiceImpl implements FilmService {
         filmRepository.save(film);
 
     }
+
+    private void sortInc(List<Film> films, List<Double> ratings){
+        for (int left = 0; left < ratings.size(); left++) {
+            int minInd = left;
+            for (int i = left; i < ratings.size(); i++) {
+                if (ratings.get(i) < ratings.get(minInd)) {
+                    minInd = i;
+                }
+            }
+
+            double tmp = ratings.get(left);
+            ratings.set(left,ratings.get(minInd));
+            ratings.set(minInd,tmp);
+
+            Film tmpF = films.get(left);
+            films.set(left,films.get(minInd));
+            films.set(minInd,tmpF);
+        }
+    }
+
+    private void sortDec(List<Film> films, List<Double> ratings){
+        for (int left = 0; left < ratings.size(); left++) {
+            int minInd = left;
+            for (int i = left; i < ratings.size(); i++) {
+                if (ratings.get(i) > ratings.get(minInd)) {
+                    minInd = i;
+                }
+            }
+
+            double tmp = ratings.get(left);
+            ratings.set(left,ratings.get(minInd));
+            ratings.set(minInd,tmp);
+
+            Film tmpF = films.get(left);
+            films.set(left,films.get(minInd));
+            films.set(minInd,tmpF);
+        }
+    }
+
 
 }

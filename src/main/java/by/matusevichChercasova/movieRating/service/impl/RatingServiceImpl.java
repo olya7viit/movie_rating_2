@@ -54,6 +54,7 @@ public class RatingServiceImpl implements RatingService {
         ratingRepository.save(rating);
 
     }
+
     @Override
     public  double oneFilmRating(Long idFilm) {
         double rating=0.0;
@@ -67,6 +68,5 @@ public class RatingServiceImpl implements RatingService {
 
         return rating;
     }
-
 
 }

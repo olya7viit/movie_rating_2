@@ -23,5 +23,7 @@ public interface FilmService {
 
     List<Film> getByGenre(String genre);
 
+    List<Film> getAllFilmSort(String sortType);
+
     int countFilms();
 }

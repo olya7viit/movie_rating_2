@@ -67,6 +67,7 @@ input[type="radio"]:checked + label span.radio::after {
 }
 
 .sort{
+    width: 100px;
     border-radius: 30px;
     background: #fff;
     border: 1px solid #eee;
@@ -75,36 +76,7 @@ input[type="radio"]:checked + label span.radio::after {
     position: relative;
 }
 
-.sort:before,
-.sort:after {
-    border-style: solid;
-    border-width: 8px 5px;
-    border-color: transparent;
-    content: '';
-    height: 0;
-    position: absolute;
-    right: 10px;
-    width: 0;
+.sortStrela{
+    color: #fa5ba5;
 }
 
-.sort:before {
-    border-bottom-color: #ccc;
-    top: 0;
-}
-
-.sort:after {
-    border-top-color: #ccc;
-    bottom: 0;
-}
-
-.asc:before {
-    border-bottom-color: #fa5ba5;
-}
-
-.desc:after {
-    border-top-color: #fa5ba5;
-}
-
-.sort:active, button:focus {
-    outline: none;
-}
