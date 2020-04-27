@@ -23,7 +23,6 @@ public class MainControllerImpl implements MainController {
     @Override
     @GetMapping("/")
     public String findAllFilms(Model model) {
-        model.addAttribute("i",i);
         model.addAttribute("allFilms", filmService.allFilms());
         model.addAttribute("ratingServise", ratingService);
         model.addAttribute("checkedGenre",checkedGenre);
@@ -39,18 +38,15 @@ public class MainControllerImpl implements MainController {
         model.addAttribute("allNewFilm2020",filmService.allNewFilms());
         model.addAttribute("ratingServise", ratingService);
         model.addAttribute("sizeSet",filmService.searchFilm(search).size());
-        model.addAttribute("i",i);
         return "index";
     }
 
     @PostMapping ("/")
     public String loading( Model model) {
-
-      i+=5;
+        
         model.addAttribute("allFilms", filmService.allFilms());
         model.addAttribute("allNewFilm2020",filmService.allNewFilms());
         model.addAttribute("ratingServise", ratingService);
-        model.addAttribute("i",i);
 
         return "index";
     }
@@ -64,7 +60,6 @@ public class MainControllerImpl implements MainController {
         model.addAttribute("allNewFilm2020",filmService.allNewFilms());
         model.addAttribute("ratingServise", ratingService);
         model.addAttribute("sizeSet",filmService.getByGenre(genre.toLowerCase()).size());
-        model.addAttribute("i",i);
         model.addAttribute("checkedGenre",checkedGenre);
         return "index";
     }
