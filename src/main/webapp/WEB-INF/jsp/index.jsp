@@ -221,8 +221,7 @@
 
       <c:if test="${sizeSet==0}"><p style="font-size: 30px ">Совпадений не найдено</p></c:if>
       <c:forEach items="${allFilms}" var="film">
-          <c:choose>
-          <c:when test="${count <= i}">
+
         <sec:authorize access="isAuthenticated()">
         <div class="divLike">
           <div class='like'>
@@ -261,21 +260,10 @@
               <p>${film.annotation}</p>
              </div>
              </br>  </br>
-
-              <c:set var="count" value="${count+1}"/>
-          </c:when>
-          </c:choose>
+          
       </c:forEach>
 
     </div>
-
-      <c:if test="${allFilms.size()>i}">
-      <div class="load">
-          <form method="POST" action="/">
-              <button type="submit" class="dakisvan">Загрузить еще</button>
-          </form>
-      </div>
-      </c:if>
 
   </div>
 </div>
