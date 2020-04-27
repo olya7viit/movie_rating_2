@@ -48,6 +48,11 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
+    public int countUsers() {
+        return userRepository.findAll().size();
+    }
+
+    @Override
     public List<User> allUsers() {
         return userRepository.findAll();
     }

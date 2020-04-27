@@ -140,6 +140,11 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
+    public int countFilms() {
+        return filmRepository.findAll().size();
+    }
+
+    @Override
     public void updateFilm(FilmAddDto filmAddDto) {
 
         Film film = filmMapper.toEntity(filmAddDto);

@@ -211,7 +211,6 @@
 <!---------------------------------------->
 
 
-
 <c:set var="count" value="1"/>
 <div class="blog">
   <div class="container">

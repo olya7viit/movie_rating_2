@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface UserService {
 
+    int countUsers();
+
     List<User> allUsers();
 
     boolean saveUser(User user);

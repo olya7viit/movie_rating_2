@@ -2,10 +2,7 @@ package by.matusevichChercasova.movieRating.controller.impl;
 
 import by.matusevichChercasova.movieRating.controller.AdminController;
 import by.matusevichChercasova.movieRating.dto.ProducerDto;
-import by.matusevichChercasova.movieRating.service.ActorService;
-import by.matusevichChercasova.movieRating.service.FilmService;
-import by.matusevichChercasova.movieRating.service.ProducerService;
-import by.matusevichChercasova.movieRating.service.UserService;
+import by.matusevichChercasova.movieRating.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,11 +24,16 @@ public class AdminControllerImpl implements AdminController {
     private ProducerService producerService;
     @Autowired
     private ActorService actorService;
+    @Autowired
+    private ReviewService reviewService;
 
     @Override
     @GetMapping("/management")
     public String manage(Model model) {
 
+        model.addAttribute("countUsers", userService.countUsers());
+        model.addAttribute("countComments", reviewService.countReviews());
+        model.addAttribute("countFilms", filmService.countFilms());
         model.addAttribute("allFilms", filmService.allFilms());
         model.addAttribute("allActors", actorService.allActors());
         model.addAttribute("allProducers", producerService.allProducers());

@@ -36,6 +36,11 @@ public class ReviesServicerImpl implements ReviewService {
     }
 
     @Override
+    public int countReviews() {
+        return reviewRepository.findAll().size();
+    }
+
+    @Override
     public void deleteReview(Long reviewId){
         if (reviewRepository.findById(reviewId).isPresent()) {
             reviewRepository.deleteById(reviewId);

@@ -22,4 +22,6 @@ public interface FilmService {
     List<Film> searchFilm(String filmName);
 
     List<Film> getByGenre(String genre);
+
+    int countFilms();
 }

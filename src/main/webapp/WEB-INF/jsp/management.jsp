@@ -47,7 +47,6 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h1>Films</h1>
     </div>
 </div>
 
@@ -67,9 +66,26 @@
             <ul class="nacc">
                 <li class="active">
                     <div>
-                        <p>Убрать пароль при просмотре юзеров</p>
-                        <p>При поиске constain сделать игнор кейс</p>
-                        <p>При добавлении актера на месте возраста стоит 0?</p>
+
+
+                        <div class="services">
+                            <div class="container">
+                                <div class="service">
+                                    <i class="fa fa-film fa-3x" aria-hidden="true"></i>
+                                    <p> Количетво фильмов: ${countFilms}</p>
+                                </div>
+                                <div class="service">
+                                    <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+                                    <p> Количество пользователей:  ${countUsers}</p>
+                                </div>
+                                <div class="service">
+                                    <i class="fa fa-comments fa-3x" aria-hidden="true"></i>
+                                    <p> Количество комментариев:  ${countComments}</p>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </li>
                 <!---------------------------------------Фильмы-------------------------------------------------->

@@ -10,4 +10,6 @@ public interface ReviewService   {
     void deleteReview(Long reviewId);
 
     List<ReviewDto> allReviews(Long idFilm);
+
+    int countReviews();
 }
