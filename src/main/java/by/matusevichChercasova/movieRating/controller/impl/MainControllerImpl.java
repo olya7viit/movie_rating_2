@@ -43,7 +43,7 @@ public class MainControllerImpl implements MainController {
 
     @PostMapping ("/")
     public String loading( Model model) {
-        
+
         model.addAttribute("allFilms", filmService.allFilms());
         model.addAttribute("allNewFilm2020",filmService.allNewFilms());
         model.addAttribute("ratingServise", ratingService);
