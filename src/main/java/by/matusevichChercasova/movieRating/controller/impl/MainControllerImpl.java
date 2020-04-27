@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainControllerImpl implements MainController {
-    private static int i=5;
+
     private static String checkedGenre = "Все";
     @Autowired
     FilmService filmService;
@@ -44,6 +44,7 @@ public class MainControllerImpl implements MainController {
     @PostMapping ("/")
     public String loading( Model model) {
 
+
         model.addAttribute("allFilms", filmService.allFilms());
         model.addAttribute("allNewFilm2020",filmService.allNewFilms());
         model.addAttribute("ratingServise", ratingService);
@@ -73,7 +74,6 @@ public class MainControllerImpl implements MainController {
         model.addAttribute("allNewFilm2020",filmService.allNewFilms());
         model.addAttribute("ratingServise", ratingService);
         model.addAttribute("sizeSet",filmService.getAllFilmSort(sortType).size());
-        model.addAttribute("i",i);
         model.addAttribute("checkedGenre",checkedGenre);
         return "index";
     }
