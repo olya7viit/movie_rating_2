@@ -219,7 +219,7 @@
 
                                     <td>
                                         <form action="${pageContext.request.contextPath}/management/usersPage" method="post">
-                                            <input type="hidden" name="actorId" value="${user.id}"/>
+                                            <input type="hidden" name="userId" value="${user.id}"/>
                                             <input type="hidden" name="action" value="delete"/>
                                             <button type="submit" class="dakisvan">Удалить</button>
                                         </form>

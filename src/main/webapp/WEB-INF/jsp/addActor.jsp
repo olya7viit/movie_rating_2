@@ -64,20 +64,20 @@
           </div>
 
           <div class="davasgu-kevanud">
-            <form:input type="text" path="name" placeholder="Имя" autofocus="true"/>
+            <form:input type="text" path="name" placeholder="Имя" autofocus="true" pattern="[A-Я][А-Яа-я]+" minlenght="4" maxlength="20"/>
             <form:errors path="name"/>
               ${nameError}
             </br>
 
-            <form:input type="text" path="surname" placeholder="Фамилия" autofocus="true"/>
+            <form:input type="text" path="surname" placeholder="Фамилия" autofocus="true" pattern="[A-Я][А-Яа-я]+" minlenght="4" maxlength="20"/>
             <form:errors path="surname"/>
               ${surnameError}
             </br>
-            <form:input type="text" path="country" placeholder="Страна" autofocus="true"/>
+            <form:input type="text" path="country" pattern="[A-Я][А-Яа-я-]+" placeholder="Страна"  minlenght="4" maxlength="20" autofocus="true"/>
             <form:errors path="country"/>
               ${countryError}
             </br>
-            <form:input type="text" path="age" placeholder="Возраст" autofocus="true"/>
+            <form:input type="text" path="age" placeholder="Возраст" pattern="[1-9]{1}[1-9]{1}"  minlenght="2"  maxlength="2" autofocus="true"/>
             <form:errors path="age"/>
               ${ageError}
             </br>
@@ -86,7 +86,7 @@
               ${photoPathError}
 
             </br>
-            <form:input type="text" path="biography" placeholder="Биография" autofocus="true"/>
+            <form:input type="text" path="biography" placeholder="Биография"  pattern="[A-Я][А-Яа-я- _,.]+" autofocus="true"/>
             <form:errors path="biography"/>
               ${biographyError}
           </div>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SortingControllerImpl implements SortingController {
+
     @RequestMapping(value = "/mvcmethod", method = RequestMethod.POST)
     public String mvcmethod(Model model,
                           @RequestParam(value = "param1")String param){

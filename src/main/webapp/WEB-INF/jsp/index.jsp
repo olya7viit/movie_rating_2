@@ -195,9 +195,9 @@
 <!------------Кнопки сортировки---------------->
     <div class="sortDiv">
         <button class="sort" id="name" name="sortType" value="sortRating">Рейтинг</button>
-        <button class="sort" id="perc" name="sortType" value="sortYear">Год</button>
-    </div>
-<!---------------------------------------->
+        <!-- <button class="sort" id="perc" name="sortType" value="sortYear">Год</button>-->
+     </div>
+ <!---------------------------------------->
 
 
 
