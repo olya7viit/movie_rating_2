@@ -32,7 +32,7 @@
                 <li><a href="/">Главная</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/allActors">Актеры</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/allProducers">Продюсеры</a></li>
-                <li><a href="#">Закладки</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/bookmarkPage/${pageContext.request.userPrincipal.principal.id}">Закладки</a></li>
                 <sec:authorize access="!isAuthenticated()">
                     <li><a href="/login" class=" svalokan-big openmodal">   Войти</a></li>
                 </sec:authorize>

@@ -119,10 +119,6 @@ header .menu li a {
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
-    /*padding-top: 80px;
-    padding-bottom: 80px;*/
-    /*min-height: 150px;*/
-   /* text-align: center;*/
     clear: both;
 }
 
@@ -196,6 +192,7 @@ footer .copyright {
 
 
 .dakisvan {
+    outline: none;
     display: inline-block;
     text-decoration: none;
     margin-bottom: 30px;
